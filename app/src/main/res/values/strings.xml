@@ -18,4 +18,6 @@
     <string name="hint_telefonoApoderado">Telefono de apoderado</string>
     <string name="hint_seguro_medico">Telefono Seguro Medico</string>
     <string name="finalizar_registro">Finalizar registro</string>
+    <string name="sesion_diaria">Sesion Diaria</string>
+    <string name="datos_frecuencia">Frecuencia Cardiaca</string>
 </resources>

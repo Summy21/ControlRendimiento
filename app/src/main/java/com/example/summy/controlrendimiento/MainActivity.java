@@ -14,9 +14,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void crearCuenta(View view) {
         Intent intent = new Intent(this, RegistroActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void iniciarSesion(View view) {
+        Intent intent = new Intent(this, DiariaActivity.class);
         this.startActivity(intent);
     }
 }

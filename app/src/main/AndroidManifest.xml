@@ -16,9 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".RegistroActivity"></activity>
+        <activity android:name=".DiariaActivity"></activity>
     </application>
 
-    <activity android:name=".RegistroActivity"></activity>
-    <activity android:name=".DiariaActivity"></activity>
+
 
 </manifest>

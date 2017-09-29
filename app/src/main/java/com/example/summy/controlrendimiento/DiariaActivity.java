@@ -1,8 +1,9 @@
 package com.example.summy.controlrendimiento;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Created by SUMMY on 28/9/2017.
@@ -15,4 +16,5 @@ public class DiariaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diaria);
     }
+
 }
