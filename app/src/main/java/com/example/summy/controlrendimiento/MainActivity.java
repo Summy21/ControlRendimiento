@@ -106,14 +106,15 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     if (firebaseUser.getEmail().equalsIgnoreCase("admin@admin.com")){
                         Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
+                        Intent intent = new Intent(MainActivity.this, RegistroAdminActivity.class);
                         startActivity(intent);
                         finish();
-                    }
+                    }else{
                     Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
                     startActivity(intent);
                     finish();
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "Autenticacion no exitosa", Toast.LENGTH_SHORT).show();
                 }

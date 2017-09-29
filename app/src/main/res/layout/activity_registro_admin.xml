@@ -26,6 +26,13 @@
             android:text="Usuario"
             android:layout_gravity="center"
             android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/cerrarSesionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesion"
+            android:onClick="cerrarSesion"/>
     </LinearLayout>
 
 
