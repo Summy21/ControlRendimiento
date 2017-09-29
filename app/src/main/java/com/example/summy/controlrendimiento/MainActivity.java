@@ -103,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    if (firebaseUser.getEmail().equalsIgnoreCase("admin@admin.com")){
+                        Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                     Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
                     startActivity(intent);
@@ -112,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-     /*   */
     }
 
     @Override
