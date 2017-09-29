@@ -20,6 +20,12 @@
             android:layout_gravity="center_horizontal"
             android:textSize="15sp"/>
 
+        <Button
+            android:id="@+id/cerrarSesionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesion"
+            android:onClick="cerrarSesion"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

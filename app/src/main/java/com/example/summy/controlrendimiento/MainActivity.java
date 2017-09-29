@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        passwordEditText.setOnClickListener(new View.OnClickListener() {
+        iniciarSesionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Creacion de cuenta no exitosa", Toast.LENGTH_SHORT).show();
                 }
@@ -101,14 +104,16 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Autenticacion no exitosa", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-     /*   Intent intent = new Intent(this, DiariaActivity.class);
-        this.startActivity(intent);*/
+     /*   */
     }
 
     @Override
