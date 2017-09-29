@@ -8,20 +8,32 @@
     android:orientation="vertical"
     tools:context="com.example.summy.controlrendimiento.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/crearcuentaButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="nuevo boton"/>
+        android:text="@string/crea_cuenta_button"
+        android:onClick="crearCuenta"/>
+
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:id="@+id/iniciarSesionButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="boton Erick"/>
+        android:text="@string/iniciar_sesion_button"
+        android:onClick="iniciarSesion"/>
+
 
 </LinearLayout>
