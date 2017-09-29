@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/datos_generales"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/nombreEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_nombre" />
+    <EditText
+        android:id="@+id/paternoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_paterno" />
+
+    <EditText
+        android:id="@+id/maternoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_materno" />
+    <EditText
+        android:id="@+id/tallaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_talla" />
+    <EditText
+        android:id="@+id/sexoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_sexo" />
+    <EditText
+        android:id="@+id/pesoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_peso" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/datos_contacto"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/telefonoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_telefono" />
+    <EditText
+        android:id="@+id/direccionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_direccion" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/datos_emergencia"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/telApoderadoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_telefonoApoderado" />
+    <EditText
+        android:id="@+id/telSeguroMedicoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_seguro_medico" />
+    <Button
+        android:id="@+id/finalizarRegistroButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/finalizar_registro"
+        android:onClick="finalizarRegistro"/>
+
+
+</LinearLayout>
