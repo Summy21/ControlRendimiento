@@ -24,9 +24,10 @@
             android:id="@+id/cerrarSesionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
-            android:onClick="cerrarSesion"/>
-    <TextView
+            android:onClick="cerrarSesion"
+            android:text="Cerrar Sesion" />
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/datos_generales"
