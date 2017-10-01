@@ -20,10 +20,8 @@
     <string name="finalizar_registro">Finalizar registro</string>
     <string name="sesion_diaria">Sesion Diaria</string>
     <string name="datos_frecuencia">Frecuencia Cardiaca</string>
-<<<<<<< HEAD
     <string name="title_datos_frecuencia_volumen">Datos Vitales</string>
-=======
     <string name="envia">Enviar</string>
     <string name="enviar">Enviar</string>
->>>>>>> origin/master
+
 </resources>
