@@ -27,7 +27,7 @@
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:text="Enviar"/>
+            android:text="@string/enviar"/>
 
     </LinearLayout>
     <LinearLayout
@@ -42,7 +42,7 @@
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:text="Enviar"/>
+            android:text="@string/enviar"/>
 
     </LinearLayout>
     <LinearLayout
@@ -57,7 +57,7 @@
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:text="Enviar"/>
+            android:text="@string/enviar"/>
 
     </LinearLayout>
 
