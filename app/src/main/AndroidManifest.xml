@@ -19,6 +19,17 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DiariaActivity" />
         <activity android:name=".RegistroAdminActivity"></activity>
+
+        <activity
+            android:name=".DatosFrecuenciaVolumenActivity"
+            android:parentActivityName=".DiariaActivity"
+            android:label="@string/title_datos_frecuencia_volumen">
+            <!--Este meta-data nos permite saber cual sera la actividad padre de esta actividad-->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiariaActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

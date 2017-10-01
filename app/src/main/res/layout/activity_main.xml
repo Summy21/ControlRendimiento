@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,6 +31,12 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/iniciarSesionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/iniciar_sesion_button"
+        android:onClick="iniciarSesion"/>
 
     <Button
         android:id="@+id/crearcuentaButton"
@@ -40,12 +45,7 @@
         android:text="@string/crea_cuenta_button"
         android:onClick="crearCuenta"/>
 
-    <Button
-        android:id="@+id/iniciarSesionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/iniciar_sesion_button"
-        android:onClick="iniciarSesion"/>
+
 
 
 </LinearLayout>
