@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--imprementacion de toolbar en el principal-->
+    <!--imprementacion de toolbar principal-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/tbMenu"
         android:layout_width="match_parent"

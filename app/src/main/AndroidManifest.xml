@@ -19,7 +19,7 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DiariaActivity" />
         <activity android:name=".RegistroAdminActivity"></activity>
-
+        <!--aqui habilitamos el boton volver de activity dtos frecuencia y volumen-->
         <activity
             android:name=".DatosFrecuenciaVolumenActivity"
             android:parentActivityName=".DiariaActivity"
@@ -30,6 +30,8 @@
                 android:value=".DiariaActivity">
             </meta-data>
         </activity>
+        <!--//////////////////////////////////////////////////////////////////-->
+
     </application>
 
 </manifest>
