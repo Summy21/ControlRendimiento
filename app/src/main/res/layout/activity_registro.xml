@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/nombreEditText"
+                android:id="@+id/etNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_nombre" />
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/paternoEditText"
+                android:id="@+id/etPaterno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_paterno" />
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/maternoEditText"
+                android:id="@+id/etMaterno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_materno" />
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/tallaEditText"
+                android:id="@+id/etEstatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_talla" />
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/sexoEditText"
+                android:id="@+id/etGenero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_sexo" />
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/pesoEditText"
+                android:id="@+id/etPeso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_peso" />
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/telefonoEditText"
+                android:id="@+id/etTelefonoCelular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_telefono" />
@@ -119,7 +119,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/direccionEditText"
+                android:id="@+id/etDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_direccion" />
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/telApoderadoEditText"
+                android:id="@+id/etTelFamiliar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_telefonoApoderado" />
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/telSeguroMedicoEditText"
+                android:id="@+id/etTelSeguroMedico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_seguro_medico" />
@@ -158,7 +158,7 @@
 
 
         <Button
-            android:id="@+id/finalizarRegistroButton"
+            android:id="@+id/btnFinalizarRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="finalizarRegistro"

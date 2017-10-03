@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by SUMMY on 28/9/2017.
@@ -26,6 +30,20 @@ public class RegistroActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistroActivity";
 
+    //datos registro
+    private TextView etnombres;
+    private TextView etpaterno;
+    private TextView etmaterno;
+    private TextView etestatura;
+    private TextView etgenero;
+    private TextView etpeso;
+    private TextView ettelefonocelular;
+    private TextView etdireccion;
+    private TextView ettelefonofamiliar;
+    private TextView ettelefonoseguromedico;
+    private Button btnfinalizar;
+    DatabaseReference databaseAtleta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +52,30 @@ public class RegistroActivity extends AppCompatActivity {
 
         detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
+
+
+
+        //
+        etnombres = (TextView) findViewById(R.id.etNombre);
+        etpaterno = (TextView) findViewById(R.id.etPaterno);
+        etmaterno = (TextView) findViewById(R.id.etMaterno);
+        etestatura = (TextView) findViewById(R.id.etEstatura);
+        etgenero = (TextView) findViewById(R.id.etGenero);
+        etpeso = (TextView) findViewById(R.id.etPeso);
+        ettelefonocelular = (TextView) findViewById(R.id.etTelefonoCelular);
+        etdireccion = (TextView) findViewById(R.id.etDireccion);
+        ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
+        ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
+        btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
+        databaseAtleta = FirebaseDatabase.getInstance().getReference("atleta");
+
+        btnfinalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adicionarAtleta();
+
+            }
+        });
 
         inicialize();
 
@@ -77,10 +119,37 @@ public class RegistroActivity extends AppCompatActivity {
         firebaseAuth.signOut();
     }
 
-    public void finalizarRegistro(View view) {
-        Intent intent = new Intent(this, DiariaActivity.class);
-        this.startActivity(intent);
+    //public void finalizarRegistro(View view) {
+    //    Intent intent = new Intent(this, DiariaActivity.class);
+    //    this.startActivity(intent);
+   // }
+
+    private void adicionarAtleta (){
+        String nombres = etnombres.getText().toString();
+        String paterno = etpaterno.getText().toString();
+        String materno = etmaterno.getText().toString();
+        String estatura = etestatura.getText().toString();
+        String genero = etgenero.getText().toString();
+        String peso = etpeso.getText().toString();
+        String telcelular= ettelefonocelular.getText().toString();
+        String direccion= etdireccion.getText().toString();
+        String telfamiliar= ettelefonofamiliar.getText().toString();
+        String telseguromedico= ettelefonoseguromedico.getText().toString();
+
+        if (!TextUtils.isEmpty(nombres)){
+
+            String id = databaseAtleta.push().getKey();
+            Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
+            databaseAtleta.child(id).setValue(atleta);
+            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
+
+
+
+            Intent intent = new Intent(this, DiariaActivity.class);
+            this.startActivity(intent);
+
+        }else{
+            Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+        }
     }
-
-
 }
