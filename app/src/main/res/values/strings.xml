@@ -23,5 +23,6 @@
     <string name="title_datos_frecuencia_volumen">Datos Vitales</string>
     <string name="envia">Enviar</string>
     <string name="enviar">Enviar</string>
+    <string name="control_de_rendimiento">CONTROL DE RENDIMIENTO</string>
 
 </resources>
