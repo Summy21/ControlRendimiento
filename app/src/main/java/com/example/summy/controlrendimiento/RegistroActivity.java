@@ -53,8 +53,6 @@ public class RegistroActivity extends AppCompatActivity {
         detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
 
-
-
         //
         etnombres = (TextView) findViewById(R.id.etNombre);
         etpaterno = (TextView) findViewById(R.id.etPaterno);
