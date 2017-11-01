@@ -18,20 +18,21 @@
         </activity>
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DiariaActivity" />
-        <activity android:name=".RegistroAdminActivity"></activity>
-        <!--aqui habilitamos el boton volver de activity dtos frecuencia y volumen-->
+        <activity android:name=".RegistroAdminActivity" />
+        <!-- aqui habilitamos el boton volver de activity dtos frecuencia y volumen -->
         <activity
             android:name=".DatosFrecuenciaVolumenActivity"
-            android:parentActivityName=".DiariaActivity"
-            android:label="@string/title_datos_frecuencia_volumen">
-            <!--Este meta-data nos permite saber cual sera la actividad padre de esta actividad-->
+            android:label="@string/title_datos_frecuencia_volumen"
+            android:parentActivityName=".DiariaActivity">
+
+            <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiariaActivity">
-            </meta-data>
+                android:value=".DiariaActivity"></meta-data>
         </activity>
-        <!--//////////////////////////////////////////////////////////////////-->
+        <!-- ////////////////////////////////////////////////////////////////// -->
 
+        <activity android:name=".ObtenerCompetenciasApiActivity"></activity>
     </application>
 
 </manifest>
