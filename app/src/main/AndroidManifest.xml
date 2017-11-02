@@ -28,11 +28,12 @@
             <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiariaActivity"></meta-data>
+                android:value=".DiariaActivity" />
         </activity>
         <!-- ////////////////////////////////////////////////////////////////// -->
 
-        <activity android:name=".ObtenerCompetenciasApiActivity"></activity>
+        <activity android:name=".ObtenerCompetenciasApiActivity" />
+        <activity android:name=".PeriodosActivity"></activity>
     </application>
 
 </manifest>

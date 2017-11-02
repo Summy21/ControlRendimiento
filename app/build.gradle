@@ -12,9 +12,15 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
+        release {       //En produccion
+            minifyEnabled false        //Si se le pone true convierte el codigo en inentendible para que no se pueda decodificar
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{     //En desarrollo
+
+        }
+        buildTypes.each {       //Variables para ambos casos o todos en este caso release y debug
+            it.buildConfigField "String", "TRIATHLON_DB_API_KEY", TriathlonDatabaseApiKey
         }
     }
 }
@@ -38,6 +44,7 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 
 
 
