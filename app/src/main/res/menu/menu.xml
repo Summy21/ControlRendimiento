@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/item2"
-        android:title="frecuancia cardiaca"
+        android:title="Añadir Competencia Internacional"
         android:icon="@mipmap/ic_launcher">
     </item>
 
     <item
         android:id="@+id/item3"
-        android:title="ops 2"
+        android:title="Añadir Competencia Nacional"
         android:icon="@mipmap/ic_launcher">
     </item>
 </menu>
