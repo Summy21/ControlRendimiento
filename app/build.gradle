@@ -39,13 +39,12 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.firebase:firebase-database:11.0.1'
-<<<<<<< HEAD
 
     compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
-=======
+
     compile 'com.android.support:cardview-v7:25.3.1'
     testCompile 'junit:junit:4.12'
->>>>>>> administrador
+
 }
 
 apply plugin: 'com.google.gms.google-services'
