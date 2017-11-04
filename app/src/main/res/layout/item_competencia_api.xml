@@ -61,12 +61,20 @@
                     tools:text="Lugar" />
 
                 <TextView
-                    android:id="@+id/fechaTextView"
+                    android:id="@+id/fechaIniTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorSecondaryDarkText"
                     android:textSize="@dimen/textBody"
                     tools:text="05/11/2017" />
+
+                <TextView
+                    android:id="@+id/fechaFinTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorSecondaryDarkText"
+                    android:textSize="@dimen/textBody"
+                    tools:text="08/11/2017" />
 
             </LinearLayout>
 
