@@ -1,17 +1,13 @@
 package com.example.summy.controlrendimiento.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.summy.controlrendimiento.ObtenerCompetenciasApiActivity;
+import com.example.summy.controlrendimiento.views.ObtenerCompetenciasApiActivity;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Competencia;
 
