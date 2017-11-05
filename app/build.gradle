@@ -12,9 +12,15 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
+        release {       //En produccion
+            minifyEnabled false        //Si se le pone true convierte el codigo en inentendible para que no se pueda decodificar
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{     //En desarrollo
+
+        }
+        buildTypes.each {       //Variables para ambos casos o todos en este caso release y debug
+            it.buildConfigField "String", "TRIATHLON_DB_API_KEY", TriathlonDatabaseApiKey
         }
     }
 }
@@ -25,17 +31,34 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+
+
+
     compile 'com.android.support:design:25.3.1'
-
     compile 'com.android.support:appcompat-v7:25.3.1'
+<<<<<<< HEAD
 
+=======
+    compile 'com.google.firebase:firebase-auth:11.0.1'
+>>>>>>> origin/master
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.firebase:firebase-database:11.0.1'
+
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
+
+    compile 'com.android.support:cardview-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> origin/master
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+
+
 

@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Control Rendimiento</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="crea_cuenta_button">Crear Cuenta</string>
+    <string name="iniciar_sesion_button">Iniciar Sesion</string>
+    <string name="datos_generales">Datos Generales</string>
+    <string name="hint_nombre">Nombres</string>
+    <string name="hint_paterno">Apellido Paterno</string>
+    <string name="hint_materno">Apellido Materno</string>
+    <string name="hint_talla">Estatura</string>
+    <string name="hint_sexo">Genero</string>
+    <string name="hint_peso">Peso (Kilogramos)</string>
+    <string name="datos_contacto">Datos de contacto</string>
+    <string name="hint_telefono">Telefono/Celular</string>
+    <string name="hint_direccion">Direccion</string>
+    <string name="datos_emergencia">Datos de emergencia</string>
+    <string name="hint_telefonoApoderado">Telefono familiar</string>
+    <string name="hint_seguro_medico">Telefono Seguro Medico</string>
+    <string name="finalizar_registro">Finalizar registro</string>
+    <string name="sesion_diaria">Sesion Diaria</string>
+    <string name="datos_frecuencia">Frecuencia Cardiaca</string>
+    <string name="title_datos_frecuencia_volumen">Datos Vitales</string>
+    <string name="envia">Enviar</string>
+    <string name="enviar">Enviar</string>
+    <string name="control_de_rendimiento">CONTROL DE RENDIMIENTO</string>
+    <string name="adicionar">Adicionar</string>
+
 </resources>
