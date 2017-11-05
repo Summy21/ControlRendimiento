@@ -1,51 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.summy.controlrendimiento.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.summy.controlrendimiento.Main2Activity"
+    android:background="@color/colorPrimary"
+    >
 
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/emailEditText"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_email"
-            android:inputType="textEmailAddress"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/passwordEditText"
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"/>
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:fillViewport="true"
+            >
 
-    </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_horizontal_login">
 
-    <Button
-        android:id="@+id/iniciarSesionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/iniciar_sesion_button"
-        android:onClick="iniciarSesion"/>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextWhite">
 
-    <Button
-        android:id="@+id/crearcuentaButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crea_cuenta_button"
-        android:onClick="crearCuenta"/>
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextWhite">
 
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword" />
 
+            </android.support.design.widget.TextInputLayout>
 
-</LinearLayout>
+            <Button
+                android:id="@+id/iniciarSesionButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="iniciarSesion"
+                android:text="@string/iniciar_sesion_button"
+                android:theme="@style/RaisedButtonDark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvNoTieneCuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_tienes_cuenta"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textSize_noTieneCuenta"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCrearCuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tvNoTieneCuenta"
+                    android:onClick="crearCuenta"
+                    android:text="@string/crear_aqui"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textSize_noTieneCuenta"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

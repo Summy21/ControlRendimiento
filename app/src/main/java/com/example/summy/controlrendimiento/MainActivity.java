@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
-    private Button crearcuentaButton;
+    private TextView tvCrearCuenta;
     private Button iniciarSesionButton;
 
     private EditText emailEditText;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //blindiar
-        crearcuentaButton = (Button)findViewById(R.id.crearcuentaButton);
+        tvCrearCuenta = (TextView) findViewById(R.id.tvCrearCuenta);
         iniciarSesionButton = (Button)findViewById(R.id.iniciarSesionButton);
 
         emailEditText = (EditText)findViewById(R.id.emailEditText);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         inicialize(); //inicializara los objetos de la parte superior
 
-        crearcuentaButton.setOnClickListener(new View.OnClickListener() {
+        tvCrearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

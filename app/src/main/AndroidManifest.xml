@@ -36,7 +36,7 @@
 
         <activity android:name=".ObtenerCompetenciasApiActivity" />
         <activity android:name=".PeriodosActivity" />
-        <activity android:name=".DialogCompetenciaNacionalActivity"></activity>
+        <activity android:name=".DialogCompetenciaNacionalActivity" />
     </application>
 
 </manifest>
