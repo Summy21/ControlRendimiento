@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.summy.controlrendimiento">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,7 +35,8 @@
         <!-- ////////////////////////////////////////////////////////////////// -->
 
         <activity android:name=".ObtenerCompetenciasApiActivity" />
-        <activity android:name=".PeriodosActivity"></activity>
+        <activity android:name=".PeriodosActivity" />
+        <activity android:name=".DialogCompetenciaNacionalActivity"></activity>
     </application>
 
 </manifest>

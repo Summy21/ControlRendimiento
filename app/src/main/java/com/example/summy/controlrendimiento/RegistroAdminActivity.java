@@ -1,20 +1,30 @@
 package com.example.summy.controlrendimiento;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class RegistroAdminActivity extends AppCompatActivity {
 
     private TextView detalleAdminTextView;
@@ -28,6 +38,16 @@ public class RegistroAdminActivity extends AppCompatActivity {
     //herramienta para crer el toolbar
     Toolbar toolbar;
 
+    //Recycler
+    private RecyclerView competenciasRecyclerView;
+    private View rootView;
+
+    //Fecha
+    Calendar dateTime = Calendar.getInstance();
+    private EditText campoFecha;
+    private Button botonSeleccionFechaNal;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +60,13 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
         detalleAdminTextView = (TextView)findViewById(R.id.detalleAdminTextView);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
+
+        //Recycler
+        competenciasRecyclerView = (RecyclerView) findViewById(R.id.competenciasRecyclerView);
+        competenciasRecyclerView.setHasFixedSize(true);
+        competenciasRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        rootView = findViewById(R.id.rootView);
 
         inicialize();
 
@@ -67,7 +94,22 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.item3:
-                break;
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_competencia_nacional, null);
+
+                campoFecha = (EditText)mView.findViewById(R.id.campoFecha);
+                botonSeleccionFechaNal = (Button) mView.findViewById(R.id.botonSeleccionFechaNal);
+
+                botonSeleccionFechaNal.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        actualizarFecha();
+                    }
+                });
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -101,4 +143,23 @@ public class RegistroAdminActivity extends AppCompatActivity {
         super.onStop();
         firebaseAuth.removeAuthStateListener(authStateListener);
     }
+
+    //Selector de fecha
+    private void actualizarFecha(){
+        new DatePickerDialog(this, d, dateTime.get(Calendar.YEAR),
+                dateTime.get(Calendar.MONTH),
+                dateTime.get(Calendar.DAY_OF_MONTH))
+                .show();
+    }
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            dateTime.set(Calendar.YEAR, year);
+            dateTime.set(Calendar.MONTH, monthOfYear);
+            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            campoFecha.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+        }
+    };
+
 }
