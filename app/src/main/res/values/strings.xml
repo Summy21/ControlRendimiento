@@ -32,5 +32,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
     <string name="crear_aqui"> crea una aquí</string>
+    <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
+    <string name="hint_confirm_password">Confirmar Contraseña</string>
 
 </resources>

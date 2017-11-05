@@ -18,9 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DiariaActivity" />
         <activity android:name=".RegistroAdminActivity" />
+
         <!-- aqui habilitamos el boton volver de activity dtos frecuencia y volumen -->
         <activity
             android:name=".DatosFrecuenciaVolumenActivity"

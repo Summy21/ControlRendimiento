@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    public void irAcrearCuenta(View view){
+        Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+        startActivity(intent);
+    }
 
     private void crearCuenta(String email, String pass) {
 
