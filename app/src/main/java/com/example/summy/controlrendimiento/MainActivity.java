@@ -8,8 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.summy.controlrendimiento.views.DiariaActivity;
+import com.example.summy.controlrendimiento.views.RegistroActivity;
+import com.example.summy.controlrendimiento.views.RegistroAdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
-    private Button crearcuentaButton;
+    private TextView tvCrearCuenta;
     private Button iniciarSesionButton;
 
     private EditText emailEditText;
@@ -37,21 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         //blindiar
-        crearcuentaButton = (Button)findViewById(R.id.crearcuentaButton);
+        tvCrearCuenta = (TextView) findViewById(R.id.tvCrearCuenta);
         iniciarSesionButton = (Button)findViewById(R.id.iniciarSesionButton);
 
         emailEditText = (EditText)findViewById(R.id.emailEditText);
         passwordEditText = (EditText)findViewById(R.id.passwordEditText);
 
         inicialize(); //inicializara los objetos de la parte superior
-
-        crearcuentaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                crearCuenta(emailEditText.getText().toString(), passwordEditText.getText().toString());
-            }
-        });
 
         iniciarSesionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,26 +74,11 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-
-    private void crearCuenta(String email, String pass) {
-
-        firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(MainActivity.this, "Creacion de cuenta no exitosa", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-      /*  Intent intent = new Intent(this, RegistroActivity.class);
-        this.startActivity(intent);*/
+    public void irAcrearCuenta(View view){
+        Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+        startActivity(intent);
     }
+
 
     private void iniciarSesion(String email, String pass) {
 

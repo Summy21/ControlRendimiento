@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Control Rendimiento</string>
     <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">Contraseña</string>
     <string name="crea_cuenta_button">Crear Cuenta</string>
     <string name="iniciar_sesion_button">Iniciar Sesion</string>
     <string name="datos_generales">Datos Generales</string>
@@ -29,5 +29,10 @@
     <string name="nombre_de_competencia">Nombre de competencia</string>
     <string name="seleccionar_fecha">Seleccionar Fecha</string>
     <string name="guardar">Guardar</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
+    <string name="crear_aqui"> crea una aquí</string>
+    <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
+    <string name="hint_confirm_password">Confirmar Contraseña</string>
 
 </resources>

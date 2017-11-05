@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.views.DatosFrecuenciaVolumenActivity;
 
 
 /**

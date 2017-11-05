@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.views;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.summy.controlrendimiento.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

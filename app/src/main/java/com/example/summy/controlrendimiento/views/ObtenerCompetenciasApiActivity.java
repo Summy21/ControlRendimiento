@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.views;
 
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.summy.controlrendimiento.BuildConfig;
+import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.Triathlon.ServiceGenerator;
 import com.example.summy.controlrendimiento.Triathlon.TriathlonDatabaseService;
 import com.example.summy.controlrendimiento.adapters.CompetenciasAdapter;
 import com.example.summy.controlrendimiento.model.CompetenciasRespuesta;
