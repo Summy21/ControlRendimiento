@@ -11,7 +11,7 @@
     <color name="colorSecondaryText">#8A000000</color>
     <color name="colorDisabledText">#61000000</color>
 
-    <color name="colorPrimaryDarkText">#FFFFFF</color>
+    <color name="colorPrimaryDarkText">#edeaea</color>
     <color name="colorSecondaryDarkText">#B3FFFFFF</color>
     <color name="colorDisabledDarkText">#80FFFFFF</color>
 

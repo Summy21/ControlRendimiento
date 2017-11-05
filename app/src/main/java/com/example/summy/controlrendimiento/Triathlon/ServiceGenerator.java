@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.Triathlon;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

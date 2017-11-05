@@ -19,27 +19,27 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegistroActivity" />
+        <activity android:name=".views.RegistroActivity" />
 
-        <activity android:name=".DiariaActivity" />
-        <activity android:name=".RegistroAdminActivity" />
+        <activity android:name=".views.DiariaActivity" />
+        <activity android:name=".views.RegistroAdminActivity" />
 
         <!-- aqui habilitamos el boton volver de activity dtos frecuencia y volumen -->
         <activity
-            android:name=".DatosFrecuenciaVolumenActivity"
+            android:name=".views.DatosFrecuenciaVolumenActivity"
             android:label="@string/title_datos_frecuencia_volumen"
-            android:parentActivityName=".DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity">
 
             <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiariaActivity" />
+                android:value=".views.DiariaActivity" />
         </activity>
         <!-- ////////////////////////////////////////////////////////////////// -->
 
-        <activity android:name=".ObtenerCompetenciasApiActivity" />
-        <activity android:name=".PeriodosActivity" />
-        <activity android:name=".DialogCompetenciaNacionalActivity" />
+        <activity android:name=".views.ObtenerCompetenciasApiActivity" />
+        <activity android:name=".views.PeriodosActivity" />
+        <activity android:name=".views.DialogCompetenciaNacionalActivity" />
     </application>
 
 </manifest>

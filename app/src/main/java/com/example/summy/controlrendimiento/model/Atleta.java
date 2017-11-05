@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.model;
 
 /**
  * Created by Nancy on 02/10/17.

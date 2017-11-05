@@ -1,4 +1,4 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.summy.controlrendimiento.model.Atleta;
+import com.example.summy.controlrendimiento.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

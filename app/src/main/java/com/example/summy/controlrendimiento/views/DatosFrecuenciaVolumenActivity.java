@@ -1,10 +1,12 @@
-package com.example.summy.controlrendimiento;
+package com.example.summy.controlrendimiento.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.example.summy.controlrendimiento.R;
 
 /**
  * Created by Nancy on 28/09/17.

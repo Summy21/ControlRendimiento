@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.summy.controlrendimiento.views.DiariaActivity;
+import com.example.summy.controlrendimiento.views.RegistroActivity;
+import com.example.summy.controlrendimiento.views.RegistroAdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
