@@ -24,21 +24,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:text="INICIAR"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="INICIAR" />
+
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:text="FINALIZAR"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="FINALIZAR" />
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

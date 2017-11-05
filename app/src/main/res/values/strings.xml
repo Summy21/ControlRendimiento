@@ -25,5 +25,9 @@
     <string name="enviar">Enviar</string>
     <string name="control_de_rendimiento">CONTROL DE RENDIMIENTO</string>
     <string name="adicionar">Adicionar</string>
+    <string name="competencia_nacional">Competencia Nacional</string>
+    <string name="nombre_de_competencia">Nombre de competencia</string>
+    <string name="seleccionar_fecha">Seleccionar Fecha</string>
+    <string name="guardar">Guardar</string>
 
 </resources>
