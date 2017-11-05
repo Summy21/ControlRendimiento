@@ -46,14 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         inicialize(); //inicializara los objetos de la parte superior
 
-        tvCrearCuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                crearCuenta(emailEditText.getText().toString(), passwordEditText.getText().toString());
-            }
-        });
-
         iniciarSesionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,25 +76,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void crearCuenta(String email, String pass) {
-
-        firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(MainActivity.this, "Creacion de cuenta no exitosa", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-      /*  Intent intent = new Intent(this, RegistroActivity.class);
-        this.startActivity(intent);*/
-    }
 
     private void iniciarSesion(String email, String pass) {
 

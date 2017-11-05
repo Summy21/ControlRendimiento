@@ -8,9 +8,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +33,9 @@ public class RegistroActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
 
     private static final String TAG = "RegistroActivity";
+
+    private EditText etEmail;
+    private EditText etPasswordCreateaccount;
 
     //datos registro
     private TextView etnombres;
@@ -52,6 +59,9 @@ public class RegistroActivity extends AppCompatActivity {
 
         detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
+
+        etEmail = (EditText)findViewById(R.id.etEmail);
+        etPasswordCreateaccount = (EditText)findViewById(R.id.etPasswordCreateaccount);
      //
         etnombres = (TextView) findViewById(R.id.etNombre);
         etpaterno = (TextView) findViewById(R.id.etPaterno);
@@ -69,6 +79,7 @@ public class RegistroActivity extends AppCompatActivity {
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
                 adicionarAtleta();
 
             }
@@ -100,6 +111,26 @@ public class RegistroActivity extends AppCompatActivity {
         };
     }
 
+    private void crearCuenta(String email, String pass) {
+
+        firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                if (task.isSuccessful()) {
+                    Toast.makeText(RegistroActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegistroActivity.this, DiariaActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(RegistroActivity.this, "Creacion de cuenta no exitosa", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+      /*  Intent intent = new Intent(this, RegistroActivity.class);
+        this.startActivity(intent);*/
+    }
     @Override
     protected void onStart() {
         super.onStart();

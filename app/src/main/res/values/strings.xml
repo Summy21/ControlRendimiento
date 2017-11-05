@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Control Rendimiento</string>
     <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">Contraseña</string>
     <string name="crea_cuenta_button">Crear Cuenta</string>
     <string name="iniciar_sesion_button">Iniciar Sesion</string>
     <string name="datos_generales">Datos Generales</string>
