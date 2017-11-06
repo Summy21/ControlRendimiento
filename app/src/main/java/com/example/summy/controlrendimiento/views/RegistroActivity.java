@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +59,7 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        showToolbar(getResources().getString(R.string.toolbar_tittle_createaccount), false);
 
         detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
@@ -96,6 +98,14 @@ public class RegistroActivity extends AppCompatActivity {
                 cerrarSesion();
             }
         });
+    }
+
+    public void showToolbar(String tittle, boolean upButton){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(tittle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
     }
 
     private void inicialize() {

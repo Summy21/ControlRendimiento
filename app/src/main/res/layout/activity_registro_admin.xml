@@ -30,7 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#0000FF"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -50,11 +49,14 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:text="@string/control_de_rendimiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/control_de_rendimiento"
-                android:textSize="24dp" />
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/textTitle"
+                android:textColor="#388E3C"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cerrarSesionButton"

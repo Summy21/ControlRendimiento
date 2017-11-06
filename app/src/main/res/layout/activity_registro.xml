@@ -41,11 +41,14 @@
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/datos_generales"
-                android:textSize="24sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/textTitle"
+                android:textColor="#388E3C"
+                android:textStyle="bold"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -140,11 +143,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/datos_contacto"
-                android:textSize="24sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/textTitle"
+                android:textColor="#388E3C"
+                android:textStyle="bold"/>
 
 
             <android.support.design.widget.TextInputLayout
@@ -175,11 +181,14 @@
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/datos_emergencia"
-                android:textSize="24sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/textTitle"
+                android:textColor="#388E3C"
+                android:textStyle="bold"/>
 
 
             <android.support.design.widget.TextInputLayout
@@ -237,7 +246,6 @@
                     android:inputType="textPassword" />
 
             </android.support.design.widget.TextInputLayout>
-
 
             <Button
                 android:id="@+id/btnFinalizarRegistro"

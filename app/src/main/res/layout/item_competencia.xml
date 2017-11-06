@@ -12,15 +12,13 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:foreground="?android:attr/selectableItemBackground"
-        android:orientation="horizontal"
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp"
-        card_view:cardBackgroundColor="@color/cardview_dark_background"
+        card_view:cardBackgroundColor="@color/colorPrimaryDark"
         >
 
         <LinearLayout
@@ -67,6 +65,14 @@
                     android:textColor="@color/colorSecondaryDarkText"
                     android:textSize="@dimen/textBody"
                     tools:text="05/11/2017" />
+
+                <TextView
+                    android:id="@+id/fechaFinTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorSecondaryDarkText"
+                    android:textSize="@dimen/textBody"
+                    tools:text="08/11/2017" />
 
             </LinearLayout>
 

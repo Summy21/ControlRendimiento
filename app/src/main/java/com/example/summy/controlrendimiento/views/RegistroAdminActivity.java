@@ -80,9 +80,10 @@ public class RegistroAdminActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menu_activity_competencias_api,menu);
         return true;
     }
 
