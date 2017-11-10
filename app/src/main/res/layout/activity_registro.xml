@@ -68,6 +68,21 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etPasswordCreateaccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,7 +182,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etDireccion"
+                    android:id="@+id/etDomicilio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_direccion" />
@@ -207,37 +222,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_seguro_medico" />
             </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/edittext_margin_createaccount"
-                android:theme="@style/EditTextBlack">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etPasswordCreateaccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_password"
-                    android:inputType="textPassword" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/edittext_margin_createaccount"
-                android:theme="@style/EditTextBlack">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etConfirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_confirm_password"
-                    android:inputType="textPassword" />
-
-            </android.support.design.widget.TextInputLayout>
-
 
             <Button
                 android:id="@+id/btnFinalizarRegistro"

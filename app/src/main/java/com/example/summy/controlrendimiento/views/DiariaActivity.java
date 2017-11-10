@@ -40,6 +40,12 @@ public class DiariaActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
 
 
+
+        //para obtener el id del usuario
+        //FirebaseUser user = mAuth.getCurrentUser();
+        //String id = user.getUid();
+
+
     }
 
     @Override
@@ -64,7 +70,7 @@ public class DiariaActivity extends AppCompatActivity{
             case R.id.item3:
 
                 mAuth.signOut();
-                Toast.makeText(DiariaActivity.this,"Cerrando Secion",Toast.LENGTH_LONG).show();
+                Toast.makeText(DiariaActivity.this,"'Cerrando Secion'",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
 

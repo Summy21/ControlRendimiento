@@ -16,7 +16,7 @@ public class Atleta {
     String telFamiliar;
     String telSeguroMedico;
 
-    public Atleta(){
+    public Atleta() {
 
     }
 

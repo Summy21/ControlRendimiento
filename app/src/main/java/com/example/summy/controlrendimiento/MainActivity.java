@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-
+                    Toast.makeText(MainActivity.this,"Iniciando Secion",Toast.LENGTH_LONG).show();
                     finish();
 
 
