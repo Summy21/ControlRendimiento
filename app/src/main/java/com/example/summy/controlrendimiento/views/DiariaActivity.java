@@ -60,8 +60,6 @@ public class DiariaActivity extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(),DatosFrecuenciaVolumenActivity.class));
                 break;
         }
-
-
         switch (item.getItemId()){
             case R.id.item3:
 

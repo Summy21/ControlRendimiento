@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.views.DiariaActivity;
+import com.example.summy.controlrendimiento.views.RegistroActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -74,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void irAcrearCuenta(View view){
+        Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+        startActivity(intent);
     }
 
     @Override
