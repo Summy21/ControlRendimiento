@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
 
     private TextView tvCrearCuenta;
-    private Button iniciarSesionButton;
+    private Button signInButton;
 
     private EditText emailEditText;
     private EditText passwordEditText;
@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         //blindiar
         tvCrearCuenta = (TextView) findViewById(R.id.tvCrearCuenta);
-        iniciarSesionButton = (Button)findViewById(R.id.iniciarSesionButton);
+        signInButton = (Button)findViewById(R.id.signInButton);
 
         emailEditText = (EditText)findViewById(R.id.emailEditText);
         passwordEditText = (EditText)findViewById(R.id.passwordEditText);
 
         inicialize(); //inicializara los objetos de la parte superior
 
-        iniciarSesionButton.setOnClickListener(new View.OnClickListener() {
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

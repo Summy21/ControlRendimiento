@@ -25,8 +25,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/black"
                 android:alpha="0.5"
+                android:background="@android:color/black"
                 android:orientation="vertical">
 
                 <ImageView
@@ -36,7 +36,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/collage" />
             </LinearLayout>
-
 
 
             <ImageView
@@ -54,8 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:fillViewport="true"
-            >
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,7 +95,7 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/iniciarSesionButton"
+                    android:id="@+id/signInButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/boton_uno"
@@ -114,16 +112,16 @@
                         android:id="@+id/tvNoTieneCuenta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/no_tienes_cuenta"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold"
                         android:layout_alignBaseline="@+id/tvCrearCuenta"
                         android:layout_alignBottom="@+id/tvCrearCuenta"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:text="@string/no_tienes_cuenta"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textSize_noTieneCuenta"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvCrearCuenta"
