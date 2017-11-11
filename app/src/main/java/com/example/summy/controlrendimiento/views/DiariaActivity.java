@@ -24,7 +24,6 @@ public class DiariaActivity extends AppCompatActivity{
 
     //// Cerrando secion
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class DiariaActivity extends AppCompatActivity{
         }
         switch (item.getItemId()){
             case R.id.item2:
-                startActivity(new Intent(getApplicationContext(),DatosFrecuenciaVolumenActivity.class));
+                startActivity(new Intent(getApplicationContext(),EditarRegistroAtleta.class));
                 break;
         }
         switch (item.getItemId()){

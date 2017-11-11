@@ -60,9 +60,10 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
         showToolbar(getResources().getString(R.string.toolbar_tittle_createaccount), false);
 
-        detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
+        detalleUserTextView = (TextView)findViewById(R.id.etPasswordCreateaccount);
         cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
 
         etEmail = (EditText)findViewById(R.id.etEmail);

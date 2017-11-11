@@ -8,6 +8,18 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.summy.controlrendimiento.views.RegistroActivity">
 
+
+    <!-- implementamos el toolbar -
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbMenu"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    </android.support.v7.widget.Toolbar>
+    <!- /////////////////////////////////////////-->
     <include layout="@layout/actionbar_toolbar"/>
 
     <ScrollView
@@ -21,13 +33,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/activity_vertical_margin">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/datos_generales"
-                android:textSize="24sp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -210,9 +215,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="finalizarRegistro"
-                android:text="@string/finalizar_registro"
+                android:text="@string/finalizar_edicion"
                 android:theme="@style/RaisedButtonDark" />
 
         </LinearLayout>
     </ScrollView>
+
 </android.support.design.widget.CoordinatorLayout>
