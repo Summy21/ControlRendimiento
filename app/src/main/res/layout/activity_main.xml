@@ -1,117 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.summy.controlrendimiento.MainActivity"
-    android:background="@color/colorPrimary"
-    >
-
+    android:weightSum="5"
+    android:orientation="vertical"
+    tools:context="com.miramicodigo.studyjam_ii_customviews.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/main.height.cero"
         android:orientation="vertical"
-        android:weightSum="1">
-
+        android:layout_weight="3">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.6">
-
+            android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/logo"
-                android:layout_width="300dp"
-                android:layout_height="120dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/logot"
-                />
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:fillViewport="true">
-
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/collage"
+                android:scaleType="centerCrop"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/padding_horizontal_login">
-
-                <android.support.design.widget.TextInputLayout
+                android:background="@android:color/black"
+                android:alpha="0.7"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/EditTextWhite">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/emailEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_email"
-                        android:drawableLeft="@drawable/icon_user_24dp"
-                        android:drawablePadding="16dp"
-                        android:drawableTint="@color/editTextColorWhite"
-                        android:inputType="textEmailAddress" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/EditTextWhite">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/passwordEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_password"
-                        android:drawableLeft="@drawable/icon_pass_24dp"
-                        android:drawablePadding="16dp"
-                        android:drawableTint="@color/editTextColorWhite"
-                        android:inputType="textPassword" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Button
-                    android:id="@+id/iniciarSesionButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="iniciarSesion"
-                    android:text="@string/iniciar_sesion_button"
-                    android:theme="@style/RaisedButtonDark" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/tvNoTieneCuenta"
+                    android:layout_height="@dimen/main.height.cero"
+                    android:layout_weight="1">
+                    <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/no_tienes_cuenta"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold" />
+                        android:layout_height="@dimen/main.iv.ancho"
+                        android:src="@drawable/logo"
+                        android:layout_gravity="center|bottom"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvCrearCuenta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/tvNoTieneCuenta"
-                        android:onClick="irAcrearCuenta"
-                        android:text="@string/crear_aqui"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
+                <TextView
+                    android:id="@+id/tvMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/main.height.cero"
+                    android:layout_marginTop="@dimen/main.tv.margintop"
+                    android:layout_weight="1"
+                    android:gravity="top|center_horizontal"
+                    android:padding="@dimen/main.tv.padding"
+                    android:text="@string/main.tv.mensaje"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/main.tv.textsize.mensaje" />
             </LinearLayout>
-        </ScrollView>
+        </RelativeLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main.height.cero"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:background="@android:color/black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp">
 
-</android.support.design.widget.CoordinatorLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="@dimen/main.height.cero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/main.tv.registrate"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/main.btn.textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="@dimen/main.height.cero"
+                android:layout_height="wrap_content"
+                android:text="@string/main.tv.iniciasesion"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/main.btn.textsize"
+                android:layout_weight="1"
+                android:gravity="center"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_uno"
+                android:drawableLeft="@drawable/ic_twitter_black_24dp"
+                android:drawablePadding="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/main.btn.regis.twitter"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boton_dos"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/main.btn.regis.correo"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
