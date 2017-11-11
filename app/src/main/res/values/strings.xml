@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name">Control Rendimiento</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Contraseña</string>
+    <string name="hint_email">Email *</string>
+    <string name="hint_password">Contraseña *</string>
     <string name="crea_cuenta_button">Crear Cuenta</string>
     <string name="iniciar_sesion_button">Iniciar Sesion</string>
     <string name="datos_generales">Datos Generales</string>
-    <string name="hint_nombre">Nombres</string>
-    <string name="hint_paterno">Apellido Paterno</string>
-    <string name="hint_materno">Apellido Materno</string>
-    <string name="hint_talla">Estatura</string>
-    <string name="hint_sexo">Genero</string>
-    <string name="hint_peso">Peso (Kilogramos)</string>
+    <string name="hint_nombre">Nombres *</string>
+    <string name="hint_paterno">Apellido Paterno *</string>
+    <string name="hint_materno">Apellido Materno *</string>
+    <string name="hint_talla">Estatura *</string>
+    <string name="hint_sexo">Genero *</string>
+    <string name="hint_peso">Peso (Kg) *</string>
     <string name="datos_contacto">Datos de contacto</string>
-    <string name="hint_telefono">Telefono/Celular</string>
-    <string name="hint_direccion">Direccion</string>
+    <string name="hint_telefono">Telefono/Celular *</string>
+    <string name="hint_direccion">Domicilio</string>
     <string name="datos_emergencia">Datos de emergencia</string>
     <string name="hint_telefonoApoderado">Telefono familiar</string>
     <string name="hint_seguro_medico">Telefono Seguro Medico</string>
@@ -33,15 +33,16 @@
     <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
     <string name="crear_aqui"> crea una aquí</string>
     <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
+    <string name="toolbar_tittle_editar_registro">Editar Registro</string>
     <string name="hint_confirm_password">Confirmar Contraseña</string>
     <string name="frecuencia_cardiaca">Frecuencia cardiaca</string>
     <string name="volumen_general">Volumen general</string>
 
-
-    <string name="main.tv.mensaje">Donde los videos y las personalidades se hacen realmente grandes</string>
     <string name="main.tv.registrate">Registrate</string>
     <string name="main.tv.iniciasesion">Iniciar Sesion</string>
     <string name="main.btn.regis.twitter">Registrate con Twitter</string>
     <string name="main.btn.regis.correo">Registrate con tu correo electronico</string>
+    <string name="title_editar_registro_atleta">Editar Registro</string>
+    <string name="finalizar_edicion">Finalizar Edicion</string>
 
 </resources>

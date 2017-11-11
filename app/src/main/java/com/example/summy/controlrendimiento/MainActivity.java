@@ -8,70 +8,73 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.views.DiariaActivity;
 import com.example.summy.controlrendimiento.views.RegistroActivity;
-import com.example.summy.controlrendimiento.views.RegistroAdminActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
-
-    private TextView tvCrearCuenta;
-    private Button iniciarSesionButton;
-
-    private EditText emailEditText;
-    private EditText passwordEditText;
 
 
+    //https://www.youtube.com/watch?v=FTmdSGBlhWA&list=PLgCYzUzKIBE_cyEsXgIcwC3P8ipvlSFd_&index=2
+    //ayuda de video
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+    private EditText mEmail,mPassword;
+    private Button btnSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mEmail = (EditText) findViewById(R.id.emailEditText);
+        mPassword = (EditText) findViewById(R.id.passwordEditText);
+        btnSignIn = (Button) findViewById(R.id.signInButton);
 
-        //blindiar
-        tvCrearCuenta = (TextView) findViewById(R.id.tvCrearCuenta);
-        iniciarSesionButton = (Button)findViewById(R.id.iniciarSesionButton);
+        mAuth = FirebaseAuth.getInstance();
 
-        emailEditText = (EditText)findViewById(R.id.emailEditText);
-        passwordEditText = (EditText)findViewById(R.id.passwordEditText);
-
-        inicialize(); //inicializara los objetos de la parte superior
-
-        iniciarSesionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                iniciarSesion(emailEditText.getText().toString(), passwordEditText.getText().toString());
-            }
-        });
-    }
-
-    private void inicialize() {
-        firebaseAuth = FirebaseAuth.getInstance();
-        authStateListener = new FirebaseAuth.AuthStateListener() {          //<--authlistener es donde detecta que hubo cambios en la sesion
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();  //FirebaseUser agarramos todos los gatos del usuario de la autenticacion una ves que ocurrio
-                if (firebaseUser != null){
-                    Log.w(TAG, "onAuthStateChanged - logeado" + firebaseUser.getUid());              //onAuthStateChanged<--proviene de que el estado cambio y si es != null entonces trago un usuario y esta logeado
-                    Log.w(TAG, "onAuthStateChanged - logeado" + firebaseUser.getEmail());
-                }else {
-                    Log.w(TAG, "onAuthStateChanged - cerro sesion");
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+
+                    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Toast.makeText(MainActivity.this,"Iniciando Secion",Toast.LENGTH_LONG).show();
+                    finish();
+
+
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+
                 }
+                // ...
             }
         };
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = mEmail.getText().toString();
+                String pass= mPassword.getText().toString();
+                if (!email.equals("") && !pass.equals("")){
+                    mAuth.signInWithEmailAndPassword(email, pass);
+                }else {
+                    Toast.makeText(MainActivity.this,"Completar campos para Iniciar Secion",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void irAcrearCuenta(View view){
@@ -79,45 +82,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    private void iniciarSesion(String email, String pass) {
-
-        firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                    if (firebaseUser.getEmail().equalsIgnoreCase("admin@admin.com")){
-                        Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, RegistroAdminActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                    Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Autenticacion no exitosa", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
-        firebaseAuth.removeAuthStateListener(authStateListener);
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
-
-
 }

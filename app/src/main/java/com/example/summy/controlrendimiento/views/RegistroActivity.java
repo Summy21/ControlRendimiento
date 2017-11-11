@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.summy.controlrendimiento.model.Atleta;
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.model.Atleta;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class RegistroActivity extends AppCompatActivity {
+
 
     private TextView detalleUserTextView;
     private Button cerrarSesionButton;
@@ -64,9 +65,10 @@ public class RegistroActivity extends AppCompatActivity {
     //    detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
     //    cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
 
+
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPasswordCreateaccount = (EditText)findViewById(R.id.etPasswordCreateaccount);
-
+        //
         etnombres = (TextView) findViewById(R.id.etNombre);
         etpaterno = (TextView) findViewById(R.id.etPaterno);
         etmaterno = (TextView) findViewById(R.id.etMaterno);
@@ -74,7 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
         etgenero = (TextView) findViewById(R.id.etGenero);
         etpeso = (TextView) findViewById(R.id.etPeso);
         ettelefonocelular = (TextView) findViewById(R.id.etTelefonoCelular);
-        etdireccion = (TextView) findViewById(R.id.etDireccion);
+        etdireccion = (TextView) findViewById(R.id.etDomicilio);
         ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
         btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
@@ -85,7 +87,6 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
                 adicionarAtleta();
-
             }
         });
 
@@ -118,6 +119,7 @@ public class RegistroActivity extends AppCompatActivity {
                     detalleUserTextView.setText("ID User: " + firebaseUser.getUid() + " email: " + firebaseUser.getEmail());
                 }else {
                     Log.w(TAG, "onAuthStateChanged - cerro sesion");
+
                 }
             }
         };
@@ -130,6 +132,7 @@ public class RegistroActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (task.isSuccessful()) {
+                    adicionarAtleta();
                     Toast.makeText(RegistroActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegistroActivity.this, DiariaActivity.class);
                     startActivity(intent);
@@ -139,9 +142,6 @@ public class RegistroActivity extends AppCompatActivity {
                 }
             }
         });
-
-      /*  Intent intent = new Intent(this, RegistroActivity.class);
-        this.startActivity(intent);*/
     }
     @Override
     protected void onStart() {
@@ -162,7 +162,7 @@ public class RegistroActivity extends AppCompatActivity {
     //public void finalizarRegistro(View view) {
     //    Intent intent = new Intent(this, DiariaActivity.class);
     //    this.startActivity(intent);
-   // }
+    // }
 
     private void adicionarAtleta (){
         String nombres = etnombres.getText().toString();
@@ -179,6 +179,9 @@ public class RegistroActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(nombres)){
 
             String id = databaseAtleta.push().getKey();
+           // FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+          //  String id = firebaseUser.getUid();
+
             Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
             databaseAtleta.child(id).setValue(atleta);
             Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
@@ -192,4 +195,5 @@ public class RegistroActivity extends AppCompatActivity {
             Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
     }
+
 }
