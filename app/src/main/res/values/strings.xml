@@ -44,5 +44,6 @@
     <string name="main.btn.regis.correo">Registrate con tu correo electronico</string>
     <string name="title_editar_registro_atleta">Editar Registro</string>
     <string name="finalizar_edicion">Finalizar Edicion</string>
+    <string name="iniciar">INCIAR</string>
 
 </resources>
