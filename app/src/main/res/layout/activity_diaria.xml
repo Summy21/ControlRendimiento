@@ -9,7 +9,7 @@
 
     <!--imprementacion de toolbar principal-->
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tbMenu"
+        android:id="@+id/tvMenu"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary"
@@ -18,24 +18,85 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:id="@+id/datosFrecuenciaButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/datos_frecuencia"
-        android:onClick="frecuenciaCardiaca"/>
+    <RelativeLayout
+        android:layout_width="303dp"
+        android:layout_height="173dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/boton_tres">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Datos Diarios"
-        android:gravity="center"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/boton_tres"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:id="@+id/fecha_dia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11 de noviembre"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"/>
 
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 Dic (Prox. Competencia)"
+                android:textColor="@android:color/white"
+                android:layout_below="@+id/fecha_dia"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sesion_diaria"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/datosFrecuenciaButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="frecuenciaCardiaca"
+                android:text="@string/datos_frecuencia" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datos Diarios"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sesion_diaria"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
 
 </LinearLayout>

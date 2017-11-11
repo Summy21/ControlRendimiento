@@ -1,10 +1,16 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.summy.controlrendimiento.R;
 
@@ -14,13 +20,12 @@ import com.example.summy.controlrendimiento.R;
 
 public class DatosFrecuenciaVolumenActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_frecuencia_volumen);
 
+/*
         //1 llamamos el toolbar de nuestro layout
         toolbar = (Toolbar) findViewById(R.id.tbMenu);
 
@@ -33,6 +38,7 @@ public class DatosFrecuenciaVolumenActivity extends AppCompatActivity {
         //4 Se crea el boton para volver a la actividad padre (Previamente instanciar los atributos en el Manifest)
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+*/
 
 
     }

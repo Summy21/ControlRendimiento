@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.summy.controlrendimiento.MainActivity"
-    android:background="@color/colorPrimary"
+    android:background="@color/editTextColorBlack"
     >
 
     <LinearLayout
@@ -20,20 +20,42 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.6">
+            android:layout_weight="0.5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:alpha="0.5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/collage" />
+            </LinearLayout>
+
+
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_width="300dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/logot"
+
+                />
+
         </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:fillViewport="true">
+            android:layout_weight="0.5"
+            android:fillViewport="true"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,6 +72,9 @@
                         android:id="@+id/emailEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/icon_user_24dp"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/editTextColorWhite"
                         android:hint="@string/hint_email"
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
@@ -63,6 +88,9 @@
                         android:id="@+id/passwordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/icon_pass_24dp"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/editTextColorWhite"
                         android:hint="@string/hint_password"
                         android:inputType="textPassword" />
 
@@ -72,6 +100,7 @@
                     android:id="@+id/iniciarSesionButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/boton_uno"
                     android:onClick="iniciarSesion"
                     android:text="@string/iniciar_sesion_button"
                     android:theme="@style/RaisedButtonDark" />
@@ -88,7 +117,13 @@
                         android:text="@string/no_tienes_cuenta"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_alignBaseline="@+id/tvCrearCuenta"
+                        android:layout_alignBottom="@+id/tvCrearCuenta"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginStart="40dp" />
 
                     <TextView
                         android:id="@+id/tvCrearCuenta"

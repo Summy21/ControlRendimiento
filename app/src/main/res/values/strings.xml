@@ -34,5 +34,14 @@
     <string name="crear_aqui"> crea una aquí</string>
     <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
     <string name="hint_confirm_password">Confirmar Contraseña</string>
+    <string name="frecuencia_cardiaca">Frecuencia cardiaca</string>
+    <string name="volumen_general">Volumen general</string>
+
+
+    <string name="main.tv.mensaje">Donde los videos y las personalidades se hacen realmente grandes</string>
+    <string name="main.tv.registrate">Registrate</string>
+    <string name="main.tv.iniciasesion">Iniciar Sesion</string>
+    <string name="main.btn.regis.twitter">Registrate con Twitter</string>
+    <string name="main.btn.regis.correo">Registrate con tu correo electronico</string>
 
 </resources>
