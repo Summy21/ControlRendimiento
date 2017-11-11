@@ -43,5 +43,6 @@
     <string name="main.tv.iniciasesion">Iniciar Sesion</string>
     <string name="main.btn.regis.twitter">Registrate con Twitter</string>
     <string name="main.btn.regis.correo">Registrate con tu correo electronico</string>
+    <string name="iniciar">INCIAR</string>
 
 </resources>
