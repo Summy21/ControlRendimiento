@@ -40,11 +40,6 @@ public class DiariaActivity extends AppCompatActivity{
 
 
 
-        //para obtener el id del usuario
-        //FirebaseUser user = mAuth.getCurrentUser();
-        //String id = user.getUid();
-
-
     }
 
     @Override

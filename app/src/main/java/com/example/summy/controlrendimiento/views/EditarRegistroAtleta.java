@@ -20,6 +20,7 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_registro_atleta);
 
+        //usamos el toolbar reutilisable en el layout
         showToolbar(getResources().getString(R.string.toolbar_tittle_editar_registro), true);
 
 
