@@ -24,9 +24,11 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_width="300dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/logot"
+                />
         </RelativeLayout>
 
         <ScrollView
@@ -51,6 +53,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_email"
+                        android:drawableLeft="@drawable/icon_user_24dp"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/editTextColorWhite"
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -64,6 +69,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_password"
+                        android:drawableLeft="@drawable/icon_pass_24dp"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/editTextColorWhite"
                         android:inputType="textPassword" />
 
                 </android.support.design.widget.TextInputLayout>

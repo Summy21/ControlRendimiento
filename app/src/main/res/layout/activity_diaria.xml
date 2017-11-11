@@ -22,8 +22,8 @@
         android:id="@+id/datosFrecuenciaButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/datos_frecuencia"
-        android:onClick="frecuenciaCardiaca"/>
+        android:onClick="frecuenciaCardiaca"
+        android:text="@string/datos_frecuencia" />
 
     <TextView
         android:layout_width="match_parent"
