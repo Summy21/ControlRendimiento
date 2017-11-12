@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
 
-               //    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
-               //     startActivity(intent);
+                    //    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
+                    //     startActivity(intent);
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-               //    Toast.makeText(MainActivity.this,"Iniciando Secion",Toast.LENGTH_LONG).show();
-                //    finish();
+                    //    Toast.makeText(MainActivity.this,"Iniciando Secion",Toast.LENGTH_LONG).show();
+                    //    finish();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
