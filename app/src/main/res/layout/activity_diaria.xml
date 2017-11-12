@@ -57,7 +57,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="@+id/fecha_dia"
                     android:layout_marginTop="20dp"
                     android:text="septiembre"
                     android:textColor="@android:color/white"
@@ -70,7 +69,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fecha_dia"
                 android:layout_marginLeft="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
@@ -89,8 +87,8 @@
         android:background="@color/colorPrimaryDark"></View>
 
     <RelativeLayout
-        android:layout_width="360dp"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:background="@drawable/boton_cuatro">
@@ -98,9 +96,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:background="@drawable/boton_cuatro"
             android:orientation="vertical"
             >
@@ -131,12 +126,13 @@
                     android:text="@string/iniciar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:layout_weight="1">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/ciclismo"
@@ -151,12 +147,13 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/iniciar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -169,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Carrera a pie"
+                    android:text="Carrera"
                     android:textColor="#388E3C"
                     android:textSize="36dp"
                     android:textStyle="bold" />
