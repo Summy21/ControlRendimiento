@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootViewLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -93,15 +94,29 @@
                         android:inputType="textPassword" />
 
                 </android.support.design.widget.TextInputLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
                 <Button
-                    android:id="@+id/signInButton"
-                    android:layout_width="match_parent"
+                    android:id="@+id/signUpButton"
+                    android:layout_width="@dimen/main.height.cero"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/boton_uno"
                     android:onClick="signIn"
-                    android:text="@string/iniciar_sesion_button"
-                    android:theme="@style/RaisedButtonDark" />
+                    android:text="@string/crea_cuenta_button" />
+                <Button
+                    android:id="@+id/signInButton"
+                    android:layout_width="@dimen/main.height.cero"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/boton_uno"
+                    android:onClick="signIn"
+                    android:text="@string/iniciar_sesion_button"/>
+            </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -128,7 +143,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tvNoTieneCuenta"
-                        android:onClick="irAcrearCuenta"
                         android:text="@string/crear_aqui"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/textSize_noTieneCuenta"

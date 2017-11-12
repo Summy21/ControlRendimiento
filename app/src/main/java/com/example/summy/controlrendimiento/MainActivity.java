@@ -3,6 +3,7 @@ package com.example.summy.controlrendimiento;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.views.DiariaActivity;
+import com.example.summy.controlrendimiento.views.EditarRegistroAtleta;
 import com.example.summy.controlrendimiento.views.RegistroActivity;
 import com.example.summy.controlrendimiento.views.RegistroAdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mEmail,mPassword;
     private Button btnSignIn;
+    private Button btnSignUp;
+
+    private View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.emailEditText);
         mPassword = (EditText) findViewById(R.id.passwordEditText);
         btnSignIn = (Button) findViewById(R.id.signInButton);
+        btnSignUp = (Button) findViewById(R.id.signUpButton);
+
+        rootView = findViewById(R.id.rootViewLogin);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -52,13 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-
-                    //    Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
-                    //     startActivity(intent);
-
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    //    Toast.makeText(MainActivity.this,"Iniciando Secion",Toast.LENGTH_LONG).show();
-                    //    finish();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -67,14 +69,18 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn(mEmail.getText().toString(), mPassword.getText().toString());
             }
         });
-
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signUp(mEmail.getText().toString(), mPassword.getText().toString());
+            }
+        });
     }
     @Override
     public void onStart() {
@@ -93,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
     public void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
+         //   Toast.makeText(MainActivity.this,"Completar campos para Iniciar Secion",Toast.LENGTH_LONG).show();
+            mostrarMessage("Completar campos para crear una cuenta");
             return;
         }
         mAuth.signInWithEmailAndPassword(email, password)
@@ -103,23 +111,53 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user.getEmail().equalsIgnoreCase("admin@admin.com")){
-                                Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
+                                mostrarMessage("Autenticacion exitosa como Admin");
+                             //   Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, RegistroAdminActivity.class);
                                 startActivity(intent);
                                 finish();
                             }else{
-                                Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
+                                mostrarMessage("Autenticacion exitosa");
+                            //    Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                      //      Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(MainActivity.this,"FAILED", Toast.LENGTH_SHORT).show();
+                            mostrarMessage("Autenticacion fallida");
+                        }
+                    }
+                });
+    }
+
+    public void signUp(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+        if (!validateForm()) {
+        //    Toast.makeText(MainActivity.this,"Completar campos para crear una cuenta",Toast.LENGTH_LONG).show();
+            mostrarMessage("Completar campos para crear una cuenta");
+            return;
+        }
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                            mostrarMessage("Creacion de cuenta exitosa");
+                            Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            mostrarMessage("Autenticacion fallida");
                         }
                     }
                 });
@@ -130,20 +168,19 @@ public class MainActivity extends AppCompatActivity {
 
         String email = mEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmail.setError("Required.");
             valid = false;
-        } else {
-            mEmail.setError(null);
         }
 
         String password = mPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPassword.setError("Required.");
             valid = false;
-        } else {
-            mPassword.setError(null);
         }
 
         return valid;
+    }
+
+
+    private void mostrarMessage(String mensaje) {
+        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
     }
 }

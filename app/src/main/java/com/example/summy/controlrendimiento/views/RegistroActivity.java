@@ -3,6 +3,7 @@ package com.example.summy.controlrendimiento.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -30,9 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistroActivity extends AppCompatActivity {
 
 
-    private TextView detalleUserTextView;
-    private Button cerrarSesionButton;
-
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -53,6 +51,9 @@ public class RegistroActivity extends AppCompatActivity {
     private TextView ettelefonofamiliar;
     private TextView ettelefonoseguromedico;
     private Button btnfinalizar;
+
+    private View rootView;
+
     DatabaseReference databaseAtleta;
 
 
@@ -80,25 +81,21 @@ public class RegistroActivity extends AppCompatActivity {
         ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
         btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
+
+        rootView = findViewById(R.id.rootViewRegistro);
+
         databaseAtleta = FirebaseDatabase.getInstance().getReference("atleta");
 
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
+             //   crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
                 adicionarAtleta();
             }
         });
 
-        inicialize();
+    //    inicialize();
 
-        cerrarSesionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                cerrarSesion();
-            }
-        });
     }
 
     public void showToolbar(String tittle, boolean upButton){
@@ -108,7 +105,7 @@ public class RegistroActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
     }
-
+/*
     private void inicialize() {
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {          //<--authlistener es donde detecta que hubo cambios en la sesion
@@ -157,7 +154,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void cerrarSesion() {
         firebaseAuth.signOut();
-    }
+    }*/
 
     //public void finalizarRegistro(View view) {
     //    Intent intent = new Intent(this, DiariaActivity.class);
@@ -179,21 +176,24 @@ public class RegistroActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(nombres)){
 
             String id = databaseAtleta.push().getKey();
-           // FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-          //  String id = firebaseUser.getUid();
 
             Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
             databaseAtleta.child(id).setValue(atleta);
-            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
-
-
+            mostrarMessage("Registro adicionado");
+           // Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, DiariaActivity.class);
             this.startActivity(intent);
+            finish();
 
         }else{
-            Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+            mostrarMessage("Falta completar los datos");
+            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void mostrarMessage(String mensaje) {
+        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
     }
 
 }
