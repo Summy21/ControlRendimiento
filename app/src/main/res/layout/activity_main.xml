@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.summy.controlrendimiento.MainActivity"
-    android:background="@color/editTextColorBlack"
+    android:background="@color/colorPrimary"
     >
 
     <LinearLayout
