@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3.5"
-            android:background="#0000FF"
 
             android:orientation="vertical">
 
@@ -39,10 +38,12 @@
 
             <Button
                 android:id="@+id/cerrarSesionButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/adicionar" />
+                android:onClick="finalizarRegistro"
+                android:text="@string/adicionar"
+                android:theme="@style/RaisedButtonDark" />
+
         </LinearLayout>
     </LinearLayout>
 

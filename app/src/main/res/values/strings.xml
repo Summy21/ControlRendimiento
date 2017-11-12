@@ -35,7 +35,15 @@
     <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
     <string name="toolbar_tittle_editar_registro">Editar Registro</string>
     <string name="hint_confirm_password">Confirmar Contraseña</string>
+    <string name="frecuencia_cardiaca">Frecuencia cardiaca</string>
+    <string name="volumen_general">Volumen general</string>
+
+    <string name="main.tv.registrate">Registrate</string>
+    <string name="main.tv.iniciasesion">Iniciar Sesion</string>
+    <string name="main.btn.regis.twitter">Registrate con Twitter</string>
+    <string name="main.btn.regis.correo">Registrate con tu correo electronico</string>
     <string name="title_editar_registro_atleta">Editar Registro</string>
     <string name="finalizar_edicion">Finalizar Edicion</string>
+    <string name="iniciar">INCIAR</string>
 
 </resources>

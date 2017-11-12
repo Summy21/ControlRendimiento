@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item1"
+        android:title="Ingreso de Datos Frecuencia"
+        android:icon="@mipmap/ic_launcher">
+    </item>
+    <item
+        android:id="@+id/item2"
+        android:title="Modificar Registro de Usuario"
+        android:icon="@mipmap/ic_launcher">
+    </item>
+
+    <item
+        android:id="@+id/item3"
+        android:title="Cerrar Secion"
+        android:icon="@mipmap/ic_launcher">
+    </item>
+
+    
+</menu>

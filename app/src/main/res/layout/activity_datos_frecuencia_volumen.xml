@@ -2,55 +2,114 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="10dp">
 
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/frecuencia_cardiaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/textTitle"
+        android:textColor="#388E3C"
+        android:textStyle="bold"
+        />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
 
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:hint="Frec. cardiaca al despertar"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:theme="@style/EditTextBlack">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Al despertar" />
+        </android.support.design.widget.TextInputLayout>
+
         <Button
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:text="@string/enviar"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="@string/enviar"
+            android:theme="@style/RaisedButtonDark" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
-        <EditText
-            android:layout_width="250dp"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextBlack"
+            android:layout_weight="0.8">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Frec. cardiaca maximo limite"/>
+            android:hint="Maximo limite"/>
+        </android.support.design.widget.TextInputLayout>
         <Button
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:text="@string/enviar"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enviar"
+            android:theme="@style/RaisedButtonDark"/>
+
 
     </LinearLayout>
+
+    <TextView
+        android:text="@string/volumen_general"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/textTitle"
+        android:textColor="#388E3C"
+        android:textStyle="bold"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:hint="Volumen general"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextBlack"
+            android:layout_weight="0.8">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Volume General"/>
+        </android.support.design.widget.TextInputLayout>
         <Button
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:text="@string/enviar"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enviar"
+            android:theme="@style/RaisedButtonDark"/>
 
     </LinearLayout>
 
-    
+
 </LinearLayout>
