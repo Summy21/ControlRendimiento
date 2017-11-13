@@ -34,7 +34,7 @@ public class RegistroActivity extends AppCompatActivity {
     private TextView etgenero;
     private TextView etpeso;
     private TextView ettelefonocelular;
-    private TextView etdireccion;
+    private TextView etdomicilio;
     private TextView ettelefonofamiliar;
     private TextView ettelefonoseguromedico;
 
@@ -61,7 +61,7 @@ public class RegistroActivity extends AppCompatActivity {
         etgenero = (TextView) findViewById(R.id.etGenero);
         etpeso = (TextView) findViewById(R.id.etPeso);
         ettelefonocelular = (TextView) findViewById(R.id.etTelefonoCelular);
-        etdireccion = (TextView) findViewById(R.id.etDomicilio);
+        etdomicilio = (TextView) findViewById(R.id.etDomicilio);
         ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
 
@@ -87,7 +87,7 @@ public class RegistroActivity extends AppCompatActivity {
         String genero = etgenero.getText().toString().trim();
         String peso = etpeso.getText().toString().trim();
         String telcelular= ettelefonocelular.getText().toString().trim();
-        String direccion= etdireccion.getText().toString().trim();
+        String direccion= etdomicilio.getText().toString().trim();
         String telfamiliar= ettelefonofamiliar.getText().toString().trim();
         String telseguromedico= ettelefonoseguromedico.getText().toString().trim();
 

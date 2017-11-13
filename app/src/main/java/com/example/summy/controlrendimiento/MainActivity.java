@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!email.equals("") && !pass.equals("")) {
                     crearCuenta(email, pass);
                 } else {
-                    Toast.makeText(MainActivity.this, "Campos no completados", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Datos incompletos", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -133,11 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                        }
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(MainActivity.this,"FAILED", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Error en la autenticacion, por favor verifique los datos.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -163,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "No se pudo crear la cuenta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "La cuenta con este correo ya existe.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
