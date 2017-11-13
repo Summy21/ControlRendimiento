@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEmail,mPassword;
     private Button btnSignIn;
 
+    ////////////////////
+    private Button btnSignUp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.emailEditText);
         mPassword = (EditText) findViewById(R.id.passwordEditText);
         btnSignIn = (Button) findViewById(R.id.signInButton);
+        /////////////////////////////////////
+        btnSignUp = (Button) findViewById(R.id.signUpButton);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -72,6 +77,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signIn(mEmail.getText().toString(), mPassword.getText().toString());
+            }
+        });
+        //////////////////////////////////////////////
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = mEmail.getText().toString();
+                String pass = mPassword.getText().toString();
+                if (!email.equals("") && !pass.equals("")) {
+                    crearCuenta(email, pass);
+                } else {
+                    Toast.makeText(MainActivity.this, "Campos no completados", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -125,6 +143,31 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    private void crearCuenta(String email, String pass) {
+
+        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    // adicionarAtleta();
+                    //Toast.makeText(.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
+
+                    FirebaseUser User = mAuth.getCurrentUser();
+                    String idUser = User.getUid();
+
+                    Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                    intent.putExtra("idUser", idUser);
+                    Toast.makeText(MainActivity.this, idUser, Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se pudo crear la cuenta", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
     private boolean validateForm() {
         boolean valid = true;
 

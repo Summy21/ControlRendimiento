@@ -103,6 +103,15 @@
                     android:text="@string/iniciar_sesion_button"
                     android:theme="@style/RaisedButtonDark" />
 
+                <Button
+                    android:id="@+id/signUpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boton_uno"
+                    android:onClick="crearCuenta"
+                    android:text="@string/crear_cuanta_button"
+                    android:theme="@style/RaisedButtonDark"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
