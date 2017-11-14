@@ -12,7 +12,7 @@ public class Atleta {
     String genero;
     String peso;
     String telCelular;
-    String direccion;
+    String domicilio;
     String telFamiliar;
     String telSeguroMedico;
 
@@ -27,7 +27,7 @@ public class Atleta {
                   String genero,
                   String peso,
                   String telCelular,
-                  String direccion,
+                  String domicilio,
                   String telFamiliar,
                   String telSeguroMedico) {
         this.nombres = nombres;
@@ -37,7 +37,7 @@ public class Atleta {
         this.genero = genero;
         this.peso = peso;
         this.telCelular = telCelular;
-        this.direccion = direccion;
+        this.domicilio = domicilio;
         this.telFamiliar = telFamiliar;
         this.telSeguroMedico = telSeguroMedico;
     }
@@ -98,12 +98,12 @@ public class Atleta {
         this.telCelular = telCelular;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDomicilio() {
+        return domicilio;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
     public String getTelFamiliar() {

@@ -5,22 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.v7.widget.Toolbar;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -36,8 +29,10 @@ public class RegistroActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistroActivity";
 
-    private EditText etEmail;
-    private EditText etPasswordCreateaccount;
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
 
     //datos registro
     private TextView etnombres;
@@ -47,29 +42,28 @@ public class RegistroActivity extends AppCompatActivity {
     private TextView etgenero;
     private TextView etpeso;
     private TextView ettelefonocelular;
-    private TextView etdireccion;
+    private TextView etdomicilio;
     private TextView ettelefonofamiliar;
     private TextView ettelefonoseguromedico;
+
     private Button btnfinalizar;
 
     private View rootView;
 
     DatabaseReference databaseAtleta;
 
-
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        showToolbar(getResources().getString(R.string.toolbar_tittle_createaccount), false);
 
-    //    detalleUserTextView = (TextView)findViewById(R.id.detalleUserTextView);
-    //    cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
+        myRef = FirebaseDatabase.getInstance().getReference("Atletas");
+        Intent intent= getIntent();
+        extras = intent.getExtras();
 
+        Toast.makeText(RegistroActivity.this, " "+extras.getString("idUser") , Toast.LENGTH_SHORT).show();
 
-        etEmail = (EditText)findViewById(R.id.etEmail);
-        etPasswordCreateaccount = (EditText)findViewById(R.id.etPasswordCreateaccount);
-        //
         etnombres = (TextView) findViewById(R.id.etNombre);
         etpaterno = (TextView) findViewById(R.id.etPaterno);
         etmaterno = (TextView) findViewById(R.id.etMaterno);
@@ -77,20 +71,22 @@ public class RegistroActivity extends AppCompatActivity {
         etgenero = (TextView) findViewById(R.id.etGenero);
         etpeso = (TextView) findViewById(R.id.etPeso);
         ettelefonocelular = (TextView) findViewById(R.id.etTelefonoCelular);
-        etdireccion = (TextView) findViewById(R.id.etDomicilio);
+        etdomicilio = (TextView) findViewById(R.id.etDomicilio);
         ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
         btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
 
+        showToolbar("Crear Cuenta", false);
+
         rootView = findViewById(R.id.rootViewRegistro);
 
-        databaseAtleta = FirebaseDatabase.getInstance().getReference("atleta");
+       // databaseAtleta = FirebaseDatabase.getInstance().getReference("atleta");
 
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              //   crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
-                adicionarAtleta();
+                adicionarAtleta(extras.getString("idUser"));
             }
         });
 
@@ -98,92 +94,30 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-    public void showToolbar(String tittle, boolean upButton){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(tittle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
-    }
-/*
-    private void inicialize() {
-        firebaseAuth = FirebaseAuth.getInstance();
-        authStateListener = new FirebaseAuth.AuthStateListener() {          //<--authlistener es donde detecta que hubo cambios en la sesion
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();  //FirebaseUser agarramos todos los gatos del usuario de la autenticacion una ves que ocurrio
-                if (firebaseUser != null){
-                    detalleUserTextView.setText("ID User: " + firebaseUser.getUid() + " email: " + firebaseUser.getEmail());
-                }else {
-                    Log.w(TAG, "onAuthStateChanged - cerro sesion");
-
-                }
-            }
-        };
-    }
-
-    private void crearCuenta(String email, String pass) {
-
-        firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if (task.isSuccessful()) {
-                    adicionarAtleta();
-                    Toast.makeText(RegistroActivity.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegistroActivity.this, DiariaActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(RegistroActivity.this, "Creacion de cuenta no exitosa", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        firebaseAuth.removeAuthStateListener(authStateListener);
-    }
-
-    private void cerrarSesion() {
-        firebaseAuth.signOut();
-    }*/
-
-    //public void finalizarRegistro(View view) {
-    //    Intent intent = new Intent(this, DiariaActivity.class);
-    //    this.startActivity(intent);
-    // }
-
-    private void adicionarAtleta (){
-        String nombres = etnombres.getText().toString();
-        String paterno = etpaterno.getText().toString();
-        String materno = etmaterno.getText().toString();
-        String estatura = etestatura.getText().toString();
-        String genero = etgenero.getText().toString();
-        String peso = etpeso.getText().toString();
-        String telcelular= ettelefonocelular.getText().toString();
-        String direccion= etdireccion.getText().toString();
-        String telfamiliar= ettelefonofamiliar.getText().toString();
-        String telseguromedico= ettelefonoseguromedico.getText().toString();
+    private void adicionarAtleta (String idUser){
+        String nombres = etnombres.getText().toString().trim();
+        String paterno = etpaterno.getText().toString().trim();
+        String materno = etmaterno.getText().toString().trim();
+        String estatura = etestatura.getText().toString().trim();
+        String genero = etgenero.getText().toString().trim();
+        String peso = etpeso.getText().toString().trim();
+        String telcelular= ettelefonocelular.getText().toString().trim();
+        String direccion= etdomicilio.getText().toString().trim();
+        String telfamiliar= ettelefonofamiliar.getText().toString().trim();
+        String telseguromedico= ettelefonoseguromedico.getText().toString().trim();
 
         if (!TextUtils.isEmpty(nombres)){
 
-            String id = databaseAtleta.push().getKey();
 
             Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
-            databaseAtleta.child(id).setValue(atleta);
-            mostrarMessage("Registro adicionado");
-           // Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(this, DiariaActivity.class);
+            myRef.child(idUser).setValue(atleta);
+            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), DiariaActivity.class);
             this.startActivity(intent);
+            finish();
+
             finish();
 
         }else{
@@ -191,9 +125,15 @@ public class RegistroActivity extends AppCompatActivity {
             //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
     }
-
     private void mostrarMessage(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
+    public void showToolbar(String tittle, boolean upButton){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(tittle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
     }
 
 }

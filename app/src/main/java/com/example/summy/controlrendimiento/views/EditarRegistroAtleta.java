@@ -1,11 +1,22 @@
 package com.example.summy.controlrendimiento.views;
 
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.model.Atleta;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Nancy on 10/11/17.
@@ -15,13 +26,64 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
     Toolbar toolbar;
 
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
+    private String userId;
+
+    private TextView etnombres;
+    private TextView etpaterno;
+    private TextView etmaterno;
+    private TextView etestatura;
+    private TextView etgenero;
+    private TextView etpeso;
+    private TextView ettelefonocelular;
+    private TextView etdomicilio;
+    private TextView ettelefonofamiliar;
+    private TextView ettelefonoseguromedico;
+
+    private Button btnFinalizarEdicionAtleta;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_registro_atleta);
-
+        //usamos el toolbar reutilisable en el layout
         showToolbar(getResources().getString(R.string.toolbar_tittle_editar_registro), true);
 
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId = user.getUid();
+
+        etnombres = (TextView) findViewById(R.id.etNombre);
+        etpaterno = (TextView) findViewById(R.id.etPaterno);
+        etmaterno = (TextView) findViewById(R.id.etMaterno);
+        etestatura = (TextView) findViewById(R.id.etEstatura);
+        etgenero = (TextView) findViewById(R.id.etGenero);
+        etpeso = (TextView) findViewById(R.id.etPeso);
+        ettelefonocelular = (TextView) findViewById(R.id.etTelefonoCelular);
+        etdomicilio = (TextView) findViewById(R.id.etDomicilio);
+        ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
+        ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
+
+        btnFinalizarEdicionAtleta = (Button) findViewById(R.id.btnFinalizarEdicion);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                showData(dataSnapshot);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
@@ -31,5 +93,32 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         getSupportActionBar().setTitle(tittle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
+    }
+    public void showData (DataSnapshot dataSnapshot){
+        for (DataSnapshot ds : dataSnapshot.getChildren()){
+            Atleta atleta = new Atleta();
+            atleta.setNombres(ds.child(userId).getValue(Atleta.class).getNombres());
+            atleta.setPaterno(ds.child(userId).getValue(Atleta.class).getPaterno());
+            atleta.setMaterno(ds.child(userId).getValue(Atleta.class).getMaterno());
+            atleta.setEstatura(ds.child(userId).getValue(Atleta.class).getEstatura());
+            atleta.setGenero(ds.child(userId).getValue(Atleta.class).getGenero());
+            atleta.setPeso(ds.child(userId).getValue(Atleta.class).getPeso());
+            atleta.setTelCelular(ds.child(userId).getValue(Atleta.class).getTelCelular());
+            atleta.setDomicilio(ds.child(userId).getValue(Atleta.class).getDomicilio());
+            atleta.setTelFamiliar(ds.child(userId).getValue(Atleta.class).getTelFamiliar());
+            atleta.setTelSeguroMedico(ds.child(userId).getValue(Atleta.class).getTelSeguroMedico());
+
+            etnombres.setText(atleta.getNombres());
+            etpaterno.setText(atleta.getPaterno());
+            etmaterno.setText(atleta.getMaterno());
+            etestatura.setText(atleta.getEstatura());
+            etgenero.setText(atleta.getGenero());
+            etpeso.setText(atleta.getPeso());
+            ettelefonocelular.setText(atleta.getTelCelular());
+            etdomicilio.setText(atleta.getDomicilio());
+            ettelefonofamiliar.setText(atleta.getTelFamiliar());
+            ettelefonoseguromedico.setText(atleta.getTelSeguroMedico());
+
+        }
     }
 }
