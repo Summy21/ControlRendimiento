@@ -9,8 +9,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.summy.controlrendimiento.views.RegistroActivity">
 
-    <include layout="@layout/actionbar_toolbar"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -180,5 +178,7 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <include layout="@layout/actionbar_toolbar" />
 
 </android.support.design.widget.CoordinatorLayout>
