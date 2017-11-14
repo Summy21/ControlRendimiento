@@ -27,7 +27,7 @@
     <string name="adicionar">Adicionar</string>
     <string name="competencia_nacional">Competencia Nacional</string>
     <string name="nombre_de_competencia">Nombre de competencia</string>
-    <string name="seleccionar_fecha">Seleccionar Fecha</string>
+    <string name="fecha_inicio">Fecha Inicio</string>
     <string name="guardar">Guardar</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
@@ -46,5 +46,7 @@
     <string name="finalizar_edicion">Finalizar Edicion</string>
     <string name="iniciar">INCIAR</string>
     <string name="crear_cuanta_button">Crear Cuenta</string>
+    <string name="fecha_fin">Fecha Fin</string>
+    <string name="lugar_de_competencia">Lugar de competencia</string>
 
 </resources>

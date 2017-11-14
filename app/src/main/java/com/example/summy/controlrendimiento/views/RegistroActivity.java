@@ -90,7 +90,6 @@ public class RegistroActivity extends AppCompatActivity {
             }
         });
 
-    //    inicialize();
 
     }
 
