@@ -14,13 +14,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="@string/competencia_nacional"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:textSize="@dimen/textTitle"
+            android:text="@string/competencia_nacional"
             android:textColor="#388E3C"
+            android:textSize="@dimen/textTitle"
             android:textStyle="bold" />
 
         <android.support.design.widget.TextInputLayout
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:text="@string/fecha_inicio"
+                android:text="@string/fecha_inicial"
                 android:theme="@style/RaisedButtonDark" />
         </LinearLayout>
 
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:text="@string/fecha_fin"
+                android:text="@string/fecha_final"
                 android:theme="@style/RaisedButtonDark" />
         </LinearLayout>
 
@@ -117,7 +117,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:onClick="iniciarSesion"
             android:text="@string/guardar"
             android:theme="@style/RaisedButtonDark" />
 

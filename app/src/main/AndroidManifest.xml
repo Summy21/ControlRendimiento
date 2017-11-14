@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".views.RegistroActivity" />
-
         <activity android:name=".views.DiariaActivity" />
         <activity android:name=".views.RegistroAdminActivity" />
 
@@ -30,6 +27,7 @@
             android:name=".views.DatosFrecuenciaVolumenActivity"
             android:label="@string/title_datos_frecuencia_volumen"
             android:parentActivityName=".views.DiariaActivity">
+
             <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -37,11 +35,13 @@
         </activity>
         <!-- ////////////////////////////////////////////////////////////////// -->
 
+
         <!-- aqui habilitamos el boton volver de activity editar registro atleta -->
         <activity
             android:name=".views.EditarRegistroAtleta"
             android:label="@string/title_editar_registro_atleta"
             android:parentActivityName=".views.DiariaActivity">
+
             <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -52,6 +52,8 @@
         <activity android:name=".views.ObtenerCompetenciasApiActivity" />
         <activity android:name=".views.PeriodosActivity" />
         <activity android:name=".views.DialogCompetenciaNacionalActivity" />
+        <activity android:name=".views.NatacionAdminActivity" />
+        <activity android:name=".views.NatacionUserActivity"></activity>
     </application>
 
 </manifest>

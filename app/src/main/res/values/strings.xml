@@ -27,7 +27,7 @@
     <string name="adicionar">Adicionar</string>
     <string name="competencia_nacional">Competencia Nacional</string>
     <string name="nombre_de_competencia">Nombre de competencia</string>
-    <string name="fecha_inicio">Fecha Inicio</string>
+    <string name="fecha_inicial">Fecha Inicial</string>
     <string name="guardar">Guardar</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
@@ -46,7 +46,22 @@
     <string name="finalizar_edicion">Finalizar Edicion</string>
     <string name="iniciar">INCIAR</string>
     <string name="crear_cuanta_button">Crear Cuenta</string>
-    <string name="fecha_fin">Fecha Fin</string>
+    <string name="fecha_final">Fecha Final</string>
     <string name="lugar_de_competencia">Lugar de competencia</string>
+    <string name="tipo_de_etapa">Tipo de Etapa</string>
+    <string name="etapa_general">Etapa General</string>
+    <string name="peridodo_preparatorio">Peridodo Preparatorio</string>
+    <string name="etapa_especifica">Etapa Especifica</string>
+    <string name="periodo_de_competencia">Periodo de competencia</string>
+    <string name="perido_preparatorio">Perido Preparatorio</string>
+    <string name="periodo_competencia">Periodo Competencia</string>
+    <string name="periodo_transicion">Periodo Transicion</string>
+    <string name="natacion">NATACION</string>
+    <string name="numero_de_microciclo">Numero de microciclo</string>
+    <string name="numero_de_sesiones_por_microciclo">Numero de sesiones</string>
+    <string name="volumen_total_por_microciclo">Volumen Total por microciclo</string>
+    <string name="carga_total_por_microciclo">Carga total por microciclo</string>
+    <string name="regresar">Regresar</string>
+    <string name="siguiente">Siguiente</string>
 
 </resources>

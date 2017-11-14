@@ -113,6 +113,16 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 dialog.show();
 
         }
+        switch (item.getItemId()){
+            case R.id.item3:
+                startActivity(new Intent(getApplicationContext(),PeriodosActivity.class));
+                break;
+        }
+        switch (item.getItemId()){
+            case R.id.item3:
+                startActivity(new Intent(getApplicationContext(),NatacionAdminActivity.class));
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 

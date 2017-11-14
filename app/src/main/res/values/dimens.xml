@@ -44,4 +44,6 @@
     <dimen name="margintop_usernametoolbarprofile">-100dp</dimen>
     <dimen name="limitY_usernametoolbarprofile">-250dp</dimen>
     <dimen name="margintoptargety_usernametoolbarprofile">-5dp</dimen>
+    <dimen name="Subtitulo2">3dp</dimen>
+    <dimen name="titulo_disciplina">30sp</dimen>
 </resources>

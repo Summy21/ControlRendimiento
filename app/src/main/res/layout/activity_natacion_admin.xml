@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.summy.controlrendimiento.views.NatacionAdminActivity">
+
+    <include layout="@layout/actionbar_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="@string/natacion"
+                android:textColor="#388E3C"
+                android:textSize="@dimen/titulo_disciplina"
+                android:textStyle="bold" />
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/numero_de_microciclo"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/textTitle"
+            android:textColor="@color/cardview_dark_background"
+            android:textStyle="bold"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/numero_de_sesiones_por_microciclo" />
+            </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimaryDark"></View>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="AER (Aeróbico Regenerativo)-20kx6s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextBlack">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etTipoEtapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:hint="AEL + TEC (Aeróbico Ligero + Técnica)-25kx5s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="AEM (Aeróbico Medio)-20kx4s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AEI (Aeróbico Intenso)-12kx4s"
+                    android:textSize="18sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="PAE (Potencia Aeróbica)-5kx3s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="CLA (Capacidad Láctica)-2.4kx3s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="PLA (Potencia Láctica)-1.5kx3s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:hint="CALA (Capacidad Aláctica)-1.5kx4s" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PALA (Potencia Aláctica)-400mx4s"
+                    android:textSize="18sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimaryDark"></View>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/volumen_total_por_microciclo" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTipoEtapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/carga_total_por_microciclo" />
+            </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimaryDark"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/RegresarButton"
+                    android:layout_width="@dimen/main.height.cero"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:theme="@style/RaisedButtonDark"
+                    android:text="@string/regresar" />
+
+                <Button
+                    android:id="@+id/SiguienteButton"
+                    android:layout_width="@dimen/main.height.cero"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:theme="@style/RaisedButtonDark"
+                    android:text="@string/siguiente" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
