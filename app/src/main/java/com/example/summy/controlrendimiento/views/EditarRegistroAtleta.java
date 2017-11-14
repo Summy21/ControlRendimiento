@@ -1,13 +1,17 @@
 package com.example.summy.controlrendimiento.views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
@@ -26,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 public class EditarRegistroAtleta extends AppCompatActivity {
 
     Toolbar toolbar;
+    private View rootView;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
@@ -53,6 +58,8 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         setContentView(R.layout.activity_editar_registro_atleta);
         //usamos el toolbar reutilisable en el layout
         showToolbar(getResources().getString(R.string.toolbar_tittle_editar_registro), true);
+
+        rootView = findViewById(R.id.rootViewEditarRegistro);
 
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -89,12 +96,65 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         btnFinalizarEdicionAtleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                modificar(userId);
             }
         });
 
 
     }
+/*
+    buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String name = editTextName.getText().toString().trim();
+            String genre = spinnerGenre.getSelectedItem().toString();
+            if (!TextUtils.isEmpty(name)) {
+                updateArtist(artistId, name, genre);
+                b.dismiss();
+            }
+        }
+    });
+
+    private boolean updateArtist(String id, String name, String genre) {
+        //getting the specified artist reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("artists").child(id);
+
+        //updating artist
+        Artist artist = new Artist(id, name, genre);
+        dR.setValue(artist);
+        Toast.makeText(getApplicationContext(), "Artist Updated", Toast.LENGTH_LONG).show();
+        return true;
+    }
+*/
+    private void modificar(String userId) {
+        String nombres = etnombres.getText().toString().trim();
+        String paterno = etpaterno.getText().toString().trim();
+        String materno = etmaterno.getText().toString().trim();
+        String estatura = etestatura.getText().toString().trim();
+        String genero = etgenero.getText().toString().trim();
+        String peso = etpeso.getText().toString().trim();
+        String telcelular= ettelefonocelular.getText().toString().trim();
+        String direccion= etdomicilio.getText().toString().trim();
+        String telfamiliar= ettelefonofamiliar.getText().toString().trim();
+        String telseguromedico= ettelefonoseguromedico.getText().toString().trim();
+
+        if (!TextUtils.isEmpty(nombres)){
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Atletas").child(userId);
+
+            Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
+
+            dR.setValue(atleta);
+            mostrarMessage("Registro modificado");
+            Intent intent = new Intent(getApplicationContext(), DiariaActivity.class);
+            this.startActivity(intent);
+            finish();
+
+        }else{
+            mostrarMessage("Falta completar los datos");
+            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void showToolbar(String tittle, boolean upButton){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -128,5 +188,9 @@ public class EditarRegistroAtleta extends AppCompatActivity {
             ettelefonoseguromedico.setText(atleta.getTelSeguroMedico());
 
         }
+    }
+
+    private void mostrarMessage(String mensaje) {
+        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
     }
 }
