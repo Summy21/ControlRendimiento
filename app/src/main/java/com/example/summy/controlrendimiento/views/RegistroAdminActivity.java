@@ -90,12 +90,12 @@ public class RegistroAdminActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.item2:
+            case R.id.item1:
                 startActivity(new Intent(getApplicationContext(),ObtenerCompetenciasApiActivity.class));
                 break;
         }
         switch (item.getItemId()){
-            case R.id.item3:
+            case R.id.item2:
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_competencia_nacional, null);
 
