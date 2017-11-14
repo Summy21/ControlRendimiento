@@ -102,30 +102,7 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
 
     }
-/*
-    buttonUpdate.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String name = editTextName.getText().toString().trim();
-            String genre = spinnerGenre.getSelectedItem().toString();
-            if (!TextUtils.isEmpty(name)) {
-                updateArtist(artistId, name, genre);
-                b.dismiss();
-            }
-        }
-    });
 
-    private boolean updateArtist(String id, String name, String genre) {
-        //getting the specified artist reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("artists").child(id);
-
-        //updating artist
-        Artist artist = new Artist(id, name, genre);
-        dR.setValue(artist);
-        Toast.makeText(getApplicationContext(), "Artist Updated", Toast.LENGTH_LONG).show();
-        return true;
-    }
-*/
     private void modificar(String userId) {
         String nombres = etnombres.getText().toString().trim();
         String paterno = etpaterno.getText().toString().trim();
@@ -145,13 +122,14 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
             dR.setValue(atleta);
             mostrarMessage("Registro modificado");
+            Toast.makeText(this,"Registro modificado",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), DiariaActivity.class);
             this.startActivity(intent);
             finish();
 
         }else{
             mostrarMessage("Falta completar los datos");
-            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
     }
 
