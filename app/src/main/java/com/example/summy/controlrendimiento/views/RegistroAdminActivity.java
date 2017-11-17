@@ -6,12 +6,14 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,10 +22,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.model.CompNacional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class RegistroAdminActivity extends AppCompatActivity {
@@ -46,7 +52,21 @@ public class RegistroAdminActivity extends AppCompatActivity {
     //Fecha
     Calendar dateTime = Calendar.getInstance();
     private EditText campoFecha;
-    private Button botonSeleccionFechaNal;
+    private Button btnFechaIni;
+    private Button btnFechaFin;
+
+    //Base de datos Competencias
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
+
+    private TextView tvNombreCompetencia;
+    private TextView tvLugarCompetencia;
+    private EditText etFechaIni;
+    private EditText etFechaFin;
+    private Button btnGuardar;
+
 
 
     @Override
@@ -78,6 +98,32 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 cerrarSesion();
             }
         });
+
+        //Base de datos competencias
+        myRef = FirebaseDatabase.getInstance().getReference("Nacionales");
+
+        tvNombreCompetencia = (TextView) findViewById(R.id.tvNombreCompetencia);
+        tvLugarCompetencia  = (TextView) findViewById(R.id.tvLugarCompetencia);
+
+        btnGuardar          = (Button)findViewById(R.id.btnGuardar);
+
+
+    }
+
+    private void guardar() {
+        String tituloComp = tvNombreCompetencia.getText().toString().trim();
+        String lugarComp = tvLugarCompetencia.getText().toString().trim();
+        String fechaIni = etFechaIni.getText().toString().trim();
+        String fechaFin = etFechaFin.getText().toString().trim();
+        if (!TextUtils.isEmpty(tituloComp)){
+
+            CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin);
+            myRef.setValue(compNacional);
+            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
+        }else{
+            mostrarMessage("Falta completar los datos");
+            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -99,15 +145,31 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_competencia_nacional, null);
 
-                campoFecha = (EditText)mView.findViewById(R.id.campoFecha);
-                botonSeleccionFechaNal = (Button) mView.findViewById(R.id.botonSeleccionFechaNal);
+                etFechaIni          = (EditText) findViewById(R.id.etFechaIni);
+                etFechaFin          = (EditText) findViewById(R.id.etFechaFin);
+          //      btnGuardar          = (Button)mView.findViewById(R.id.btnGuardar);
+                btnFechaIni = (Button) mView.findViewById(R.id.btnFechaIni);
+          //      btnFechaFin = (Button) mView.findViewById(R.id.btnFechaFin);
 
-                botonSeleccionFechaNal.setOnClickListener(new View.OnClickListener() {
+
+                btnFechaIni.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         actualizarFecha();
                     }
                 });
+         /*       btnFechaFin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        actualizarFecha();
+                    }
+                });*/
+         /*       btnGuardar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        guardar();
+                    }
+                });*/
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
@@ -170,8 +232,11 @@ public class RegistroAdminActivity extends AppCompatActivity {
             dateTime.set(Calendar.YEAR, year);
             dateTime.set(Calendar.MONTH, monthOfYear);
             dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            campoFecha.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+            etFechaIni.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
         }
     };
+    private void mostrarMessage(String mensaje) {
+        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
 
 }
