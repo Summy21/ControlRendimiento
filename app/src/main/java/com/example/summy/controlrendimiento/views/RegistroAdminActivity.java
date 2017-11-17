@@ -119,7 +119,7 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 break;
         }
         switch (item.getItemId()){
-            case R.id.item3:
+            case R.id.item4:
                 startActivity(new Intent(getApplicationContext(),NatacionAdminActivity.class));
                 break;
         }
