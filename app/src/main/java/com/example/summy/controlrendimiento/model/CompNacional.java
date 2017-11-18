@@ -5,6 +5,7 @@ package com.example.summy.controlrendimiento.model;
  */
 
 public class CompNacional {
+
     String tituloComp;
     String lugarComp;
     String fechaIni;
@@ -51,4 +52,5 @@ public class CompNacional {
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
+
 }

@@ -117,8 +117,6 @@ public class RegistroActivity extends AppCompatActivity {
             this.startActivity(intent);
             finish();
 
-            finish();
-
         }else{
             mostrarMessage("Falta completar los datos");
             //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();

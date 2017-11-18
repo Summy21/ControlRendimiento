@@ -18,24 +18,32 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.adapters.CompetenciasAdapter;
 import com.example.summy.controlrendimiento.model.CompNacional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class RegistroAdminActivity extends AppCompatActivity {
 
-    private TextView detalleAdminTextView;
-    private TextView cerrarSesionButton;
+    private View rootView;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -47,24 +55,26 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
     //Recycler
     private RecyclerView competenciasRecyclerView;
-    private View rootView;
+    List<CompNacional> compNacionalList;
+    CompetenciasAdapter competenciasAdapter;
 
     //Fecha
     Calendar dateTime = Calendar.getInstance();
-    private EditText campoFecha;
+    private EditText etFechaIni;
+    private EditText etFechaFin;
     private Button btnFechaIni;
     private Button btnFechaFin;
 
+
     //Base de datos Competencias
-    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseDatabase database;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
 
     private TextView tvNombreCompetencia;
     private TextView tvLugarCompetencia;
-    private EditText etFechaIni;
-    private EditText etFechaFin;
+
     private Button btnGuardar;
 
 
@@ -78,52 +88,41 @@ public class RegistroAdminActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tvMenu);
         toolbar.setTitle("Control Rendiminto");
         setSupportActionBar(toolbar);
-
-        detalleAdminTextView = (TextView)findViewById(R.id.detalleAdminTextView);
-        cerrarSesionButton = (Button) findViewById(R.id.cerrarSesionButton);
+        rootView = findViewById(R.id.rootView);
 
         //Recycler
         competenciasRecyclerView = (RecyclerView) findViewById(R.id.competenciasRecyclerView);
         competenciasRecyclerView.setHasFixedSize(true);
         competenciasRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        rootView = findViewById(R.id.rootView);
-
         inicialize();
 
-        cerrarSesionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //Base de datos competencias
+        compNacionalList = new ArrayList<>();
+        myRef = FirebaseDatabase.getInstance().getReference("Nacionales");
 
-                cerrarSesion();
+        competenciasAdapter = new CompetenciasAdapter(compNacionalList);
+        competenciasRecyclerView.setAdapter(competenciasAdapter);
+
+
+    //    Toast.makeText(this,"datos " + database.getReference().child("Nacionales").child(userId),Toast.LENGTH_LONG).show();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                compNacionalList.removeAll(compNacionalList);
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    CompNacional compNacional = snapshot.getValue(CompNacional.class);
+                    compNacionalList.add(compNacional);
+                }
+                competenciasAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
-        //Base de datos competencias
-        myRef = FirebaseDatabase.getInstance().getReference("Nacionales");
-
-        tvNombreCompetencia = (TextView) findViewById(R.id.tvNombreCompetencia);
-        tvLugarCompetencia  = (TextView) findViewById(R.id.tvLugarCompetencia);
-
-        btnGuardar          = (Button)findViewById(R.id.btnGuardar);
-
-
-    }
-
-    private void guardar() {
-        String tituloComp = tvNombreCompetencia.getText().toString().trim();
-        String lugarComp = tvLugarCompetencia.getText().toString().trim();
-        String fechaIni = etFechaIni.getText().toString().trim();
-        String fechaFin = etFechaFin.getText().toString().trim();
-        if (!TextUtils.isEmpty(tituloComp)){
-
-            CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin);
-            myRef.setValue(compNacional);
-            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
-        }else{
-            mostrarMessage("Falta completar los datos");
-            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
-        }
     }
 
 
@@ -145,33 +144,39 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_competencia_nacional, null);
 
-                etFechaIni          = (EditText) findViewById(R.id.etFechaIni);
-                etFechaFin          = (EditText) findViewById(R.id.etFechaFin);
-          //      btnGuardar          = (Button)mView.findViewById(R.id.btnGuardar);
+                etFechaIni          = (EditText) mView.findViewById(R.id.etFechaIni);
+                etFechaFin          = (EditText) mView.findViewById(R.id.etFechaFin);
+                btnGuardar          = (Button)mView.findViewById(R.id.btnGuardar);
                 btnFechaIni = (Button) mView.findViewById(R.id.btnFechaIni);
-          //      btnFechaFin = (Button) mView.findViewById(R.id.btnFechaFin);
+                btnFechaFin = (Button) mView.findViewById(R.id.btnFechaFin);
 
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
 
                 btnFechaIni.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        actualizarFecha();
+                        actualizarFecha1();
                     }
                 });
-         /*       btnFechaFin.setOnClickListener(new View.OnClickListener() {
+                btnFechaFin.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        actualizarFecha();
+                        actualizarFecha2();
                     }
-                });*/
-         /*       btnGuardar.setOnClickListener(new View.OnClickListener() {
+                });
+                tvNombreCompetencia = (TextView) mView.findViewById(R.id.tvNombreCompetencia);
+                tvLugarCompetencia  = (TextView) mView.findViewById(R.id.tvLugarCompetencia);
+                btnGuardar          = (Button)mView.findViewById(R.id.btnGuardar);
+
+                btnGuardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         guardar();
+                        dialog.dismiss();
                     }
-                });*/
-                mBuilder.setView(mView);
-                final AlertDialog dialog = mBuilder.create();
+                });
+
                 dialog.show();
 
         }
@@ -195,12 +200,29 @@ public class RegistroAdminActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();  //FirebaseUser agarramos todos los gatos del usuario de la autenticacion una ves que ocurrio
                 if (firebaseUser != null){
-                    detalleAdminTextView.setText("ID User: " + firebaseUser.getUid() + " email: " + firebaseUser.getEmail());
+                 //   detalleAdminTextView.setText("ID User: " + firebaseUser.getUid() + " email: " + firebaseUser.getEmail());
                 }else {
                     Log.w(TAG, "onAuthStateChanged - cerro sesion");
                 }
             }
         };
+    }
+
+    private void guardar() {
+        String tituloComp = tvNombreCompetencia.getText().toString().trim();
+        String lugarComp = tvLugarCompetencia.getText().toString().trim();
+        String fechaIni = etFechaIni.getText().toString().trim();
+        String fechaFin = etFechaFin.getText().toString().trim();
+        if (!TextUtils.isEmpty(tituloComp)){
+
+            String id = myRef.push().getKey();
+            CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin);
+            myRef.child(id).setValue(compNacional);
+            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
+        }else{
+            mostrarMessage("Falta completar los datos");
+            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
+        }
     }
     private void cerrarSesion() {
         firebaseAuth.signOut();
@@ -219,8 +241,14 @@ public class RegistroAdminActivity extends AppCompatActivity {
     }
 
     //Selector de fecha
-    private void actualizarFecha(){
+    private void actualizarFecha1(){
         new DatePickerDialog(this, d, dateTime.get(Calendar.YEAR),
+                dateTime.get(Calendar.MONTH),
+                dateTime.get(Calendar.DAY_OF_MONTH))
+                .show();
+    }
+    private void actualizarFecha2(){
+        new DatePickerDialog(this, dd, dateTime.get(Calendar.YEAR),
                 dateTime.get(Calendar.MONTH),
                 dateTime.get(Calendar.DAY_OF_MONTH))
                 .show();
@@ -233,6 +261,15 @@ public class RegistroAdminActivity extends AppCompatActivity {
             dateTime.set(Calendar.MONTH, monthOfYear);
             dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             etFechaIni.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+        }
+    };
+    DatePickerDialog.OnDateSetListener dd = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            dateTime.set(Calendar.YEAR, year);
+            dateTime.set(Calendar.MONTH, monthOfYear);
+            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            etFechaFin.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
         }
     };
     private void mostrarMessage(String mensaje) {
