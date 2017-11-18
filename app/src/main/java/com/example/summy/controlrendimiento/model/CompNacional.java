@@ -10,15 +10,17 @@ public class CompNacional {
     String lugarComp;
     String fechaIni;
     String fechaFin;
+    String key;
 
     public CompNacional() {
     }
 
-    public CompNacional(String tituloComp, String lugarComp, String fechaIni, String fechaFin) {
+    public CompNacional(String tituloComp, String lugarComp, String fechaIni, String fechaFin, String key) {
         this.tituloComp = tituloComp;
         this.lugarComp = lugarComp;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
+        this.key = key;
     }
 
     public String getTituloComp() {
@@ -53,4 +55,13 @@ public class CompNacional {
         this.fechaFin = fechaFin;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+  //  public static Map<>
 }

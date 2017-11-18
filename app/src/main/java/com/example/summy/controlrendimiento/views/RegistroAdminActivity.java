@@ -31,6 +31,7 @@ import com.example.summy.controlrendimiento.adapters.CompetenciasAdapter;
 import com.example.summy.controlrendimiento.model.CompNacional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -104,8 +105,11 @@ public class RegistroAdminActivity extends AppCompatActivity {
         competenciasAdapter = new CompetenciasAdapter(compNacionalList);
         competenciasRecyclerView.setAdapter(competenciasAdapter);
 
+        updateList();
+
 
     //    Toast.makeText(this,"datos " + database.getReference().child("Nacionales").child(userId),Toast.LENGTH_LONG).show();
+/*
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -122,9 +126,77 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
             }
         });
-
+*/
     }
 
+    private void updateList(){
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                compNacionalList.add(dataSnapshot.getValue(CompNacional.class));
+                competenciasAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                CompNacional compNacional = dataSnapshot.getValue(CompNacional.class);
+
+                int index = getItemIndex(compNacional);
+                compNacionalList.set(index, compNacional);
+                competenciasAdapter.notifyItemChanged(index);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                CompNacional compNacional = dataSnapshot.getValue(CompNacional.class);
+
+                int index = getItemIndex(compNacional);
+                compNacionalList.remove(index);
+                competenciasAdapter.notifyItemRemoved(index);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private int getItemIndex(CompNacional compNacional){
+        int index = -1;
+        for (int i = 0; i < compNacionalList.size(); i++) {
+            if(compNacionalList.get(i).equals(compNacional.getKey())){
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    private void removeCompetencia (int position){
+        myRef.child(compNacionalList.get(position).getTituloComp()).removeValue();
+    }
+
+    private void changeCompetencia(int position){
+        CompNacional compNacional = compNacionalList.get(position);
+        //
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case 0:
+                break;
+            case 1:
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,10 +285,11 @@ public class RegistroAdminActivity extends AppCompatActivity {
         String lugarComp = tvLugarCompetencia.getText().toString().trim();
         String fechaIni = etFechaIni.getText().toString().trim();
         String fechaFin = etFechaFin.getText().toString().trim();
+        //String key = etFechaFin.getText().toString().trim();
         if (!TextUtils.isEmpty(tituloComp)){
 
             String id = myRef.push().getKey();
-            CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin);
+            CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin, id);
             myRef.child(id).setValue(compNacional);
             Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
         }else{

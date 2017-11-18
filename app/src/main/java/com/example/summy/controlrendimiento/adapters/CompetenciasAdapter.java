@@ -2,6 +2,7 @@ package com.example.summy.controlrendimiento.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
     }
 
     @Override
-    public void onBindViewHolder(CompetenciasViewHolder holder, int position) {
+    public void onBindViewHolder(final CompetenciasViewHolder holder, int position) {
         CompNacional comp = compNacional.get(position);
 
         holder.competenciaTextView.setText(comp.getTituloComp());
@@ -45,6 +46,15 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
   //      Glide.with(context).load(url).into(holder.fotoImageView);
 
 //        holder.setOnPeliculaItemClick(p, onPeliculaItemClickListener);
+
+        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add(holder.getAdapterPosition(), 0, 0, "Opcion1");
+                menu.add(holder.getAdapterPosition(), 1, 0, "Opcion2");
+                menu.add(holder.getAdapterPosition(), 2, 0, "Opcion3");
+            }
+        });
     }
 
     @Override
