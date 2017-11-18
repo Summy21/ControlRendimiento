@@ -37,8 +37,8 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
 
         holder.competenciaTextView.setText(comp.getTituloComp());
         holder.lugarTextView.setText(comp.getLugarComp());
-  //      holder.fechaIniTextView.setText(comp.getFechaIni());
-   //     holder.fechaFinTextView.setText(comp.getFechaFin());
+        holder.fechaIniTextView.setText(comp.getFechaIni());
+        holder.fechaFinTextView.setText(comp.getFechaFin());
 
  //       String url = "http://image.tmdb.org/t/p/w185" + p.getImagen();
 
@@ -56,8 +56,8 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
 
         TextView competenciaTextView;
         TextView lugarTextView;
-     //   TextView fechaIniTextView;
-     //   TextView fechaFinTextView;
+        TextView fechaIniTextView;
+        TextView fechaFinTextView;
 
    //   ImageView fotoImageView;
 
@@ -66,8 +66,8 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
 
             competenciaTextView  = (TextView) itemView.findViewById(R.id.competenciaTextView);
             lugarTextView        = (TextView) itemView.findViewById(R.id.lugarTextView);
-      //      fechaIniTextView     = (TextView) itemView.findViewById(R.id.fechaIniTextView);
-       //     fechaFinTextView     = (TextView) itemView.findViewById(R.id.fechaFinTextView);
+            fechaIniTextView     = (TextView) itemView.findViewById(R.id.fechaIniTextView);
+            fechaFinTextView     = (TextView) itemView.findViewById(R.id.fechaFinTextView);
        //   fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
         }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textTitleBig">24sp</dimen>
+    <dimen name="textTitleBig">26sp</dimen>
     <dimen name="textTitle">24sp</dimen>
-    <dimen name="textSubtitle">16sp</dimen>
-    <dimen name="textBody">14sp</dimen>
+    <dimen name="textSubtitle">21sp</dimen>
+    <dimen name="textBody">16sp</dimen>
     <dimen name="textSmall">12sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="main.height.cero">0dp</dimen>
