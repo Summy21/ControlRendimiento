@@ -266,11 +266,11 @@ public class RegistroAdminActivity extends AppCompatActivity {
     //Menu Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.item1:
-                startActivity(new Intent(getApplicationContext(),ObtenerCompetenciasApiActivity.class));
-                break;
-        }
+//        switch (item.getItemId()){
+//            case R.id.item1:
+//                startActivity(new Intent(getApplicationContext(),ObtenerCompetenciasApiActivity.class));
+//                break;
+//        }
         switch (item.getItemId()){
             case R.id.item2:
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
