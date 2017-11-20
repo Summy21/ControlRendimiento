@@ -353,7 +353,7 @@ public class RegistroAdminActivity extends AppCompatActivity {
             String id = myRef.push().getKey();
             CompNacional compNacional = new CompNacional(tituloComp, lugarComp, fechaIni, fechaFin, id);
             myRef.child(id).setValue(compNacional);
-            Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Competencia adicionada",Toast.LENGTH_LONG).show();
         }else{
             mostrarMessage("Falta completar los datos");
             //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
