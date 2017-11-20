@@ -1,5 +1,8 @@
 package com.example.summy.controlrendimiento.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by SUMMY on 11/17/2017.
  */
@@ -63,5 +66,15 @@ public class CompNacional {
         this.key = key;
     }
 
-  //  public static Map<>
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("tituloComp", tituloComp);
+        result.put("lugarComp", lugarComp);
+        result.put("fechaIni", fechaIni);
+        result.put("fechaFin", fechaFin);
+        result.put("key", key);
+
+        return result;
+    }
+
 }

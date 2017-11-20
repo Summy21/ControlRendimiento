@@ -29,9 +29,9 @@ public class RegistroActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistroActivity";
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private FirebaseDatabase mFirebaseDatabase;
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
 
     //datos registro

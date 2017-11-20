@@ -50,9 +50,9 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                menu.add(holder.getAdapterPosition(), 0, 0, "Opcion1");
-                menu.add(holder.getAdapterPosition(), 1, 0, "Opcion2");
-                menu.add(holder.getAdapterPosition(), 2, 0, "Opcion3");
+                menu.add(holder.getAdapterPosition(), 0, 0, "Eliminar");
+                menu.add(holder.getAdapterPosition(), 1, 0, "Editar");
+                menu.add(holder.getAdapterPosition(), 2, 0, "Elegir como principal");
             }
         });
     }

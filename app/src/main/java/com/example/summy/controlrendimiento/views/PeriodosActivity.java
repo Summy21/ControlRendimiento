@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.example.summy.controlrendimiento.R;
+import com.google.firebase.database.DatabaseReference;
 
 public class PeriodosActivity extends AppCompatActivity {
+
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

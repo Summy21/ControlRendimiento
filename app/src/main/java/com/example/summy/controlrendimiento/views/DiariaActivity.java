@@ -67,9 +67,8 @@ public class DiariaActivity extends AppCompatActivity{
         }
         switch (item.getItemId()){
             case R.id.item3:
-
                 mAuth.signOut();
-                Toast.makeText(DiariaActivity.this,"'Cerrando Secion'",Toast.LENGTH_LONG).show();
+                Toast.makeText(DiariaActivity.this,"'Cerrando Sesion'",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
 

@@ -26,8 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.adapters.CompetenciasAdapter;
+import com.example.summy.controlrendimiento.model.CompNacional;
 import com.example.summy.controlrendimiento.model.CompNacional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,9 +47,6 @@ import java.util.List;
 public class RegistroAdminActivity extends AppCompatActivity {
 
     private View rootView;
-
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private static final String TAG = "RegistroAdminActivity";
 
@@ -68,10 +67,14 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
 
     //Base de datos Competencias
-    private FirebaseDatabase database;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+
     private DatabaseReference myRef;
+
+  //  private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private String compId;
 
     private TextView tvNombreCompetencia;
     private TextView tvLugarCompetencia;
@@ -107,26 +110,6 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
         updateList();
 
-
-    //    Toast.makeText(this,"datos " + database.getReference().child("Nacionales").child(userId),Toast.LENGTH_LONG).show();
-/*
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                compNacionalList.removeAll(compNacionalList);
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    CompNacional compNacional = snapshot.getValue(CompNacional.class);
-                    compNacionalList.add(compNacional);
-                }
-                competenciasAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-*/
     }
 
     private void updateList(){
@@ -168,8 +151,8 @@ public class RegistroAdminActivity extends AppCompatActivity {
     }
 
     private int getItemIndex(CompNacional compNacional){
-        int index = -1;
-        for (int i = 0; i < compNacionalList.size(); i++) {
+        int index = 0;
+        for (int i = 1; i < compNacionalList.size(); i++) {
             if(compNacionalList.get(i).equals(compNacional.getKey())){
                 index = i;
                 break;
@@ -179,24 +162,100 @@ public class RegistroAdminActivity extends AppCompatActivity {
     }
 
     private void removeCompetencia (int position){
-        myRef.child(compNacionalList.get(position).getTituloComp()).removeValue();
+        myRef.child(compNacionalList.get(position).getKey()).removeValue();
     }
 
     private void changeCompetencia(int position){
         CompNacional compNacional = compNacionalList.get(position);
-        //
+        Log.w(TAG, "Posicion: "+position);
+        Log.w(TAG, "comp: "+compNacional.getKey());
+        compId = compNacional.getKey();
+
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot ds : dataSnapshot.getChildren()){
+//
+//                    CompNacional compNacional = new CompNacional();
+//                    int index = getItemIndex(compNacional);
+//                    Log.w(TAG, "index: "+index);
+//                    compNacional.setTituloComp(ds.child(compId).getValue(CompNacional.class).getTituloComp());
+//
+//                    compNacional.setLugarComp(ds.child(compId).getValue(CompNacional.class).getLugarComp());
+//                    compNacional.setFechaIni(ds.child(compId).getValue(CompNacional.class).getFechaIni());
+//                    compNacional.setFechaFin(ds.child(compId).getValue(CompNacional.class).getFechaFin());
+//
+//                    tvNombreCompetencia.setText(compNacional.getTituloComp());
+//                    tvLugarCompetencia.setText(compNacional.getLugarComp());
+//                    etFechaIni.setText(compNacional.getFechaIni());
+//                    etFechaFin.setText(compNacional.getFechaFin());
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+
+
+    //    myRef.updateChildren(newComp);
     }
 
+
+    //Menu Recycler
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case 0:
+                removeCompetencia(item.getGroupId());
                 break;
             case 1:
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegistroAdminActivity.this);
+                final View mView = getLayoutInflater().inflate(R.layout.activity_dialog_competencia_nacional, null);
+
+                mAuth = FirebaseAuth.getInstance();
+                mFirebaseDatabase = FirebaseDatabase.getInstance();
+                myRef = mFirebaseDatabase.getReference();
+
+                tvNombreCompetencia = (TextView) mView.findViewById(R.id.tvNombreCompetencia);
+                tvLugarCompetencia  = (TextView) mView.findViewById(R.id.tvLugarCompetencia);
+                etFechaIni          = (EditText) mView.findViewById(R.id.etFechaIni);
+                etFechaFin          = (EditText) mView.findViewById(R.id.etFechaFin);
+
+                btnGuardar          = (Button)mView.findViewById(R.id.btnGuardar);
+                btnFechaIni = (Button) mView.findViewById(R.id.btnFechaIni);
+                btnFechaFin = (Button) mView.findViewById(R.id.btnFechaFin);
+
+
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+                break;
+            case 2:
+                startActivity(new Intent(getApplicationContext(),PeriodosActivity.class));
                 break;
         }
         return super.onContextItemSelected(item);
     }
+
+//    public void showData(DataSnapshot dataSnapshot, View mView){
+//        for (DataSnapshot ds : dataSnapshot.getChildren()){
+//            CompNacional compNacional = new CompNacional();
+//            compNacional.setTituloComp(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getTituloComp());
+//            compNacional.setLugarComp(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getLugarComp());
+//            compNacional.setFechaIni(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getFechaIni());
+//            compNacional.setFechaFin(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getFechaFin());
+//
+//            tvNombreCompetencia.setText(compNacional.getTituloComp());
+//            tvLugarCompetencia.setText(compNacional.getLugarComp());
+//            etFechaIni.setText(compNacional.getFechaIni());
+//            etFechaFin.setText(compNacional.getFechaFin());
+//
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,6 +263,7 @@ public class RegistroAdminActivity extends AppCompatActivity {
         return true;
     }
 
+    //Menu Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -254,19 +314,21 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.item3:
-                startActivity(new Intent(getApplicationContext(),PeriodosActivity.class));
+                startActivity(new Intent(getApplicationContext(),NatacionAdminActivity.class));
                 break;
         }
         switch (item.getItemId()){
             case R.id.item4:
-                startActivity(new Intent(getApplicationContext(),NatacionAdminActivity.class));
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void inicialize() {
-        firebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {          //<--authlistener es donde detecta que hubo cambios en la sesion
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -298,19 +360,19 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
     }
     private void cerrarSesion() {
-        firebaseAuth.signOut();
+        mAuth.signOut();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
+        mAuth.addAuthStateListener(authStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        firebaseAuth.removeAuthStateListener(authStateListener);
+        mAuth.removeAuthStateListener(authStateListener);
     }
 
     //Selector de fecha

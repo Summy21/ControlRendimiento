@@ -84,7 +84,6 @@ public class EditarRegistroAtleta extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 showData(dataSnapshot);
-
             }
 
             @Override

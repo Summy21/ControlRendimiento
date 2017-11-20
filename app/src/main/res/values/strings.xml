@@ -63,5 +63,6 @@
     <string name="carga_total_por_microciclo">Carga total por microciclo</string>
     <string name="regresar">Regresar</string>
     <string name="siguiente">Siguiente</string>
+    <string name="editar_competencia">Editar competencia</string>
 
 </resources>
