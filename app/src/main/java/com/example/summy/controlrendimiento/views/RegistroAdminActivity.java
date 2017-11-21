@@ -70,7 +70,6 @@ public class RegistroAdminActivity extends AppCompatActivity {
 
     private DatabaseReference myRef;
 
-  //  private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;

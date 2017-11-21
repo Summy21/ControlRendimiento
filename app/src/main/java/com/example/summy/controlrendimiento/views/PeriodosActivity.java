@@ -64,6 +64,8 @@ public class PeriodosActivity extends AppCompatActivity {
     private Button btnFin5;
     private Button btnGuardar;
 
+    String idComp;
+
     //Fechas
     Calendar dateTime = Calendar.getInstance();
     boolean sw1, sw2, sw3, sw4, sw5, sw6, sw7, sw8, sw9, sw10 = false;
@@ -231,7 +233,7 @@ public class PeriodosActivity extends AppCompatActivity {
                     FechaIniPerTransicion,
                     FechaFinPerTransicion);
 
-            myRef.child("-KzMQ2gop2D1U1Z6DDRu").setValue(periodo);
+            myRef.child("-KzS9LwdwLG3VFOuEdk7").setValue(periodo);
 
             Toast.makeText(this,"Periodo adicionado",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), RegistroActivity.class);
@@ -240,7 +242,6 @@ public class PeriodosActivity extends AppCompatActivity {
 
         }else{
             mostrarMessage("Falta completar los datos");
-            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -294,39 +295,6 @@ public class PeriodosActivity extends AppCompatActivity {
         }
     };
 
-    //Selector de fecha
-//    private void actualizarFechaIni1(){
-//        new DatePickerDialog(this, d, dateTime.get(Calendar.YEAR),
-//                dateTime.get(Calendar.MONTH),
-//                dateTime.get(Calendar.DAY_OF_MONTH))
-//                .show();
-//    }
-//
-//    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
-//        @Override
-//        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//            dateTime.set(Calendar.YEAR, year);
-//            dateTime.set(Calendar.MONTH, monthOfYear);
-//            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//            etFechaIniEtapaGeneral.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
-//        }
-//    };
-//    private void actualizarFechaFin1(){
-//        new DatePickerDialog(this, d1, dateTime.get(Calendar.YEAR),
-//                dateTime.get(Calendar.MONTH),
-//                dateTime.get(Calendar.DAY_OF_MONTH))
-//                .show();
-//    }
-//
-//    DatePickerDialog.OnDateSetListener d1 = new DatePickerDialog.OnDateSetListener() {
-//        @Override
-//        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//            dateTime.set(Calendar.YEAR, year);
-//            dateTime.set(Calendar.MONTH, monthOfYear);
-//            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//            etFechaFinEtapaGeneral.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
-//        }
-//    };
 
     public void showToolbar(String tittle, boolean upButton){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
