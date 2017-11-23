@@ -1,7 +1,5 @@
 package com.example.summy.controlrendimiento.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Competencia {
 
     private int event_id;
@@ -67,4 +65,6 @@ public class Competencia {
     public void setEvent_region_name(String event_region_name) {
         this.event_region_name = event_region_name;
     }
+
+
 }

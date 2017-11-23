@@ -1,22 +1,35 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Date;
+
 /**
  * Created by SUMMY on 28/9/2017.
  */
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class DiariaActivity extends AppCompatActivity{
 
     //herramienta para crer el toolbar
@@ -24,6 +37,21 @@ public class DiariaActivity extends AppCompatActivity{
 
     //// Cerrando secion
     private FirebaseAuth mAuth;
+
+    //fechas
+    private TextView tvIniciarN;
+    private TextView tvFinalizarN;
+
+    private TextView tvIniciarC;
+    private TextView tvFinalizarC;
+
+    private TextView tvIniciarCa;
+    private TextView tvFinalizarCa;
+
+    boolean sw1, sw2, sw3, sw4, sw5, sw6 = false;
+
+    DateFormat formatDateTime = DateFormat.getDateTimeInstance();
+    Calendar dateTime = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +65,42 @@ public class DiariaActivity extends AppCompatActivity{
 
         ///// secion instancia
         mAuth = FirebaseAuth.getInstance();
+        //DIA
 
-
-
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
+                            @Override
+                            public void run() {
+                                TextView dia = (TextView) findViewById(R.id.dia);
+                                TextView mes = (TextView) findViewById(R.id.mes);
+                                long date = System.currentTimeMillis();
+                                SimpleDateFormat d = new SimpleDateFormat("dd");
+                                SimpleDateFormat m = new SimpleDateFormat("MMMM");
+                                String diaString = d.format(date);
+                                String mesString = m.format(date);
+                                dia.setText(diaString);
+                                mes.setText(mesString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        t.start();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_diaria,menu);
         return true;
+
     }
 
     @Override
@@ -67,9 +122,8 @@ public class DiariaActivity extends AppCompatActivity{
         }
         switch (item.getItemId()){
             case R.id.item3:
-
                 mAuth.signOut();
-                Toast.makeText(DiariaActivity.this,"'Cerrando Secion'",Toast.LENGTH_LONG).show();
+                Toast.makeText(DiariaActivity.this,"'Cerrando Sesion'",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
 
@@ -77,4 +131,139 @@ public class DiariaActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void btnStartNatacion(View view) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_natacion_user, null);
+
+        tvIniciarN            = (TextView) mView.findViewById(R.id.tvIniciarN);
+        tvFinalizarN          = (TextView) mView.findViewById(R.id.tvFinalizarN);
+        Button btnIniciarN   = (Button) mView.findViewById(R.id.btnIniciarN);
+        Button btnFinalizarN = (Button) mView.findViewById(R.id.btnFinalizarN);
+        Button btnGuardarN = (Button) mView.findViewById(R.id.btnGuardarN);
+
+        mBuilder.setView(mView);
+        final AlertDialog dialog = mBuilder.create();
+        dialog.show();
+        btnIniciarN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw1 = true;
+                actualizarTiempo();
+            }
+        });
+        btnFinalizarN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw2 = true;
+                actualizarTiempo();
+            }
+        });
+        btnGuardarN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void btnStartCiclismo(View view) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_ciclismo_user, null);
+
+        tvIniciarC            = (TextView) mView.findViewById(R.id.tvIniciarC);
+        tvFinalizarC          = (TextView) mView.findViewById(R.id.tvFinalizarC);
+        Button btnIniciarC = (Button) mView.findViewById(R.id.btnIniciarC);
+        Button btnFinalizarC = (Button) mView.findViewById(R.id.btnFinalizarC);
+        Button btnGuardarC = (Button) mView.findViewById(R.id.btnGuardarC);
+
+        mBuilder.setView(mView);
+        final AlertDialog dialog = mBuilder.create();
+
+        btnIniciarC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw3 = true;
+                actualizarTiempo();
+            }
+        });
+        btnFinalizarC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw4 = true;
+                actualizarTiempo();
+            }
+        });
+        btnGuardarC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void btnStartCarrera(View view) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_carrera_user, null);
+
+        tvIniciarCa            = (TextView) mView.findViewById(R.id.tvIniciarCa);
+        tvFinalizarCa          = (TextView) mView.findViewById(R.id.tvFinalizarCa);
+        Button btnIniciarCa = (Button) mView.findViewById(R.id.btnIniciarCa);
+        Button btnFinalizarCa = (Button) mView.findViewById(R.id.btnFinalizarCa);
+        Button btnGuardarCa = (Button) mView.findViewById(R.id.btnGuardarCa);
+
+        mBuilder.setView(mView);
+        final AlertDialog dialog = mBuilder.create();
+
+        btnIniciarCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw5 = true;
+                actualizarTiempo();
+            }
+        });
+        btnFinalizarCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sw6 = true;
+                actualizarTiempo();
+            }
+        });
+        btnGuardarCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+    private void actualizarTiempo() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        if(sw1){
+            tvIniciarN.setText(dateFormat.format(new Date()));
+            sw1 = false;
+        }
+        if(sw2){
+            tvFinalizarN.setText(dateFormat.format(new Date()));
+            sw2 = false;
+        }
+        if(sw3){
+            tvIniciarC.setText(dateFormat.format(new Date()));
+            sw1 = false;
+        }
+        if(sw4){
+            tvFinalizarC.setText(dateFormat.format(new Date()));
+            sw2 = false;
+        }if(sw5){
+            tvIniciarCa.setText(dateFormat.format(new Date()));
+            sw5 = false;
+        }
+        if(sw6){
+            tvFinalizarCa.setText(dateFormat.format(new Date()));
+            sw6 = false;
+        }
+
+    }
+
 }

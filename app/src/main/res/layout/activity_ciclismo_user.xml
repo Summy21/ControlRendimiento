@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.summy.controlrendimiento.views.NatacionUserActivity">
+    tools:context="com.example.summy.controlrendimiento.views.CiclismoUserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="@string/natacion"
+            android:text="@string/ciclismo"
             android:textColor="#388E3C"
             android:textSize="@dimen/textTitle"
             android:textStyle="bold" />
@@ -44,7 +44,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvIniciarN"
+                    android:id="@+id/tvIniciarC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -52,7 +52,7 @@
                     android:textColor="@android:color/black"/>
 
                 <Button
-                    android:id="@+id/btnIniciarN"
+                    android:id="@+id/btnIniciarC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/iniciar"
@@ -66,7 +66,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvFinalizarN"
+                    android:id="@+id/tvFinalizarC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -74,7 +74,7 @@
                     android:textColor="@android:color/black"/>
 
                 <Button
-                    android:id="@+id/btnFinalizarN"
+                    android:id="@+id/btnFinalizarC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/finalizar"
@@ -83,7 +83,7 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/btnGuardarN"
+            android:id="@+id/btnGuardarC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

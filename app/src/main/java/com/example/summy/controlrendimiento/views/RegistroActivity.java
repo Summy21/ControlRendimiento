@@ -29,9 +29,9 @@ public class RegistroActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistroActivity";
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private FirebaseDatabase mFirebaseDatabase;
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
 
     //datos registro
@@ -115,8 +115,6 @@ public class RegistroActivity extends AppCompatActivity {
             Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), DiariaActivity.class);
             this.startActivity(intent);
-            finish();
-
             finish();
 
         }else{
