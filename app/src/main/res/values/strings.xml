@@ -64,5 +64,10 @@
     <string name="regresar">Regresar</string>
     <string name="siguiente">Siguiente</string>
     <string name="editar_competencia">Editar competencia</string>
+    <string name="iniciar">INICIAR</string>
+    <string name="finalizar">FINALIZAR</string>
+    <string name="tiempo_de_trabajo">Tiempo de trabajo</string>
+    <string name="ciclismo">CICLISMO</string>
+    <string name="carrera_a_pie">CARRERA A PIE</string>
 
 </resources>

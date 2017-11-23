@@ -46,4 +46,5 @@
     <dimen name="margintoptargety_usernametoolbarprofile">-5dp</dimen>
     <dimen name="Subtitulo2">3dp</dimen>
     <dimen name="titulo_disciplina">30sp</dimen>
+    <dimen name="size_tiempo">28sp</dimen>
 </resources>

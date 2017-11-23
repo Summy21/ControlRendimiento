@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="8dp"
                     android:text="11"
                     android:textColor="@android:color/white"
                     android:textSize="68dp"
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="8dp"
                     android:text="septiembre"
                     android:textColor="@android:color/white"
                     android:textSize="30dp"
@@ -67,9 +67,20 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:text="ETAPA GENERAL"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:text="16 Dic (Prox. Competencia)"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"
@@ -119,6 +130,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="btnStartNatacion"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
@@ -146,6 +158,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="btnStartCiclismo"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
@@ -175,6 +188,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="btnStartCarrera"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
 
