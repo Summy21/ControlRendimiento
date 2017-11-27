@@ -69,5 +69,33 @@
     <string name="tiempo_de_trabajo">Tiempo de trabajo</string>
     <string name="ciclismo">CICLISMO</string>
     <string name="carrera_a_pie">CARRERA A PIE</string>
+    <string name="etapa">ETAPA</string>
+    <string name="seleccione_etapa">Seleccione Etapa</string>
+    <string name="seleccione_periodo">Seleccione Periodo</string>
+    <string name="macrociclo">Macrociclo</string>
+    <string name="mesociclo">Mesociclo</string>
+    <string name="entrenamiento">ENTRENAMIENTO</string>
+    <string name="pedestrismo">Pedestrismo</string>
+    <string name="calentamiento">CALENTAMIENTO</string>
+    <string name="fase_principal_1">FASE PRINCIPAL 1</string>
+    <string name="fase_principal_2">FASE PRINCIPAL 2</string>
+    <string name="eventos_competitivos">EVENTOS COMPETITIVOS</string>
+    <string name="fase_fundamental">FASE FUNDAMENTAL</string>
+    <string name="vuelta_a_la_calma">VUELTA A LA CALMA</string>
+    <string name="entrenamiento_nacional">ENTRENAMIENTO NATACION</string>
+
+
+    <!-- Array etapas -->
+    <string-array name="lista_etapas">
+        <item>Etapa General</item>
+        <item>Etapa Especifica</item>
+    </string-array>
+
+    <!-- Array periodos -->
+    <string-array name="lista_periodos">
+        <item>Perido Preparatoriio</item>
+        <item>Periodo Competencia</item>
+        <item>Periodo Transicion</item>
+    </string-array>
 
 </resources>

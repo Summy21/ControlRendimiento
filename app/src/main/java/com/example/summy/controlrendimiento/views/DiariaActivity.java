@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -62,7 +64,6 @@ public class DiariaActivity extends AppCompatActivity{
         toolbar = (Toolbar) findViewById(R.id.tvMenu);
         toolbar.setTitle("ACTIVIDAD DE HOY");
         setSupportActionBar(toolbar);
-
         ///// secion instancia
         mAuth = FirebaseAuth.getInstance();
         //DIA
@@ -94,7 +95,58 @@ public class DiariaActivity extends AppCompatActivity{
             }
         };
         t.start();
+
+        LinearLayout listCompUser = (LinearLayout) findViewById(R.id.listCompUser);
+
+        listCompUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ListCompetenciasUserActivity.class));
+            }
+        });
+
+        LinearLayout listEntrenamientoN = (LinearLayout) findViewById(R.id.listEntrenamientoN);
+
+        listEntrenamientoN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_natacion, null);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
+
+        LinearLayout listEntrenamientoC = (LinearLayout) findViewById(R.id.listEntrenamientoC);
+
+        listEntrenamientoC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_ciclismo, null);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
+        LinearLayout listEntrenamientoCa = (LinearLayout) findViewById(R.id.listEntrenamientoCa);
+
+        listEntrenamientoCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_carrera, null);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

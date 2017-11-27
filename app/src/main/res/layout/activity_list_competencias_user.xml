@@ -3,10 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.summy.controlrendimiento.views.RegistroAdminActivity">
+    tools:context="com.example.summy.controlrendimiento.views.ListCompetenciasUserActivity">
 
 
     <LinearLayout
@@ -14,19 +13,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="5dp"
-        android:weightSum="1"> <!-- to show what the parent is -->
+        android:weightSum="1">
 
-        <!--imprementacion de toolbar principal-->
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tvMenu"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-        </android.support.v7.widget.Toolbar>
-
+        <include layout="@layout/actionbar_toolbar"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -49,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@color/colorPrimaryDark" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -66,6 +54,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

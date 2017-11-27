@@ -25,6 +25,7 @@
         android:background="@drawable/boton_tres">
 
         <LinearLayout
+            android:id="@+id/listCompUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/boton_tres"
@@ -45,7 +46,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="8dp"
-                    android:text="11"
+                    android:text="10"
                     android:textColor="@android:color/white"
                     android:textSize="68dp"
                     android:textStyle="bold" />
@@ -93,7 +94,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimaryDark"></View>
+        android:background="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -110,6 +111,7 @@
             >
 
             <LinearLayout
+                android:id="@+id/listEntrenamientoN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -132,13 +134,14 @@
                     android:layout_height="wrap_content"
                     android:onClick="btnStartNatacion"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="85dp"
                     android:gravity="center"
                     android:text="@string/empezar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/listEntrenamientoC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -159,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="btnStartCiclismo"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="88dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/empezar"
@@ -167,6 +170,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/listEntrenamientoCa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -179,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Carrera"
+                    android:text="@string/pedestrismo"
                     android:textColor="#388E3C"
                     android:textSize="36dp"
                     android:textStyle="bold"

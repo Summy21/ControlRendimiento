@@ -18,18 +18,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.adapters.CompetenciasAdapter;
-import com.example.summy.controlrendimiento.model.CompNacional;
 import com.example.summy.controlrendimiento.model.CompNacional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +35,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +87,7 @@ public class RegistroAdminActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tvMenu);
         toolbar.setTitle("Control Rendiminto");
         setSupportActionBar(toolbar);
+
         rootView = findViewById(R.id.rootView);
 
         //Recycler
@@ -318,6 +315,11 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.item4:
+                startActivity(new Intent(getApplicationContext(),EntrenamientoNacionalAdminActivity.class));
+                break;
+        }
+        switch (item.getItemId()){
+            case R.id.item5:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();

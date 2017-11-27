@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/item1"
-        android:title="Ingreso de Datos Frecuencia"
+        android:title="Diario de entrenamiento"
         android:icon="@mipmap/ic_launcher">
     </item>
     <item

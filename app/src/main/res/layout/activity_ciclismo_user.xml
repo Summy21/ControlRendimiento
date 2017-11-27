@@ -82,6 +82,37 @@
             </LinearLayout>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:theme="@style/EditTextBlack">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etFcMaxC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="FC/MAX" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:text="@string/enviar"
+                android:theme="@style/RaisedButtonDark" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/btnGuardarC"
             android:layout_width="match_parent"

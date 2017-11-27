@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class CompNacional {
 
-    String tituloComp;
-    String lugarComp;
-    String fechaIni;
-    String fechaFin;
-    String key;
+    private String tituloComp;
+    private String lugarComp;
+    private String fechaIni;
+    private String fechaFin;
+    private String key;
 
     public CompNacional() {
     }
