@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="8dp">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
         android:orientation="vertical">
 
         <TextView
@@ -21,147 +28,143 @@
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/textTitle"
             android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/colorPrimaryDark" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_margin="10dp"
                 android:text="@string/calentamiento"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textTitle"
+                android:textSize="22dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvCalentamientoC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="50dp"
-                android:text="valor"
                 android:textColor="@color/editTextColorBlack"
-                android:textSize="@dimen/textTitle"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_margin="10dp"
                 android:text="@string/fase_principal_1"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textTitle"
+                android:textSize="22dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvFase1C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="44dp"
-                android:text="valor"
                 android:textColor="@color/editTextColorBlack"
-                android:textSize="@dimen/textTitle"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_margin="10dp"
                 android:text="@string/fase_principal_2"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textTitle"
+                android:textSize="22dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvFase2C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="46dp"
-                android:text="valor"
                 android:textColor="@color/editTextColorBlack"
-                android:textSize="@dimen/textTitle"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_margin="10dp"
                 android:text="@string/fase_fundamental"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textTitle"
+                android:textSize="22dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvFaseFundC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                android:text="valor"
                 android:textColor="@color/editTextColorBlack"
-                android:textSize="@dimen/textTitle"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_margin="10dp"
                 android:text="@string/vuelta_a_la_calma"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textTitle"
+                android:textSize="22dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvCalmaC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="18dp"
-                android:text="valor"
                 android:textColor="@color/editTextColorBlack"
-                android:textSize="@dimen/textTitle"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnListo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/listo"
+            android:theme="@style/RaisedButtonDark" />
     </LinearLayout>
-
+</ScrollView>
 </android.support.design.widget.CoordinatorLayout>

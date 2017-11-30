@@ -110,6 +110,12 @@
             android:theme="@style/RaisedButtonDark"/>
 
     </LinearLayout>
-
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/guardar"
+        android:theme="@style/RaisedButtonDark" />
 
 </LinearLayout>

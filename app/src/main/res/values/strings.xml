@@ -82,7 +82,9 @@
     <string name="eventos_competitivos">EVENTOS COMPETITIVOS</string>
     <string name="fase_fundamental">FASE FUNDAMENTAL</string>
     <string name="vuelta_a_la_calma">VUELTA A LA CALMA</string>
-    <string name="entrenamiento_nacional">ENTRENAMIENTO NATACION</string>
+    <string name="entrenamiento_natacion">ENTRENAMIENTO NATACION</string>
+    <string name="entrenamiento_ciclismo">ENTRENAMIENTO CICLISMO</string>
+    <string name="listo">Listo</string>
 
 
     <!-- Array etapas -->

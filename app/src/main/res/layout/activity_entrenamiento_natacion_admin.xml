@@ -3,29 +3,67 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootViewEntrenamientoN"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.summy.controlrendimiento.views.EntrenamientoNacionalAdminActivity">
+    tools:context="com.example.summy.controlrendimiento.views.EntrenamientoNatacionAdminActivity">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include layout="@layout/actionbar_toolbar" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:text="@string/entrenamiento_nacional"
+            android:text="@string/entrenamiento_natacion"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/textTitle"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingLeft="24dp">
+            <TextView
+                android:id="@+id/tvDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvMes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvAnio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -43,6 +81,7 @@
                 android:id="@+id/etcalentamientoN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:theme="@style/EditTextBlack" />
 
@@ -51,7 +90,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -70,14 +109,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/EditTextBlack"
-                android:layout_marginRight="28dp" />
+                android:layout_marginRight="28dp"
+                android:layout_marginLeft="28dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -96,13 +136,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/EditTextBlack"
-                android:layout_marginRight="28dp" />
+                android:layout_marginRight="28dp"
+                android:layout_marginLeft="28dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -120,16 +161,16 @@
                 android:id="@+id/etFaseFundN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/EditTextBlack"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:theme="@style/EditTextBlack" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -148,8 +189,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/EditTextBlack"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginRight="28dp"
+                android:layout_marginLeft="28dp"/>
 
         </LinearLayout>
 
@@ -160,4 +201,5 @@
             android:text="@string/guardar"
             android:theme="@style/RaisedButtonDark" />
     </LinearLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

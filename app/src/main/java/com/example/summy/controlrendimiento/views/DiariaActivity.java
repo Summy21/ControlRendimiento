@@ -1,6 +1,5 @@
 package com.example.summy.controlrendimiento.views;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
@@ -15,15 +14,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.model.EntrenamientoNatacion;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -54,6 +56,10 @@ public class DiariaActivity extends AppCompatActivity{
 
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
+
+    private DatabaseReference myRef;
+    String id = "entrNatacion1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,10 +119,46 @@ public class DiariaActivity extends AppCompatActivity{
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_natacion, null);
 
+                final TextView tvCalentamientoN = (TextView) mView.findViewById(R.id.tvCalentamientoN);
+                final TextView tvFase1          = (TextView) mView.findViewById(R.id.tvFase1N);
+                final TextView tvFase2          = (TextView) mView.findViewById(R.id.tvFase2N);
+                final TextView tvFaseFundN      = (TextView) mView.findViewById(R.id.tvFaseFundN);
+                final TextView tvCalmaN         = (TextView) mView.findViewById(R.id.tvCalmaN);
+                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
+
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
+
+                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Natacion");
+
+                myRef.child(id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        EntrenamientoNatacion entrenamientoNatacion = dataSnapshot.getValue(EntrenamientoNatacion.class);
+
+                        tvCalentamientoN.setText(entrenamientoNatacion.getCalentamiento());
+                        tvFase1.setText(entrenamientoNatacion.getFasePrinc1());
+                        tvFase2.setText(entrenamientoNatacion.getFasePrinc2());
+                        tvFaseFundN.setText(entrenamientoNatacion.getFaseFund());
+                        tvCalmaN.setText(entrenamientoNatacion.getVueltaCalma());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                btnListo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
             }
+
         });
 
         LinearLayout listEntrenamientoC = (LinearLayout) findViewById(R.id.listEntrenamientoC);
@@ -127,9 +169,44 @@ public class DiariaActivity extends AppCompatActivity{
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_ciclismo, null);
 
+                final TextView tvCalentamientoC = (TextView) mView.findViewById(R.id.tvCalentamientoC);
+                final TextView tvFase1C          = (TextView) mView.findViewById(R.id.tvFase1C);
+                final TextView tvFase2C         = (TextView) mView.findViewById(R.id.tvFase2C);
+                final TextView tvFaseFundC      = (TextView) mView.findViewById(R.id.tvFaseFundC);
+                final TextView tvCalmaC         = (TextView) mView.findViewById(R.id.tvCalmaC);
+                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
+
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
+
+                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Ciclismo");
+
+                myRef.child(id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        EntrenamientoNatacion entrenamientoNatacion = dataSnapshot.getValue(EntrenamientoNatacion.class);
+
+                        tvCalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
+                        tvFase1C.setText(entrenamientoNatacion.getFasePrinc1());
+                        tvFase2C.setText(entrenamientoNatacion.getFasePrinc2());
+                        tvFaseFundC.setText(entrenamientoNatacion.getFaseFund());
+                        tvCalmaC.setText(entrenamientoNatacion.getVueltaCalma());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                btnListo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
         LinearLayout listEntrenamientoCa = (LinearLayout) findViewById(R.id.listEntrenamientoCa);

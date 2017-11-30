@@ -315,11 +315,16 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.item4:
-                startActivity(new Intent(getApplicationContext(),EntrenamientoNacionalAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(),EntrenamientoNatacionAdminActivity.class));
                 break;
         }
         switch (item.getItemId()){
             case R.id.item5:
+                startActivity(new Intent(getApplicationContext(),EntrenamientoCiclismoAdminActivity.class));
+                break;
+        }
+        switch (item.getItemId()){
+            case R.id.item6:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();

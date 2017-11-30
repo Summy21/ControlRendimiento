@@ -76,7 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
         btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
 
-        showToolbar("Crear Cuenta", false);
+
 
         rootView = findViewById(R.id.rootViewRegistro);
 
@@ -107,7 +107,6 @@ public class RegistroActivity extends AppCompatActivity {
         String telseguromedico= ettelefonoseguromedico.getText().toString().trim();
 
         if (!TextUtils.isEmpty(nombres)){
-
 
             Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
 
