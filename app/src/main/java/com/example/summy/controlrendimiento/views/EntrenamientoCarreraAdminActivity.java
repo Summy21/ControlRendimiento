@@ -21,25 +21,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
+public class EntrenamientoCarreraAdminActivity extends AppCompatActivity {
 
-    private EditText etcalentamientoN;
-    private EditText etFasePrinc1N;
-    private EditText etFasePrinc2N;
-    private EditText etFaseFundN;
-    private EditText etVueltaCalmaN;
+    private EditText etcalentamientoCa;
+    private EditText etFasePrinc1Ca;
+    private EditText etFasePrinc2Ca;
+    private EditText etFaseFundCa;
+    private EditText etVueltaCalmaCa;
 
     private View rootView;
 
     private DatabaseReference myRef;
-    boolean firstTime = true;
-    String id = "entrNatacion1";
+    boolean firstTime = false;
+    String id = "entrPedestrismo1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrenamiento_natacion_admin);
-        rootView = findViewById(R.id.rootViewEntrenamientoN);
+        setContentView(R.layout.activity_entrenamiento_carrera_admin);
+
+        rootView = findViewById(R.id.rootViewEntrenamientoCa);
         showToolbar("Entrenamiento Diario", true);
         Thread t = new Thread() {
             @Override
@@ -72,14 +73,13 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
             }
         };
         t.start();
+        myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Pedestrismo");
 
-        myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Natacion");
-
-        etcalentamientoN = (EditText) findViewById(R.id.etcalentamientoN);
-        etFasePrinc1N = (EditText) findViewById(R.id.etFasePrinc1N);
-        etFasePrinc2N = (EditText) findViewById(R.id.etFasePrinc2N);
-        etFaseFundN = (EditText) findViewById(R.id.etFaseFundN);
-        etVueltaCalmaN = (EditText) findViewById(R.id.etVueltaCalmaN);
+        etcalentamientoCa = (EditText) findViewById(R.id.etcalentamientoCa);
+        etFasePrinc1Ca = (EditText) findViewById(R.id.etFasePrinc1Ca);
+        etFasePrinc2Ca = (EditText) findViewById(R.id.etFasePrinc2Ca);
+        etFaseFundCa = (EditText) findViewById(R.id.etFaseFundCa);
+        etVueltaCalmaCa = (EditText) findViewById(R.id.etVueltaCalmaCa);
 
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
@@ -97,14 +97,14 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
     }
 
     private void adicionarEntrenamiento(String id) {
-        String calentamiento = etcalentamientoN.getText().toString().trim();
-        String fasePrinc1 = etFasePrinc1N.getText().toString().trim();
-        String fasePrinc2 = etFasePrinc2N.getText().toString().trim();
-        String faseFund = etFaseFundN.getText().toString().trim();
-        String vueltaCalma = etVueltaCalmaN.getText().toString().trim();
+        String calentamiento = etcalentamientoCa.getText().toString().trim();
+        String fasePrinc1 = etFasePrinc1Ca.getText().toString().trim();
+        String fasePrinc2 = etFasePrinc2Ca.getText().toString().trim();
+        String faseFund = etFaseFundCa.getText().toString().trim();
+        String vueltaCalma = etVueltaCalmaCa.getText().toString().trim();
 
         if(!TextUtils.isEmpty(calentamiento)){
-       //     id = myRef.push().getKey();
+            //     id = myRef.push().getKey();
 
             Entrenamiento entrenamientoNatacion = new Entrenamiento(id, calentamiento,fasePrinc1,fasePrinc2,faseFund,vueltaCalma);
             myRef.child(id).setValue(entrenamientoNatacion);
@@ -122,13 +122,13 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
         myRef.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
+                Entrenamiento entrenamientoCarrera = dataSnapshot.getValue(Entrenamiento.class);
 
-                etcalentamientoN.setText(entrenamientoNatacion.getCalentamiento());
-                etFasePrinc1N.setText(entrenamientoNatacion.getFasePrinc1());
-                etFasePrinc2N.setText(entrenamientoNatacion.getFasePrinc2());
-                etFaseFundN.setText(entrenamientoNatacion.getFaseFund());
-                etVueltaCalmaN.setText(entrenamientoNatacion.getVueltaCalma());
+                etcalentamientoCa.setText(entrenamientoCarrera.getCalentamiento());
+                etFasePrinc1Ca.setText(entrenamientoCarrera.getFasePrinc1());
+                etFasePrinc2Ca.setText(entrenamientoCarrera.getFasePrinc2());
+                etFaseFundCa.setText(entrenamientoCarrera.getFaseFund());
+                etVueltaCalmaCa.setText(entrenamientoCarrera.getVueltaCalma());
             }
 
             @Override
@@ -149,3 +149,5 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
 
     }
 }
+
+

@@ -84,7 +84,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
         </activity>
-        <activity android:name=".views.EntrenamientoCiclismoAdminActivity"></activity>
+        <activity android:name=".views.EntrenamientoCiclismoAdminActivity" />
+        <activity android:name=".views.EntrenamientoCarreraAdminActivity"></activity>
     </application>
 
 </manifest>

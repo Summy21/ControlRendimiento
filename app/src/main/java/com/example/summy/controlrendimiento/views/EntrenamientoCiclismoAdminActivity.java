@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.summy.controlrendimiento.R;
-import com.example.summy.controlrendimiento.model.EntrenamientoNatacion;
+import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +39,7 @@ public class EntrenamientoCiclismoAdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrenamiento_ciclismo_admin);
-        rootView = findViewById(R.id.rootViewEntrenamientoN);
+        rootView = findViewById(R.id.rootViewEntrenamientoC);
         showToolbar("Entrenamiento Diario", true);
         Thread t = new Thread() {
             @Override
@@ -106,8 +106,8 @@ public class EntrenamientoCiclismoAdminActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(calentamiento)){
             //     id = myRef.push().getKey();
 
-            EntrenamientoNatacion entrenamientoNatacion = new EntrenamientoNatacion(id, calentamiento,fasePrinc1,fasePrinc2,faseFund,vueltaCalma);
-            myRef.child(id).setValue(entrenamientoNatacion);
+            Entrenamiento entrenamientoCiclismo = new Entrenamiento(id, calentamiento,fasePrinc1,fasePrinc2,faseFund,vueltaCalma);
+            myRef.child(id).setValue(entrenamientoCiclismo);
             mostrarMessage("Entrenamiento adicionado");
             firstTime = true;
 
@@ -122,13 +122,13 @@ public class EntrenamientoCiclismoAdminActivity extends AppCompatActivity {
         myRef.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                EntrenamientoNatacion entrenamientoNatacion = dataSnapshot.getValue(EntrenamientoNatacion.class);
+                Entrenamiento entrenamientoCiclismo = dataSnapshot.getValue(Entrenamiento.class);
 
-                etcalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
-                etFasePrinc1C.setText(entrenamientoNatacion.getFasePrinc1());
-                etFasePrinc2C.setText(entrenamientoNatacion.getFasePrinc2());
-                etFaseFundC.setText(entrenamientoNatacion.getFaseFund());
-                etVueltaCalmaC.setText(entrenamientoNatacion.getVueltaCalma());
+                etcalentamientoC.setText(entrenamientoCiclismo.getCalentamiento());
+                etFasePrinc1C.setText(entrenamientoCiclismo.getFasePrinc1());
+                etFasePrinc2C.setText(entrenamientoCiclismo.getFasePrinc2());
+                etFaseFundC.setText(entrenamientoCiclismo.getFaseFund());
+                etVueltaCalmaC.setText(entrenamientoCiclismo.getVueltaCalma());
             }
 
             @Override

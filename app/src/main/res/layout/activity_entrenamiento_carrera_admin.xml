@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootViewEntrenamientoC"
+    android:id="@+id/rootViewEntrenamientoCa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.summy.controlrendimiento.views.EntrenamientoNatacionAdminActivity">
@@ -24,7 +24,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
-                android:text="@string/entrenamiento_ciclismo"
+                android:text="@string/entrenamiento"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/textTitle"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="@string/pedestrismo_mayuscula"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/textTitle"
                 android:textStyle="bold" />
@@ -78,7 +87,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etcalentamientoC"
+                    android:id="@+id/etcalentamientoCa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="28dp"
@@ -105,12 +114,12 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etFasePrinc1C"
+                    android:id="@+id/etFasePrinc1Ca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/EditTextBlack"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginRight="28dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:theme="@style/EditTextBlack" />
 
             </LinearLayout>
 
@@ -132,12 +141,12 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etFasePrinc2C"
+                    android:id="@+id/etFasePrinc2Ca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/EditTextBlack"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginRight="28dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:theme="@style/EditTextBlack" />
             </LinearLayout>
 
             <LinearLayout
@@ -157,7 +166,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etFaseFundC"
+                    android:id="@+id/etFaseFundCa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="28dp"
@@ -183,7 +192,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etVueltaCalmaC"
+                    android:id="@+id/etVueltaCalmaCa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/EditTextBlack"

@@ -4,7 +4,7 @@ package com.example.summy.controlrendimiento.model;
  * Created by SUMMY on 11/27/2017.
  */
 
-public class EntrenamientoNatacion {
+public class Entrenamiento {
 
     String key;
     String calentamiento;
@@ -13,10 +13,10 @@ public class EntrenamientoNatacion {
     String faseFund;
     String vueltaCalma;
 
-    public EntrenamientoNatacion() {
+    public Entrenamiento() {
     }
 
-    public EntrenamientoNatacion(String key, String calentamiento, String fasePrinc1N, String fasePrinc2N, String faseFundN, String vueltaCalma) {
+    public Entrenamiento(String key, String calentamiento, String fasePrinc1N, String fasePrinc2N, String faseFundN, String vueltaCalma) {
         this.key = key;
         this.calentamiento = calentamiento;
         this.fasePrinc1 = fasePrinc1N;

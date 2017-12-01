@@ -49,32 +49,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/EditTextBlack"
-            android:layout_weight="0.8">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Maximo limite"/>
-        </android.support.design.widget.TextInputLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enviar"
-            android:theme="@style/RaisedButtonDark"/>
-
-
-    </LinearLayout>
-
     <TextView
         android:text="@string/volumen_general"
         android:layout_width="wrap_content"

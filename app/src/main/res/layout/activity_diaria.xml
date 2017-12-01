@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="btnStartNatacion"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="85dp"
+                    android:layout_marginLeft="88dp"
                     android:gravity="center"
                     android:text="@string/empezar"
                     android:theme="@style/RaisedButtonDark" />
@@ -202,50 +202,6 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fecha_dia"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:text="12 Dic (Prox. Competencia)"
-                android:textColor="@android:color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.7"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Datos Diarios"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sesion_diaria"
-                android:gravity="center"/>
-
         </LinearLayout>
     </RelativeLayout>
-
-
-
 </LinearLayout>

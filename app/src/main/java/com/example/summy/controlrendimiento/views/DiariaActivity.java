@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
-import com.example.summy.controlrendimiento.model.EntrenamientoNatacion;
+import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,6 +59,8 @@ public class DiariaActivity extends AppCompatActivity{
 
     private DatabaseReference myRef;
     String id = "entrNatacion1";
+    String idC = "entrCiclismo1";
+    String idCa = "entrPedestrismo1";
 
 
     @Override
@@ -135,7 +137,7 @@ public class DiariaActivity extends AppCompatActivity{
                 myRef.child(id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        EntrenamientoNatacion entrenamientoNatacion = dataSnapshot.getValue(EntrenamientoNatacion.class);
+                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
 
                         tvCalentamientoN.setText(entrenamientoNatacion.getCalentamiento());
                         tvFase1.setText(entrenamientoNatacion.getFasePrinc1());
@@ -182,10 +184,10 @@ public class DiariaActivity extends AppCompatActivity{
 
                 myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Ciclismo");
 
-                myRef.child(id).addValueEventListener(new ValueEventListener() {
+                myRef.child(idC).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        EntrenamientoNatacion entrenamientoNatacion = dataSnapshot.getValue(EntrenamientoNatacion.class);
+                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
 
                         tvCalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
                         tvFase1C.setText(entrenamientoNatacion.getFasePrinc1());
@@ -217,9 +219,43 @@ public class DiariaActivity extends AppCompatActivity{
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_carrera, null);
 
+                final TextView tvCalentamientoCa = (TextView) mView.findViewById(R.id.tvCalentamientoCa);
+                final TextView tvFase1Ca          = (TextView) mView.findViewById(R.id.tvFase1Ca);
+                final TextView tvFase2Ca         = (TextView) mView.findViewById(R.id.tvFase2Ca);
+                final TextView tvFaseFundCa      = (TextView) mView.findViewById(R.id.tvFaseFundCa);
+                final TextView tvCalmaCa         = (TextView) mView.findViewById(R.id.tvCalmaCa);
+                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
+
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
+
+                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Pedestrismo");
+
+                myRef.child(idCa).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
+
+                        tvCalentamientoCa.setText(entrenamientoNatacion.getCalentamiento());
+                        tvFase1Ca.setText(entrenamientoNatacion.getFasePrinc1());
+                        tvFase2Ca.setText(entrenamientoNatacion.getFasePrinc2());
+                        tvFaseFundCa.setText(entrenamientoNatacion.getFaseFund());
+                        tvCalmaCa.setText(entrenamientoNatacion.getVueltaCalma());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                btnListo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }
