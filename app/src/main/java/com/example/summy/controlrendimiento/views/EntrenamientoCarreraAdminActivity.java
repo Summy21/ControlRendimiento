@@ -32,7 +32,7 @@ public class EntrenamientoCarreraAdminActivity extends AppCompatActivity {
     private View rootView;
 
     private DatabaseReference myRef;
-    boolean firstTime = false;
+    boolean firstTime = true;
     String id = "entrPedestrismo1";
 
     @Override

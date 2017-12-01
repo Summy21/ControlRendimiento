@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:id="@+id/rootViewDiaria"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -107,35 +106,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/boton_cuatro"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/listEntrenamientoN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:layout_weight="1">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/natacion"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Natacion"
-                    android:textColor="#388E3C"
-                    android:textSize="36dp"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/natacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Natacion"
+                        android:textColor="#388E3C"
+                        android:textSize="36dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvpromN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/Subtitulo2"
+                        android:text="prom"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textTitle" />
+                </LinearLayout>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="btnStartNatacion"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="88dp"
                     android:gravity="center"
+                    android:onClick="btnStartNatacion"
                     android:text="@string/empezar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
@@ -148,23 +159,37 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/ciclismo"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Ciclismo"
-                    android:textColor="#388E3C"
-                    android:textSize="36dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ciclismo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Ciclismo"
+                        android:textColor="#388E3C"
+                        android:textSize="36dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvpromC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/Subtitulo2"
+                        android:text="prom"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textTitle" />
+                </LinearLayout>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="btnStartCiclismo"
                     android:layout_marginLeft="88dp"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:onClick="btnStartCiclismo"
                     android:text="@string/empezar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
@@ -173,30 +198,44 @@
                 android:id="@+id/listEntrenamientoCa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/carrera"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/pedestrismo"
-                    android:textColor="#388E3C"
-                    android:textSize="36dp"
-                    android:textStyle="bold"
-                    android:layout_weight="0.16" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/carrera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.16"
+                        android:text="@string/pedestrismo"
+                        android:textColor="#388E3C"
+                        android:textSize="36dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvpromCa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/Subtitulo2"
+                        android:text="prom"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textTitle" />
+
+                </LinearLayout>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="btnStartCarrera"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
-
                     android:gravity="center"
+                    android:onClick="btnStartCarrera"
                     android:text="@string/empezar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>

@@ -48,8 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:textSize="@dimen/size_tiempo"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_tiempo" />
 
                 <Button
                     android:id="@+id/btnIniciarC"
@@ -70,8 +70,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:textSize="@dimen/size_tiempo"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_tiempo" />
 
                 <Button
                     android:id="@+id/btnFinalizarC"
@@ -80,15 +80,31 @@
                     android:text="@string/finalizar"
                     android:theme="@style/RaisedButtonDark" />
             </LinearLayout>
-
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/tvTiempoTC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/Subtitulo2"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/textTitle" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
@@ -103,16 +119,8 @@
                     android:hint="FC/MAX" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:text="@string/enviar"
-                android:theme="@style/RaisedButtonDark" />
-
         </LinearLayout>
+
         <Button
             android:id="@+id/btnGuardarC"
             android:layout_width="match_parent"
