@@ -43,15 +43,19 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
         rootView = findViewById(R.id.rootViewEntrenamientoN);
         showToolbar("Entrenamiento Diario", true);
         //DIA
-        TextView dia = (TextView) findViewById(R.id.dia);
-        TextView mes = (TextView) findViewById(R.id.mes);
+        TextView tvDia = (TextView) findViewById(R.id.tvDia);
+        TextView tvMes = (TextView) findViewById(R.id.tvMes);
+        TextView tvAnio = (TextView) findViewById(R.id.tvAnio);
         long date = System.currentTimeMillis();
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MMMM");
+        SimpleDateFormat a = new SimpleDateFormat("yyyy");
         String diaString = d.format(date);
         String mesString = m.format(date);
-        dia.setText(diaString);
-        mes.setText(mesString);
+        String anioString = a.format(date);
+        tvDia.setText(diaString + " / ");
+        tvMes.setText(mesString + " / ");
+        tvAnio.setText(anioString);
 
         myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Natacion");
 

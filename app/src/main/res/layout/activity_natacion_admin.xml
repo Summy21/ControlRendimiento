@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootViewGestionN"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.summy.controlrendimiento.views.NatacionAdminActivity">
@@ -61,6 +62,7 @@
                     android:textSize="@dimen/textTitle"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
@@ -138,7 +140,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etNroSesiones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/numero_de_sesiones_por_microciclo" />
@@ -156,7 +158,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etAer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -170,7 +172,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etAel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="AEL + TEC (Aeróbico Ligero + Técnica)-25kx5s"
@@ -183,7 +185,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etAem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="AEM (Aeróbico Medio)-20kx4s"
@@ -196,7 +198,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etAei"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="AEI (Aeróbico Intenso)-12kx4s"
@@ -209,7 +211,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etPae"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="PAE (Potencia Aeróbica)-5kx3s"
@@ -222,7 +224,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etCla"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CLA (Capacidad Láctica)-2.4kx3s"
@@ -235,7 +237,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etPla"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="PLA (Potencia Láctica)-1.5kx3s"
@@ -248,7 +250,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etCala"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CALA (Capacidad Aláctica)-1.5kx4s"
@@ -261,7 +263,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etTipoEtapa"
+                    android:id="@+id/etPala"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="PALA (Potencia Aláctica)-400mx4s"
@@ -290,13 +292,12 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvMicrociclo"
+                    android:id="@+id/tvVolumen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="nro"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/textTitle"
                     android:textStyle="bold" />
@@ -304,15 +305,15 @@
 
 
             <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:theme="@style/EditTextBlack">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:theme="@style/EditTextBlack">-->
 
-                <!--<android.support.design.widget.TextInputEditText-->
-                    <!--android:id="@+id/etTipoEtapa"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="@string/carga_total_por_microciclo" />-->
+            <!--<android.support.design.widget.TextInputEditText-->
+            <!--android:id="@+id/etTipoEtapa"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/carga_total_por_microciclo" />-->
             <!--</android.support.design.widget.TextInputLayout>-->
 
             <View
@@ -320,6 +321,7 @@
                 android:layout_height="5dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorPrimaryDark" />
+
             <Button
                 android:id="@+id/btnGuardar"
                 android:layout_width="match_parent"

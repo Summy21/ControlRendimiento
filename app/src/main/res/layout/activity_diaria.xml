@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="32dp"
                     android:layout_marginTop="8dp"
                     android:text="10"
                     android:textColor="@android:color/white"
@@ -67,24 +67,24 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_gravity="center_horizontal"
                 android:text="ETAPA GENERAL"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                android:text="16 Dic (Prox. Competencia)"
-                android:textColor="@android:color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView4"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="40dp"-->
+                <!--android:layout_marginStart="40dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="16 Dic (Prox. Competencia)"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold" />-->
         </LinearLayout>
 
 
@@ -136,7 +136,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/Subtitulo2"
-                        android:text="prom"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textTitle" />
                 </LinearLayout>
@@ -178,8 +177,6 @@
                         android:id="@+id/tvpromC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/Subtitulo2"
-                        android:text="prom"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textTitle" />
                 </LinearLayout>
@@ -223,8 +220,6 @@
                         android:id="@+id/tvpromCa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/Subtitulo2"
-                        android:text="prom"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textTitle" />
 

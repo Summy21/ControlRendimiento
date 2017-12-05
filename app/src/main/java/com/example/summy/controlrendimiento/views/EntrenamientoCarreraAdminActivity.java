@@ -35,6 +35,7 @@ public class EntrenamientoCarreraAdminActivity extends AppCompatActivity {
     boolean firstTime = true;
     String id = "entrPedestrismo1";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,37 +43,21 @@ public class EntrenamientoCarreraAdminActivity extends AppCompatActivity {
 
         rootView = findViewById(R.id.rootViewEntrenamientoCa);
         showToolbar("Entrenamiento Diario", true);
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.N)
-                            @Override
-                            public void run() {
-                                TextView tvDia = (TextView) findViewById(R.id.tvDia);
-                                TextView tvMes = (TextView) findViewById(R.id.tvMes);
-                                TextView tvAnio = (TextView) findViewById(R.id.tvAnio);
-                                long date = System.currentTimeMillis();
-                                SimpleDateFormat d = new SimpleDateFormat("dd");
-                                SimpleDateFormat m = new SimpleDateFormat("MMMM");
-                                SimpleDateFormat a = new SimpleDateFormat("yyyy");
-                                String diaString = d.format(date);
-                                String mesString = m.format(date);
-                                String anioString = a.format(date);
-                                tvDia.setText(diaString + " / ");
-                                tvMes.setText(mesString + " / ");
-                                tvAnio.setText(anioString);
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-        t.start();
+
+        TextView tvDia = (TextView) findViewById(R.id.tvDia);
+        TextView tvMes = (TextView) findViewById(R.id.tvMes);
+        TextView tvAnio = (TextView) findViewById(R.id.tvAnio);
+        long date = System.currentTimeMillis();
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MMMM");
+        SimpleDateFormat a = new SimpleDateFormat("yyyy");
+        String diaString = d.format(date);
+        String mesString = m.format(date);
+        String anioString = a.format(date);
+        tvDia.setText(diaString + " / ");
+        tvMes.setText(mesString + " / ");
+        tvAnio.setText(anioString);
+
         myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Pedestrismo");
 
         etcalentamientoCa = (EditText) findViewById(R.id.etcalentamientoCa);
