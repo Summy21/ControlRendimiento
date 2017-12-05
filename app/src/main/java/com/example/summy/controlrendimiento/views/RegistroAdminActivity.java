@@ -71,6 +71,7 @@ public class RegistroAdminActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String compId;
 
+
     private TextView tvNombreCompetencia;
     private TextView tvLugarCompetencia;
 

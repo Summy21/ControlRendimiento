@@ -35,43 +35,23 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
     boolean firstTime = true;
     String id = "entrNatacion1";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrenamiento_natacion_admin);
         rootView = findViewById(R.id.rootViewEntrenamientoN);
         showToolbar("Entrenamiento Diario", true);
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.N)
-                            @Override
-                            public void run() {
-                                TextView tvDia = (TextView) findViewById(R.id.tvDia);
-                                TextView tvMes = (TextView) findViewById(R.id.tvMes);
-                                TextView tvAnio = (TextView) findViewById(R.id.tvAnio);
-                                long date = System.currentTimeMillis();
-                                SimpleDateFormat d = new SimpleDateFormat("dd");
-                                SimpleDateFormat m = new SimpleDateFormat("MMMM");
-                                SimpleDateFormat a = new SimpleDateFormat("yyyy");
-                                String diaString = d.format(date);
-                                String mesString = m.format(date);
-                                String anioString = a.format(date);
-                                tvDia.setText(diaString + " / ");
-                                tvMes.setText(mesString + " / ");
-                                tvAnio.setText(anioString);
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-        t.start();
+        //DIA
+        TextView dia = (TextView) findViewById(R.id.dia);
+        TextView mes = (TextView) findViewById(R.id.mes);
+        long date = System.currentTimeMillis();
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MMMM");
+        String diaString = d.format(date);
+        String mesString = m.format(date);
+        dia.setText(diaString);
+        mes.setText(mesString);
 
         myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Natacion");
 

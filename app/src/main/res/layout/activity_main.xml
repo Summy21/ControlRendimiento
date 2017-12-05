@@ -41,10 +41,10 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="300dp"
-                android:layout_height="120dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/logot"
+                android:background="@drawable/escudo"
 
                 />
 
@@ -120,46 +120,6 @@
                         android:onClick="signIn"
                         android:text="@string/iniciar_sesion_button" />
                 </LinearLayout>
-
-         <!--       <Button
-                    android:id="@+id/signUpButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/boton_uno"
-                    android:onClick="crearCuenta"
-                    android:text="@string/crear_cuanta_button"
-                    android:theme="@style/RaisedButtonDark" />
--->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/tvNoTieneCuenta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/tvCrearCuenta"
-                        android:layout_alignBottom="@+id/tvCrearCuenta"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginStart="40dp"
-                        android:text="@string/no_tienes_cuenta"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvCrearCuenta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/tvNoTieneCuenta"
-                        android:text="@string/crear_aqui"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/textSize_noTieneCuenta"
-                        android:textStyle="bold" />
-                </RelativeLayout>
 
             </LinearLayout>
         </ScrollView>

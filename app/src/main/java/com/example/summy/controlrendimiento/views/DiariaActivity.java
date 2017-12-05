@@ -76,7 +76,6 @@ public class DiariaActivity extends AppCompatActivity{
     String idC = "entrCiclismo1";
     String idCa = "entrPedestrismo1";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,34 +89,15 @@ public class DiariaActivity extends AppCompatActivity{
         ///// secion instancia
         mAuth = FirebaseAuth.getInstance();
         //DIA
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.N)
-                            @Override
-                            public void run() {
-                                TextView dia = (TextView) findViewById(R.id.dia);
-                                TextView mes = (TextView) findViewById(R.id.mes);
-                                long date = System.currentTimeMillis();
-                                SimpleDateFormat d = new SimpleDateFormat("dd");
-                                SimpleDateFormat m = new SimpleDateFormat("MMMM");
-                                String diaString = d.format(date);
-                                String mesString = m.format(date);
-                                dia.setText(diaString);
-                                mes.setText(mesString);
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-        t.start();
-
+        TextView dia = (TextView) findViewById(R.id.dia);
+        TextView mes = (TextView) findViewById(R.id.mes);
+        long date = System.currentTimeMillis();
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MMMM");
+        String diaString = d.format(date);
+        String mesString = m.format(date);
+        dia.setText(diaString);
+        mes.setText(mesString);
 
         LinearLayout listCompUser = (LinearLayout) findViewById(R.id.listCompUser);
 
@@ -340,10 +320,54 @@ public class DiariaActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void promeCardiaco(){
+    public void promCardiaco(){
+        String idUser = mAuth.getCurrentUser().getUid();
+        String fIni = "01-12-2017";
 
+        for (int i = 0; i < 19 ; i++) {
+            myRef = FirebaseDatabase.getInstance().getReference("Natacion").child(fIni).child(idUser);
+            final int finalI = i;
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    DiarioDisciplina diarioDisciplina = dataSnapshot.getValue(DiarioDisciplina.class);
+                    String vFre[] = new String[20];
+                    vFre[finalI] = diarioDisciplina.getFcMax();
+                    Log.w(TAG, vFre[finalI]);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            Date dateFini= ParseFecha(fIni);
+            Log.w(TAG, "fecha conv date "+ dateFini);
+            Date diaSig = sumarRestarDiasFecha(dateFini, 1);
+            Log.w(TAG, "diaSig "+ diaSig);
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            fIni= df.format(diaSig.getTime());
+            Log.w(TAG, "fechaIni de nuevo "+ fIni);
+        }
     }
-
+    public Date sumarRestarDiasFecha(Date fecha, int dias){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+    }
+    public static Date ParseFecha(String fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        }
+        catch (ParseException ex)
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
     public String fechaActual(){
         Calendar f = Calendar.getInstance();
         Date fechacompleta = f.getTime();
@@ -489,7 +513,6 @@ public class DiariaActivity extends AppCompatActivity{
                 btnFinalizarC.setEnabled(false);
                 String tInicial = tvIniciarC.getText().toString().trim();
                 String tFinal = tvFinalizarC.getText().toString().trim();
-                Log.w(TAG, "tiempos  >>" + tInicial +" , "+tFinal);
                 String total = controlTiempo(tInicial, tFinal);
                 tvTiempoTC.setText(total);
             }

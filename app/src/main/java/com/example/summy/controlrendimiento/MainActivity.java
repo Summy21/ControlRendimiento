@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
     private EditText mEmail,mPassword;
     private Button btnSignIn;
 
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnSignUp = (Button) findViewById(R.id.signUpButton);
 
-
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -64,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
-
                 }
             }
         };
@@ -78,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //////////////////////////////////////////////
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!email.equals("") && !pass.equals("")) {
                     signUp(email, pass);
                 } else {
-                    Toast.makeText(MainActivity.this, "Datos incompletos", Toast.LENGTH_LONG).show();
+                    mostrarMessage("Datos incompletos");
                 }
             }
         });
@@ -109,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     public void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
-         //   Toast.makeText(MainActivity.this,"Completar campos para Iniciar Secion",Toast.LENGTH_LONG).show();
             mostrarMessage("Completar campos para crear una cuenta");
             return;
         }
@@ -121,21 +115,18 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user.getEmail().equalsIgnoreCase("admin@admin.com")){
-                                mostrarMessage("Autenticacion exitosa como Admin");
-                             //   Toast.makeText(MainActivity.this, "Autenticacion exitosa como Admin", Toast.LENGTH_SHORT).show();
+                                mostrarMessage("Autenticacion exitosa como Administrador");
                                 Intent intent = new Intent(MainActivity.this, RegistroAdminActivity.class);
                                 startActivity(intent);
                                 finish();
                             }else{
                                 mostrarMessage("Autenticacion exitosa");
-                            //    Toast.makeText(MainActivity.this, "Autenticacion exitosa", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, DiariaActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                      //      Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
@@ -152,20 +143,18 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    // adicionarAtleta();
-                    //Toast.makeText(.this, "Creacion de cuenta exitosa", Toast.LENGTH_SHORT).show();
-
                     FirebaseUser User = mAuth.getCurrentUser();
                     String idUser = User.getUid();
 
                     Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
                     intent.putExtra("idUser", idUser);
-                    Toast.makeText(MainActivity.this, idUser, Toast.LENGTH_SHORT).show();
-
+                    mostrarMessage("Creacion de cuenta exitosa");
+                //    Toast.makeText(MainActivity.this, idUser, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "La cuenta con este correo ya existe.", Toast.LENGTH_SHORT).show();
+                    mostrarMessage("La cuenta con este correo ya existe");
+//                    Toast.makeText(MainActivity.this, "La cuenta con este correo ya existe.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

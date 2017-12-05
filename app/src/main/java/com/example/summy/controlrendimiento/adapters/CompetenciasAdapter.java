@@ -52,7 +52,7 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
                 menu.add(holder.getAdapterPosition(), 0, 0, "Eliminar");
                 menu.add(holder.getAdapterPosition(), 1, 0, "Editar");
-                menu.add(holder.getAdapterPosition(), 2, 0, "Elegir como principal");
+            //    menu.add(holder.getAdapterPosition(), 2, 0, "Elegir como principal");
             }
         });
     }
