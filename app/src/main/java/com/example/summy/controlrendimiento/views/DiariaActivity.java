@@ -60,6 +60,8 @@ public class DiariaActivity extends AppCompatActivity{
     private EditText etFcMaxN;
     private EditText etFcMaxC;
     private EditText etFcMaxCa;
+    private EditText etVolGral;
+
 
     private TextView tvIniciarC;
     private TextView tvFinalizarC;
@@ -302,10 +304,9 @@ public class DiariaActivity extends AppCompatActivity{
                 View mView = getLayoutInflater().inflate(R.layout.activity_datos_frecuencia_volumen, null);
 
                 final EditText etFrecDespertar = (EditText) mView.findViewById(R.id.etFrecDespertar);
-                final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
+
                 Button btnGuardar = (Button) mView.findViewById(R.id.btnGuardar);
-                tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
-                volumeGeneral();
+
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
@@ -319,10 +320,9 @@ public class DiariaActivity extends AppCompatActivity{
                     @Override
                     public void onClick(View v) {
                         String frecDespertar = etFrecDespertar.getText().toString().trim();
-                        String volGral = etVolGral.getText().toString().trim();
 
                         if(!TextUtils.isEmpty(frecDespertar)){
-                            DiarioEntrenamiento diarioE = new DiarioEntrenamiento(frecDespertar,volGral);
+                            DiarioEntrenamiento diarioE = new DiarioEntrenamiento(frecDespertar);
                             myRef.setValue(diarioE);
 
                         }else{
@@ -463,6 +463,9 @@ public class DiariaActivity extends AppCompatActivity{
         final Button btnIniciarN   = (Button) mView.findViewById(R.id.btnIniciarN);
         final Button btnFinalizarN = (Button) mView.findViewById(R.id.btnFinalizarN);
         Button btnGuardarN = (Button) mView.findViewById(R.id.btnGuardarN);
+        tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
+        final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
+        volumeGeneral();
 
          String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
@@ -496,9 +499,10 @@ public class DiariaActivity extends AppCompatActivity{
             public void onClick(View v) {
                 String tiempoTrabajo = tvTiempoT.getText().toString().trim();
                 String fcMax = etFcMaxN.getText().toString().trim();
+                String volGral = etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax, volGral);
                     myRef.setValue(diarioD);
 
                 }else{
@@ -569,9 +573,10 @@ public class DiariaActivity extends AppCompatActivity{
             public void onClick(View v) {
                 String tiempoTrabajo = tvTiempoTC.getText().toString().trim();
                 String fcMax = etFcMaxC.getText().toString().trim();
+                String volGral = etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral);
                     myRef.setValue(diarioD);
 
                 }else{
@@ -626,9 +631,10 @@ public class DiariaActivity extends AppCompatActivity{
             public void onClick(View v) {
                 String tiempoTrabajo = tvTiempoTCa.getText().toString().trim();
                 String fcMax = etFcMaxCa.getText().toString().trim();
+                String volGral= etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral);
                     myRef.setValue(diarioD);
 
                 }else{

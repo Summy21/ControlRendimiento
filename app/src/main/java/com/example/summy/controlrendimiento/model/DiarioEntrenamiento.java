@@ -6,19 +6,14 @@ package com.example.summy.controlrendimiento.model;
 
 public class DiarioEntrenamiento {
     String frecDespertar;
-    String volGral;
 
 
-    public DiarioEntrenamiento(String frecDespertar, String volGral) {
+    public DiarioEntrenamiento(String frecDespertar) {
         this.frecDespertar = frecDespertar;
-        this.volGral = volGral;
     }
 
     public String getFrecDespertar() {
         return frecDespertar;
     }
 
-    public String getVolGral() {
-        return volGral;
-    }
 }
