@@ -91,15 +91,15 @@
 
     <!-- Array etapas -->
     <string-array name="lista_etapas">
-        <item>Etapa General</item>
-        <item>Etapa Especifica</item>
+        <item>ETAPA GENERAL</item>
+        <item>ETAPA ESPECIFICA</item>
     </string-array>
 
     <!-- Array periodos -->
     <string-array name="lista_periodos">
-        <item>Perido Preparatoriio</item>
-        <item>Periodo Competencia</item>
-        <item>Periodo Transicion</item>
+        <item>PERIODO PREPARATORIO</item>
+        <item>PERIODO COMPETENCIA</item>
+        <item>PERIODO TRANSICION</item>
     </string-array>
 
 </resources>

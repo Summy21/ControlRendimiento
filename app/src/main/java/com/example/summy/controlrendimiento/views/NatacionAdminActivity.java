@@ -20,16 +20,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
+import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
+
+import static android.R.attr.id;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class NatacionAdminActivity extends AppCompatActivity {
 
-    private static final String TAG = "NatacionAdmin";
     private View rootView;
 
     private DatabaseReference myRef;
@@ -68,6 +73,8 @@ public class NatacionAdminActivity extends AppCompatActivity {
         tvMicrociclo.setText(idM);
         tvMesociclo.setText(nroMesociclo());
 
+   //     mostrarGestionNatacion(idM);
+
         myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
 
         tvMicrociclo = (TextView) findViewById(R.id.tvMicrociclo);
@@ -93,8 +100,32 @@ public class NatacionAdminActivity extends AppCompatActivity {
                 adicionarGestionNatacion(idM);
             }
         });
+    }
 
+    private void mostrarGestionNatacion(String idM) {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
+        myRef.child(idM).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
+                etNroSesiones.setText(gestionRutinas.getNroSesiones());
+                etAer.setText(gestionRutinas.getAer());
+                etAel.setText(gestionRutinas.getAel());
+                etAem.setText(gestionRutinas.getAem());
+                etAei.setText(gestionRutinas.getAei());
+                etPae.setText(gestionRutinas.getPae());
+                etCla.setText(gestionRutinas.getCla());
+                etPla.setText(gestionRutinas.getPla());
+                etCala.setText(gestionRutinas.getCala());
+                etPala.setText(gestionRutinas.getPala());
+                tvVolumen.setText(gestionRutinas.getVolumen());
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void adicionarGestionNatacion(String idM) {

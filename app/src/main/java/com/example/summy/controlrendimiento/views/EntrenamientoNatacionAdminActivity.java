@@ -88,8 +88,6 @@ public class EntrenamientoNatacionAdminActivity extends AppCompatActivity {
         String vueltaCalma = etVueltaCalmaN.getText().toString().trim();
 
         if(!TextUtils.isEmpty(calentamiento)){
-       //     id = myRef.push().getKey();
-
             Entrenamiento entrenamientoNatacion = new Entrenamiento(id, calentamiento,fasePrinc1,fasePrinc2,faseFund,vueltaCalma);
             myRef.child(id).setValue(entrenamientoNatacion);
             mostrarMessage("Entrenamiento adicionado");

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
+import com.example.summy.controlrendimiento.model.GestionRutinas;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import static com.example.summy.controlrendimiento.R.id.tvVolumenT;
 
 /**
  * Created by Nancy on 10/11/17.
@@ -63,7 +66,7 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
+        myRef = FirebaseDatabase.getInstance().getReference("Atletas");
         FirebaseUser user = mAuth.getCurrentUser();
         userId = user.getUid();
 
@@ -83,7 +86,7 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                showData(dataSnapshot);
+                showData(userId);
             }
 
             @Override
@@ -116,11 +119,8 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(nombres)){
             DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Atletas").child(userId);
-
             Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
-
             dR.setValue(atleta);
-            mostrarMessage("Registro modificado");
             Toast.makeText(this,"Registro modificado",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), DiariaActivity.class);
             this.startActivity(intent);
@@ -139,32 +139,29 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
     }
-    public void showData (DataSnapshot dataSnapshot){
-        for (DataSnapshot ds : dataSnapshot.getChildren()){
-            Atleta atleta = new Atleta();
-            atleta.setNombres(ds.child(userId).getValue(Atleta.class).getNombres());
-            atleta.setPaterno(ds.child(userId).getValue(Atleta.class).getPaterno());
-            atleta.setMaterno(ds.child(userId).getValue(Atleta.class).getMaterno());
-            atleta.setEstatura(ds.child(userId).getValue(Atleta.class).getEstatura());
-            atleta.setGenero(ds.child(userId).getValue(Atleta.class).getGenero());
-            atleta.setPeso(ds.child(userId).getValue(Atleta.class).getPeso());
-            atleta.setTelCelular(ds.child(userId).getValue(Atleta.class).getTelCelular());
-            atleta.setDomicilio(ds.child(userId).getValue(Atleta.class).getDomicilio());
-            atleta.setTelFamiliar(ds.child(userId).getValue(Atleta.class).getTelFamiliar());
-            atleta.setTelSeguroMedico(ds.child(userId).getValue(Atleta.class).getTelSeguroMedico());
+    public void showData (String user){
+        myRef = FirebaseDatabase.getInstance().getReference("Atletas");
+        myRef.child(user).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Atleta atleta = dataSnapshot.getValue(Atleta.class);
+                etnombres.setText(atleta.getNombres());
+                etpaterno.setText(atleta.getPaterno());
+                etmaterno.setText(atleta.getMaterno());
+                etestatura.setText(atleta.getEstatura());
+                etgenero.setText(atleta.getGenero());
+                etpeso.setText(atleta.getPeso());
+                ettelefonocelular.setText(atleta.getTelCelular());
+                etdomicilio.setText(atleta.getDomicilio());
+                ettelefonofamiliar.setText(atleta.getTelFamiliar());
+                ettelefonoseguromedico.setText(atleta.getTelSeguroMedico());
+            }
 
-            etnombres.setText(atleta.getNombres());
-            etpaterno.setText(atleta.getPaterno());
-            etmaterno.setText(atleta.getMaterno());
-            etestatura.setText(atleta.getEstatura());
-            etgenero.setText(atleta.getGenero());
-            etpeso.setText(atleta.getPeso());
-            ettelefonocelular.setText(atleta.getTelCelular());
-            etdomicilio.setText(atleta.getDomicilio());
-            ettelefonofamiliar.setText(atleta.getTelFamiliar());
-            ettelefonoseguromedico.setText(atleta.getTelSeguroMedico());
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        }
+            }
+        });
     }
 
     private void mostrarMessage(String mensaje) {

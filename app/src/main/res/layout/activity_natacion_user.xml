@@ -120,14 +120,6 @@
                     android:hint="FC/MAX" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:text="@string/enviar"
-                android:theme="@style/RaisedButtonDark" />
 
         </LinearLayout>
 

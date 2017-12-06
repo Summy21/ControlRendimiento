@@ -26,6 +26,7 @@ import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.DiarioDisciplina;
 import com.example.summy.controlrendimiento.model.DiarioEntrenamiento;
 import com.example.summy.controlrendimiento.model.Entrenamiento;
+import com.example.summy.controlrendimiento.model.GestionRutinas;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -69,12 +70,17 @@ public class DiariaActivity extends AppCompatActivity{
     private TextView tvFinalizarCa;
     private TextView tvTiempoTCa;
 
+    private TextView tvEtapa;
+    private TextView tvPeriodo;
+    private TextView tvVolumenT;
+
     boolean sw1, sw2, sw3, sw4, sw5, sw6 = false;
 
     private DatabaseReference myRef;
     String id = "entrNatacion1";
     String idC = "entrCiclismo1";
     String idCa = "entrPedestrismo1";
+    Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +92,10 @@ public class DiariaActivity extends AppCompatActivity{
         toolbar = (Toolbar) findViewById(R.id.tvMenu);
         toolbar.setTitle("ACTIVIDAD DE HOY");
         setSupportActionBar(toolbar);
-        ///// secion instancia
+
+        tvEtapa = (TextView) findViewById(R.id.tvEtapa);
+        tvPeriodo = (TextView) findViewById(R.id.tvPeriodo);
+        etapaPeriodo();
         mAuth = FirebaseAuth.getInstance();
         //DIA
         TextView dia = (TextView) findViewById(R.id.dia);
@@ -255,6 +264,30 @@ public class DiariaActivity extends AppCompatActivity{
         });
     }
 
+    private void etapaPeriodo() {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
+
+        myRef.child(nroMicrociclo()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
+                tvEtapa.setText(gestionRutinas.getEtapa());
+                tvPeriodo.setText(gestionRutinas.getPeriodo());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public String nroMicrociclo(){
+        Date date = new Date();
+        calendar.setTime(date);
+        String idM = String.valueOf(calendar.get(Calendar.WEEK_OF_YEAR));
+        Log.w(TAG, "micro "+ idM);
+        return idM;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -273,13 +306,13 @@ public class DiariaActivity extends AppCompatActivity{
                 final EditText etFrecDespertar = (EditText) mView.findViewById(R.id.etFrecDespertar);
                 final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
                 Button btnGuardar = (Button) mView.findViewById(R.id.btnGuardar);
-
+                tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
+                volumeTotal();
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
 
                 String idFecha = fechaActual();
-
                 String idUser = mAuth.getCurrentUser().getUid();
 
                 myRef = FirebaseDatabase.getInstance().getReference("Fechas").child(idFecha).child(idUser).child("DiarioEntrenamiento");
@@ -433,9 +466,9 @@ public class DiariaActivity extends AppCompatActivity{
         final Button btnFinalizarN = (Button) mView.findViewById(R.id.btnFinalizarN);
         Button btnGuardarN = (Button) mView.findViewById(R.id.btnGuardarN);
 
-        String idFecha = fechaActual();
+         String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
-        myRef = FirebaseDatabase.getInstance().getReference("Natacion").child(idFecha).child(idUser);
+        myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Natacion").child(idFecha).child(idUser);
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
@@ -478,6 +511,22 @@ public class DiariaActivity extends AppCompatActivity{
         });
     }
 
+    private void volumeTotal() {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
+        myRef.child(nroMicrociclo()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
+                tvVolumenT.setText(gestionRutinas.getVolumen());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void btnStartCiclismo(View view) {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_ciclismo_user, null);
@@ -492,7 +541,7 @@ public class DiariaActivity extends AppCompatActivity{
 
         String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
-        myRef = FirebaseDatabase.getInstance().getReference("Ciclismo").child(idFecha).child(idUser);
+        myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Ciclismo").child(idFecha).child(idUser);
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
@@ -549,7 +598,7 @@ public class DiariaActivity extends AppCompatActivity{
 
         String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
-        myRef = FirebaseDatabase.getInstance().getReference("Pedestrismo").child(idFecha).child(idUser);
+        myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Pedestrismo").child(idFecha).child(idUser);
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
