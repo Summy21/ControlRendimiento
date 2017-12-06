@@ -61,19 +61,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
         </activity>
-        <activity android:name=".views.EntrenamientoCiclismoAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.RegistroAdminActivity" />
-            </activity>
-
-        <activity android:name=".views.EntrenamientoCarreraAdminActivity"
+        <activity
+            android:name=".views.EntrenamientoCiclismoAdminActivity"
             android:parentActivityName=".views.RegistroAdminActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
         </activity>
+        <activity
+            android:name=".views.EntrenamientoCarreraAdminActivity"
+            android:parentActivityName=".views.RegistroAdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.RegistroAdminActivity" />
+        </activity>
+        <activity android:name=".views.CiclismoAdminActivity" />
+        <activity android:name=".views.CarreraAdminActivity"></activity>
     </application>
 
 </manifest>

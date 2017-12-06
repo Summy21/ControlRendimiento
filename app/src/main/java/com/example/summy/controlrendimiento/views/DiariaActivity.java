@@ -1,6 +1,7 @@
 package com.example.summy.controlrendimiento.views;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -465,9 +466,9 @@ public class DiariaActivity extends AppCompatActivity{
         Button btnGuardarN = (Button) mView.findViewById(R.id.btnGuardarN);
         tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
         final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
-        volumeGeneral();
+        volumeGeneral("Natacion");
 
-         String idFecha = fechaActual();
+        String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
         myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Natacion").child(idFecha).child(idUser);
         mBuilder.setView(mView);
@@ -513,21 +514,6 @@ public class DiariaActivity extends AppCompatActivity{
         });
     }
 
-    private void volumeGeneral() {
-        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
-        myRef.child(nroMicrociclo()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
-                tvVolumenT.setText(gestionRutinas.getVolumen());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     public void btnStartCiclismo(View view) {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
@@ -540,6 +526,9 @@ public class DiariaActivity extends AppCompatActivity{
         final Button btnIniciarC = (Button) mView.findViewById(R.id.btnIniciarC);
         final Button btnFinalizarC = (Button) mView.findViewById(R.id.btnFinalizarC);
         Button btnGuardarC = (Button) mView.findViewById(R.id.btnGuardarC);
+        tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
+        final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
+        volumeGeneral("Ciclismo");
 
         String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
@@ -598,10 +587,13 @@ public class DiariaActivity extends AppCompatActivity{
         final Button btnFinalizarCa = (Button) mView.findViewById(R.id.btnFinalizarCa);
         Button btnGuardarCa = (Button) mView.findViewById(R.id.btnGuardarCa);
         etFcMaxCa             = (EditText) mView.findViewById(R.id.etFcMaxCa);
+        tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
+        final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
+        volumeGeneral("Carrera");
 
         String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
-        myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Pedestrismo").child(idFecha).child(idUser);
+        myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Carrera").child(idFecha).child(idUser);
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
@@ -641,6 +633,24 @@ public class DiariaActivity extends AppCompatActivity{
                     mostrarMessage("Falta completar los datos");
                 }
                 dialog.dismiss();
+            }
+        });
+    }
+    private void volumeGeneral(String disciplina) {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child(disciplina);
+        myRef.child(nroMicrociclo()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
+                double volm = Double.parseDouble(gestionRutinas.getVolumen());
+                DecimalFormat df = new DecimalFormat("#.0");
+                String vol = df.format(volm);
+                tvVolumenT.setText(vol);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

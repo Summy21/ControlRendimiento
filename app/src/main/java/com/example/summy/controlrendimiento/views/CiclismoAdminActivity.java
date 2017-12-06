@@ -9,18 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.summy.controlrendimiento.R;
-import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,10 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
-import static android.R.attr.id;
-
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class NatacionAdminActivity extends AppCompatActivity {
+public class CiclismoAdminActivity extends AppCompatActivity {
 
     private View rootView;
 
@@ -59,23 +52,21 @@ public class NatacionAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_natacion_admin);
-        showToolbar("Gestion de rutinas natacion", true);
-        rootView = findViewById(R.id.rootViewGestionN);
+        setContentView(R.layout.activity_ciclismo_admin);
+        showToolbar("Gestion de rutinas ciclismo", true);
+        rootView = findViewById(R.id.rootViewGestionC);
 
         tvMicrociclo = (TextView) findViewById(R.id.tvMicrociclo);
         tvMesociclo = (TextView) findViewById(R.id.tvMesociclo);
         spinnerEtapas = (Spinner) findViewById(R.id.spinnerEtapas);
 
-        Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
+        Button btnGuardar = (Button) findViewById(R.id.btnGuardarC);
         final String idM = String.valueOf(nroMicrociclo());
         tvMicrociclo.setText(idM);
         tvMesociclo.setText(nroMesociclo());
 
-        mostrarGestionNatacion(idM);
-
-        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
-
+        mostrarGestionCiclismo(idM);
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Ciclismo");
         tvMicrociclo = (TextView) findViewById(R.id.tvMicrociclo);
         tvMesociclo = (TextView) findViewById(R.id.tvMesociclo);
         spinnerEtapas = (Spinner) findViewById(R.id.spinnerEtapas);
@@ -96,38 +87,12 @@ public class NatacionAdminActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adicionarGestionNatacion(idM);
+                adicionarGestionCiclismo(idM);
             }
         });
     }
 
-    private void mostrarGestionNatacion(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
-        myRef.child(idM).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
-                etNroSesiones.setText(gestionRutinas.getNroSesiones());
-                etAer.setText(gestionRutinas.getAer());
-                etAel.setText(gestionRutinas.getAel());
-                etAem.setText(gestionRutinas.getAem());
-                etAei.setText(gestionRutinas.getAei());
-                etPae.setText(gestionRutinas.getPae());
-                etCla.setText(gestionRutinas.getCla());
-                etPla.setText(gestionRutinas.getPla());
-                etCala.setText(gestionRutinas.getCala());
-                etPala.setText(gestionRutinas.getPala());
-                tvVolumenT.setText(gestionRutinas.getVolumenT());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void adicionarGestionNatacion(String idM) {
+    private void adicionarGestionCiclismo(String idM) {
         String microciclo = tvMicrociclo.getText().toString().trim();
         String mesociclo = tvMesociclo.getText().toString().trim();
         String etapa = spinnerEtapas.getSelectedItem().toString();
@@ -168,6 +133,32 @@ public class NatacionAdminActivity extends AppCompatActivity {
         }
     }
 
+    private void mostrarGestionCiclismo(String idM) {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Ciclismo");
+        myRef.child(idM).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
+                etNroSesiones.setText(gestionRutinas.getNroSesiones());
+                etAer.setText(gestionRutinas.getAer());
+                etAel.setText(gestionRutinas.getAel());
+                etAem.setText(gestionRutinas.getAem());
+                etAei.setText(gestionRutinas.getAei());
+                etPae.setText(gestionRutinas.getPae());
+                etCla.setText(gestionRutinas.getCla());
+                etPla.setText(gestionRutinas.getPla());
+                etCala.setText(gestionRutinas.getCala());
+                etPala.setText(gestionRutinas.getPala());
+                tvVolumenT.setText(gestionRutinas.getVolumenT());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public int nroMicrociclo(){
         Date date = new Date();
         calendar.setTime(date);
@@ -178,13 +169,13 @@ public class NatacionAdminActivity extends AppCompatActivity {
         SimpleDateFormat m = new SimpleDateFormat("MM");
         return m.format(date);
     }
+    private void mostrarMessage(String mensaje) {
+        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
     public void showToolbar(String tittle, boolean upButton){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(tittle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
-    }
-    private void mostrarMessage(String mensaje) {
-        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
     }
 }

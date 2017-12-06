@@ -235,21 +235,6 @@ public class RegistroAdminActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-//    public void showData(DataSnapshot dataSnapshot, View mView){
-//        for (DataSnapshot ds : dataSnapshot.getChildren()){
-//            CompNacional compNacional = new CompNacional();
-//            compNacional.setTituloComp(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getTituloComp());
-//            compNacional.setLugarComp(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getLugarComp());
-//            compNacional.setFechaIni(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getFechaIni());
-//            compNacional.setFechaFin(ds.child("-KzMQ2gop2D1U1Z6DDRu").getValue(CompNacional.class).getFechaFin());
-//
-//            tvNombreCompetencia.setText(compNacional.getTituloComp());
-//            tvLugarCompetencia.setText(compNacional.getLugarComp());
-//            etFechaIni.setText(compNacional.getFechaIni());
-//            etFechaFin.setText(compNacional.getFechaFin());
-//
-//        }
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -313,21 +298,31 @@ public class RegistroAdminActivity extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.item4:
-                startActivity(new Intent(getApplicationContext(),EntrenamientoNatacionAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(),CiclismoAdminActivity.class));
                 break;
         }
         switch (item.getItemId()){
             case R.id.item5:
-                startActivity(new Intent(getApplicationContext(),EntrenamientoCiclismoAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(),CarreraAdminActivity.class));
                 break;
         }
         switch (item.getItemId()){
             case R.id.item6:
-                startActivity(new Intent(getApplicationContext(),EntrenamientoCarreraAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(),EntrenamientoNatacionAdminActivity.class));
                 break;
         }
         switch (item.getItemId()){
             case R.id.item7:
+                startActivity(new Intent(getApplicationContext(),EntrenamientoCiclismoAdminActivity.class));
+                break;
+        }
+        switch (item.getItemId()){
+            case R.id.item8:
+                startActivity(new Intent(getApplicationContext(),EntrenamientoCarreraAdminActivity.class));
+                break;
+        }
+        switch (item.getItemId()){
+            case R.id.item9:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
