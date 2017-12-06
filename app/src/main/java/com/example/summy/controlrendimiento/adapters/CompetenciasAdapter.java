@@ -1,6 +1,5 @@
 package com.example.summy.controlrendimiento.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -9,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.summy.controlrendimiento.model.CompNacional;
-import com.example.summy.controlrendimiento.views.ObtenerCompetenciasApiActivity;
 import com.example.summy.controlrendimiento.R;
-import com.example.summy.controlrendimiento.model.Competencia;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 

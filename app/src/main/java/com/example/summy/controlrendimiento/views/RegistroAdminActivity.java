@@ -231,9 +231,6 @@ public class RegistroAdminActivity extends AppCompatActivity {
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
                 break;
-            case 2:
-                startActivity(new Intent(getApplicationContext(),PeriodosActivity.class));
-                break;
         }
         return super.onContextItemSelected(item);
     }
