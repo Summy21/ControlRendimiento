@@ -55,23 +55,50 @@
                     android:textStyle="bold"
                     tools:text="Lugar" />
 
-                <TextView
-                    android:id="@+id/fechaIniTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/textBody"
-                    android:textStyle="bold"
-                    tools:text="05/11/2017" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/editTextColorBlack"
+                        android:textSize="@dimen/textBody"
+                        android:textStyle="bold"
+                        android:layout_marginRight="16dp"
+                        tools:text="Empieza" />
+                    <TextView
+                        android:id="@+id/fechaIniTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/textBody"
+                        android:textStyle="bold"
+                        tools:text="05/11/2017" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/fechaFinTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/textBody"
-                    android:textStyle="bold"
-                    tools:text="08/11/2017" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/editTextColorBlack"
+                        android:textSize="@dimen/textBody"
+                        android:textStyle="bold"
+                        android:layout_marginRight="16dp"
+                        tools:text="Termina" />
+                    <TextView
+                        android:id="@+id/fechaFinTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/textBody"
+                        android:textStyle="bold"
+                        tools:text="08/11/2017" />
+                </LinearLayout>
+
 
             </LinearLayout>
 

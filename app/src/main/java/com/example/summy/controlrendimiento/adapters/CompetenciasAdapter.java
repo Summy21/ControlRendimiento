@@ -41,12 +41,6 @@ public class CompetenciasAdapter extends RecyclerView.Adapter<CompetenciasAdapte
         holder.fechaIniTextView.setText(comp.getFechaIni());
         holder.fechaFinTextView.setText(comp.getFechaFin());
 
- //       String url = "http://image.tmdb.org/t/p/w185" + p.getImagen();
-
-  //      Glide.with(context).load(url).into(holder.fotoImageView);
-
-//        holder.setOnPeliculaItemClick(p, onPeliculaItemClickListener);
-
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

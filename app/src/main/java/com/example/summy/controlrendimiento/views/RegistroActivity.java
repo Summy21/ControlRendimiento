@@ -47,13 +47,12 @@ public class RegistroActivity extends AppCompatActivity {
 
     private View rootView;
 
-    DatabaseReference databaseAtleta;
-
     Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        showToolbar("EDITAR REGISTRO", true);
 
         myRef = FirebaseDatabase.getInstance().getReference("Atletas");
         Intent intent= getIntent();
@@ -73,23 +72,15 @@ public class RegistroActivity extends AppCompatActivity {
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
         btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
 
-
-
         rootView = findViewById(R.id.rootViewRegistro);
-
-       // databaseAtleta = FirebaseDatabase.getInstance().getReference("atleta");
 
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   crearCuenta(etEmail.getText().toString(), etPasswordCreateaccount.getText().toString());
                 adicionarAtleta(extras.getString("idUser"));
             }
         });
-
-
     }
-
 
     private void adicionarAtleta (String idUser){
         String nombres = etnombres.getText().toString().trim();
@@ -115,7 +106,6 @@ public class RegistroActivity extends AppCompatActivity {
 
         }else{
             mostrarMessage("Falta completar los datos");
-            //Toast.makeText(this,"Falta completar los datos",Toast.LENGTH_LONG).show();
         }
     }
     private void mostrarMessage(String mensaje) {

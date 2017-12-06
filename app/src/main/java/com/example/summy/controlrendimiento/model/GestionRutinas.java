@@ -21,6 +21,7 @@ public class GestionRutinas {
     String cala;
     String pala;
     String volumen;
+    String volumenT;
 
     public GestionRutinas() {
     }
@@ -39,6 +40,7 @@ public class GestionRutinas {
                           String pla,
                           String cala,
                           String pala,
+                          String volumenT,
                           String volumen) {
 
         this.microciclo = microciclo;
@@ -55,6 +57,7 @@ public class GestionRutinas {
         this.pla = pla;
         this.cala = cala;
         this.pala = pala;
+        this.volumenT = volumenT;
         this.volumen = volumen;
     }
 
@@ -124,5 +127,9 @@ public class GestionRutinas {
 
     public String getVolumen() {
         return volumen;
+    }
+
+    public String getVolumenT() {
+        return volumenT;
     }
 }

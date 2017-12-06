@@ -132,13 +132,6 @@ public class EditarRegistroAtleta extends AppCompatActivity {
         }
     }
 
-    public void showToolbar(String tittle, boolean upButton){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(tittle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
-
-    }
     public void showData (String user){
         myRef = FirebaseDatabase.getInstance().getReference("Atletas");
         myRef.child(user).addValueEventListener(new ValueEventListener() {
@@ -166,5 +159,12 @@ public class EditarRegistroAtleta extends AppCompatActivity {
 
     private void mostrarMessage(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
+    public void showToolbar(String tittle, boolean upButton){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(tittle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
     }
 }

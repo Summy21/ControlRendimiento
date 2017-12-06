@@ -104,6 +104,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/datos_contacto"
+                android:textColor="#388E3C"
+                android:textStyle="bold"
                 android:textSize="24sp" />
 
 
@@ -139,6 +141,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/datos_emergencia"
+                android:textColor="#388E3C"
+                android:textStyle="bold"
                 android:textSize="24sp" />
 
 

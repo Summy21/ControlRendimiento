@@ -52,7 +52,7 @@ public class NatacionAdminActivity extends AppCompatActivity {
     EditText etPla;
     EditText etCala;
     EditText etPala;
-    TextView tvVolumen;
+    TextView tvVolumenT;
 
     Calendar calendar = Calendar.getInstance();
 
@@ -73,7 +73,7 @@ public class NatacionAdminActivity extends AppCompatActivity {
         tvMicrociclo.setText(idM);
         tvMesociclo.setText(nroMesociclo());
 
-   //     mostrarGestionNatacion(idM);
+        mostrarGestionNatacion(idM);
 
         myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
 
@@ -92,7 +92,7 @@ public class NatacionAdminActivity extends AppCompatActivity {
         etPla = (EditText) findViewById(R.id.etPla);
         etCala = (EditText) findViewById(R.id.etCala);
         etPala = (EditText) findViewById(R.id.etPala);
-        tvVolumen = (TextView) findViewById(R.id.tvVolumen);
+        tvVolumenT = (TextView) findViewById(R.id.tvVolumenT);
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +118,7 @@ public class NatacionAdminActivity extends AppCompatActivity {
                 etPla.setText(gestionRutinas.getPla());
                 etCala.setText(gestionRutinas.getCala());
                 etPala.setText(gestionRutinas.getPala());
-                tvVolumen.setText(gestionRutinas.getVolumen());
+                tvVolumenT.setText(gestionRutinas.getVolumenT());
             }
 
             @Override
@@ -153,15 +153,18 @@ public class NatacionAdminActivity extends AppCompatActivity {
         int Pla = Integer.parseInt(pla);
         int Cala = Integer.parseInt(cala);
         int Pala = Integer.parseInt(pala);
+        double sesion = Integer.parseInt(nroSesiones);
 
-        int vol = Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala;
+        double volT = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala);
+        double vol = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala)/sesion;
 
+        String volumenT = String.valueOf(volT);
         String volumen = String.valueOf(vol);
         if(!TextUtils.isEmpty(microciclo)){
 
-            GestionRutinas gestionRutinas = new GestionRutinas(microciclo, mesociclo, etapa, periodo, nroSesiones, aer, ael,aem,aei,pae,cla,pla,cala,pala, volumen);
+            GestionRutinas gestionRutinas = new GestionRutinas(microciclo, mesociclo, etapa, periodo, nroSesiones, aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen);
             myRef.child(idM).setValue(gestionRutinas);
-            tvVolumen.setText(volumen);
+            tvVolumenT.setText(volumenT);
             mostrarMessage("Adicionado");
         }
     }

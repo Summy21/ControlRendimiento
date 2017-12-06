@@ -35,7 +35,7 @@
     <string name="toolbar_tittle_createaccount">Crear Cuenta</string>
     <string name="toolbar_tittle_editar_registro">Editar Registro</string>
     <string name="hint_confirm_password">Confirmar Contraseña</string>
-    <string name="frecuencia_cardiaca">Frecuencia cardiaca</string>
+    <string name="frecuencia_cardiaca">Frecuencia cardiaca Basal</string>
     <string name="volumen_general">Volumen general</string>
 
     <string name="main.tv.registrate">Registrate</string>

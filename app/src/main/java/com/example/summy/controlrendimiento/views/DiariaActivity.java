@@ -1,7 +1,6 @@
 package com.example.summy.controlrendimiento.views;
 
 import android.content.Intent;
-import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -28,7 +27,6 @@ import com.example.summy.controlrendimiento.model.DiarioEntrenamiento;
 import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -307,7 +305,7 @@ public class DiariaActivity extends AppCompatActivity{
                 final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
                 Button btnGuardar = (Button) mView.findViewById(R.id.btnGuardar);
                 tvVolumenT  = (TextView) mView.findViewById(R.id.tvVolumenT);
-                volumeTotal();
+                volumeGeneral();
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
@@ -511,7 +509,7 @@ public class DiariaActivity extends AppCompatActivity{
         });
     }
 
-    private void volumeTotal() {
+    private void volumeGeneral() {
         myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
         myRef.child(nroMicrociclo()).addValueEventListener(new ValueEventListener() {
             @Override
