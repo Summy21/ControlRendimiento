@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.EntrenamientoRut;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +33,7 @@ import java.util.Date;
 public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
 
     private View rootView;
-
+    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
 
     EditText etAer;
@@ -63,11 +64,13 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         showToolbar("Entrenamiento Carrera", true);
         rootView = findViewById(R.id.rootViewECAU);
 
+        mAuth = FirebaseAuth.getInstance();
+
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
         final String idM = String.valueOf(nroMicrociclo());
         mostrarGestionCarrera(idM);
-        mostrarEntrenamientoCarrera(idM);
+       // mostrarEntrenamientoCarrera(idM);
 
         tvAer = (TextView) findViewById(R.id.tvAer);
         tvAel = (TextView) findViewById(R.id.tvAel);
@@ -122,7 +125,8 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
     }
 
     private void adicionarEntrenamientoCarrera(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera");
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera").child(idM);
+        String idUser = mAuth.getCurrentUser().getUid();
 
         String aer = etAer.getText().toString().trim();
         String ael = etAel.getText().toString().trim();
@@ -152,13 +156,14 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(aer)){
 
             EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen);
-            myRef.child(idM).setValue(entrenamientoRut);
+            myRef.child(idUser).setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
     }
     private void mostrarEntrenamientoCarrera(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera");
-        myRef.child(idM).addValueEventListener(new ValueEventListener() {
+        String idUser = mAuth.getCurrentUser().getUid();
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera").child(idM);
+        myRef.child(idUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);

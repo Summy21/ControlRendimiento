@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.EntrenamientoRut;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,7 @@ import java.util.Date;
 public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
 
     private View rootView;
+    private FirebaseAuth mAuth;
 
     private DatabaseReference myRef;
 
@@ -62,6 +64,7 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         setContentView(R.layout.activity_entrenamiento_natacion_user);
         showToolbar("Entrenamiento Natacion", true);
         rootView = findViewById(R.id.rootViewENU);
+        mAuth = FirebaseAuth.getInstance();
 
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
@@ -123,7 +126,8 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
     }
 
     private void adicionarEntrenamientoNatacion(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion");
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
+        String idUser = mAuth.getCurrentUser().getUid();
 
         String aer = etAer.getText().toString().trim();
         String ael = etAel.getText().toString().trim();
@@ -153,13 +157,14 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         if(!TextUtils.isEmpty(aer)){
 
             EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen);
-            myRef.child(idM).setValue(entrenamientoRut);
+            myRef.child(idUser).setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
     }
     private void mostrarEntrenamientoNatacion(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion");
-        myRef.child(idM).addValueEventListener(new ValueEventListener() {
+        String idUser = mAuth.getCurrentUser().getUid();
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
+        myRef.child(idUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);

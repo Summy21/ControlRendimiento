@@ -15,26 +15,29 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".views.RegistroActivity" />
         <activity android:name=".views.DiariaActivity" />
         <activity android:name=".views.RegistroAdminActivity" />
-
-        <activity android:name=".views.EntrenamientoNatacionUserActivity"
+        <activity
+            android:name=".views.EntrenamientoNatacionUserActivity"
             android:parentActivityName=".views.DiariaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
-        <activity android:name=".views.EntrenamientoCiclismoUserActivity"
+        <activity
+            android:name=".views.EntrenamientoCiclismoUserActivity"
             android:parentActivityName=".views.DiariaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
-            </activity>
-        <activity android:name=".views.EntrenamientoCarreraUserActivity"
+        </activity>
+        <activity
+            android:name=".views.EntrenamientoCarreraUserActivity"
             android:parentActivityName=".views.DiariaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -68,29 +71,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
-        <activity
-            android:name=".views.EntrenamientoNatacionAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.RegistroAdminActivity" />
-        </activity>
-        <activity
-            android:name=".views.EntrenamientoCiclismoAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.RegistroAdminActivity" />
-        </activity>
-        <activity
-            android:name=".views.EntrenamientoCarreraAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.RegistroAdminActivity" />
-        </activity>
         <activity android:name=".views.CiclismoAdminActivity" />
-        <activity android:name=".views.CarreraAdminActivity"></activity>
+        <activity android:name=".views.CarreraAdminActivity" />
+        <activity android:name=".views.ControlCompetidoresActivity"></activity>
     </application>
 
 </manifest>

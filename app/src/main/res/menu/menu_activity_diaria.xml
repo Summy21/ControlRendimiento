@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/item1"
-        android:title="Diario de entrenamiento"
+        android:title="Frecuencia Basal Diaria"
         android:icon="@mipmap/ic_launcher">
     </item>
     <item

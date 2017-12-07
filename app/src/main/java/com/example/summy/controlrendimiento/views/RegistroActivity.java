@@ -43,8 +43,6 @@ public class RegistroActivity extends AppCompatActivity {
     private TextView ettelefonofamiliar;
     private TextView ettelefonoseguromedico;
 
-    private Button btnfinalizar;
-
     private View rootView;
 
     Bundle extras;
@@ -70,7 +68,7 @@ public class RegistroActivity extends AppCompatActivity {
         etdomicilio = (TextView) findViewById(R.id.etDomicilio);
         ettelefonofamiliar = (TextView) findViewById(R.id.etTelFamiliar);
         ettelefonoseguromedico = (TextView) findViewById(R.id.etTelSeguroMedico);
-        btnfinalizar = (Button)findViewById(R.id.btnFinalizarRegistro);
+        Button btnfinalizar = (Button) findViewById(R.id.btnFinalizarRegistro);
 
         rootView = findViewById(R.id.rootViewRegistro);
 
@@ -96,7 +94,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(nombres)){
 
-            Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico);
+            Atleta atleta = new Atleta(nombres,paterno,materno,estatura,genero,peso,telcelular,direccion,telfamiliar,telseguromedico, idUser);
 
             myRef.child(idUser).setValue(atleta);
             Toast.makeText(this,"registro adicionado",Toast.LENGTH_LONG).show();

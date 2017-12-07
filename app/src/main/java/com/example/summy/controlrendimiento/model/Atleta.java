@@ -5,6 +5,8 @@ package com.example.summy.controlrendimiento.model;
  */
 
 public class Atleta {
+
+    String idUSer;
     String nombres;
     String paterno;
     String materno;
@@ -20,6 +22,29 @@ public class Atleta {
 
     }
 
+    public Atleta(String nombres,
+                  String paterno,
+                  String materno,
+                  String estatura,
+                  String genero,
+                  String peso,
+                  String telCelular,
+                  String domicilio,
+                  String telFamiliar,
+                  String telSeguroMedico,
+                  String idUSer) {
+        this.nombres = nombres;
+        this.paterno = paterno;
+        this.materno = materno;
+        this.estatura = estatura;
+        this.genero = genero;
+        this.peso = peso;
+        this.telCelular = telCelular;
+        this.domicilio = domicilio;
+        this.telFamiliar = telFamiliar;
+        this.telSeguroMedico = telSeguroMedico;
+        this.idUSer = idUSer;
+    }
     public Atleta(String nombres,
                   String paterno,
                   String materno,
@@ -120,5 +145,9 @@ public class Atleta {
 
     public void setTelSeguroMedico(String telSeguroMedico) {
         this.telSeguroMedico = telSeguroMedico;
+    }
+
+    public String getIdUSer() {
+        return idUSer;
     }
 }
