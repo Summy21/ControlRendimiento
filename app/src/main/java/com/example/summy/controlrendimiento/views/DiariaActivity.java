@@ -25,7 +25,6 @@ import com.example.summy.controlrendimiento.MainActivity;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.DiarioDisciplina;
 import com.example.summy.controlrendimiento.model.DiarioEntrenamiento;
-import com.example.summy.controlrendimiento.model.Entrenamiento;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -123,47 +122,7 @@ public class DiariaActivity extends AppCompatActivity{
         listEntrenamientoN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_natacion, null);
-
-                final TextView tvCalentamientoN = (TextView) mView.findViewById(R.id.tvCalentamientoN);
-                final TextView tvFase1          = (TextView) mView.findViewById(R.id.tvFase1N);
-                final TextView tvFase2          = (TextView) mView.findViewById(R.id.tvFase2N);
-                final TextView tvFaseFundN      = (TextView) mView.findViewById(R.id.tvFaseFundN);
-                final TextView tvCalmaN         = (TextView) mView.findViewById(R.id.tvCalmaN);
-                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
-
-                mBuilder.setView(mView);
-                final AlertDialog dialog = mBuilder.create();
-                dialog.show();
-
-                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Natacion");
-
-                myRef.child(id).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
-
-                        tvCalentamientoN.setText(entrenamientoNatacion.getCalentamiento());
-                        tvFase1.setText(entrenamientoNatacion.getFasePrinc1());
-                        tvFase2.setText(entrenamientoNatacion.getFasePrinc2());
-                        tvFaseFundN.setText(entrenamientoNatacion.getFaseFund());
-                        tvCalmaN.setText(entrenamientoNatacion.getVueltaCalma());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-                btnListo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
+                startActivity(new Intent(getApplicationContext(),EntrenamientoNatacionUserActivity.class));
             }
 
         });
@@ -173,46 +132,47 @@ public class DiariaActivity extends AppCompatActivity{
         listEntrenamientoC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_ciclismo, null);
-
-                final TextView tvCalentamientoC = (TextView) mView.findViewById(R.id.tvCalentamientoC);
-                final TextView tvFase1C          = (TextView) mView.findViewById(R.id.tvFase1C);
-                final TextView tvFase2C         = (TextView) mView.findViewById(R.id.tvFase2C);
-                final TextView tvFaseFundC      = (TextView) mView.findViewById(R.id.tvFaseFundC);
-                final TextView tvCalmaC         = (TextView) mView.findViewById(R.id.tvCalmaC);
-                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
-
-                mBuilder.setView(mView);
-                final AlertDialog dialog = mBuilder.create();
-                dialog.show();
-
-                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Ciclismo");
-
-                myRef.child(idC).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
-
-                        tvCalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
-                        tvFase1C.setText(entrenamientoNatacion.getFasePrinc1());
-                        tvFase2C.setText(entrenamientoNatacion.getFasePrinc2());
-                        tvFaseFundC.setText(entrenamientoNatacion.getFaseFund());
-                        tvCalmaC.setText(entrenamientoNatacion.getVueltaCalma());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-                btnListo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+                startActivity(new Intent(getApplicationContext(),EntrenamientoCiclismoUserActivity.class));
+//                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
+//                View mView = getLayoutInflater().inflate(R.layout.activity_entrenamiento_ciclismo_user, null);
+//
+//                final TextView tvCalentamientoC = (TextView) mView.findViewById(R.id.tvCalentamientoC);
+//                final TextView tvFase1C          = (TextView) mView.findViewById(R.id.tvFase1C);
+//                final TextView tvFase2C         = (TextView) mView.findViewById(R.id.tvFase2C);
+//                final TextView tvFaseFundC      = (TextView) mView.findViewById(R.id.tvFaseFundC);
+//                final TextView tvCalmaC         = (TextView) mView.findViewById(R.id.tvCalmaC);
+//                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
+//
+//                mBuilder.setView(mView);
+//                final AlertDialog dialog = mBuilder.create();
+//                dialog.show();
+//
+//                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Ciclismo");
+//
+//                myRef.child(idC).addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
+//
+//                        tvCalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
+//                        tvFase1C.setText(entrenamientoNatacion.getFasePrinc1());
+//                        tvFase2C.setText(entrenamientoNatacion.getFasePrinc2());
+//                        tvFaseFundC.setText(entrenamientoNatacion.getFaseFund());
+//                        tvCalmaC.setText(entrenamientoNatacion.getVueltaCalma());
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+//
+//                btnListo.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
 
             }
         });
@@ -221,46 +181,7 @@ public class DiariaActivity extends AppCompatActivity{
         listEntrenamientoCa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.activity_dialog_entrenamiento_carrera, null);
-
-                final TextView tvCalentamientoCa = (TextView) mView.findViewById(R.id.tvCalentamientoCa);
-                final TextView tvFase1Ca          = (TextView) mView.findViewById(R.id.tvFase1Ca);
-                final TextView tvFase2Ca         = (TextView) mView.findViewById(R.id.tvFase2Ca);
-                final TextView tvFaseFundCa      = (TextView) mView.findViewById(R.id.tvFaseFundCa);
-                final TextView tvCalmaCa         = (TextView) mView.findViewById(R.id.tvCalmaCa);
-                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
-
-                mBuilder.setView(mView);
-                final AlertDialog dialog = mBuilder.create();
-                dialog.show();
-
-                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Pedestrismo");
-
-                myRef.child(idCa).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
-
-                        tvCalentamientoCa.setText(entrenamientoNatacion.getCalentamiento());
-                        tvFase1Ca.setText(entrenamientoNatacion.getFasePrinc1());
-                        tvFase2Ca.setText(entrenamientoNatacion.getFasePrinc2());
-                        tvFaseFundCa.setText(entrenamientoNatacion.getFaseFund());
-                        tvCalmaCa.setText(entrenamientoNatacion.getVueltaCalma());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-                btnListo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+                startActivity(new Intent(getApplicationContext(),EntrenamientoCarreraUserActivity.class));
             }
         });
     }

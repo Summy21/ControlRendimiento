@@ -7,15 +7,15 @@
     android:layout_height="match_parent"
     tools:context="com.example.summy.controlrendimiento.views.ListCompetenciasUserActivity">
 
-
+    <include layout="@layout/actionbar_toolbar"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="5dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/actionbar_toolbar"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
