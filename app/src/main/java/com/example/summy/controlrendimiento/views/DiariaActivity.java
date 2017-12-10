@@ -133,46 +133,6 @@ public class DiariaActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),EntrenamientoCiclismoUserActivity.class));
-//                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DiariaActivity.this);
-//                View mView = getLayoutInflater().inflate(R.layout.activity_entrenamiento_ciclismo_user, null);
-//
-//                final TextView tvCalentamientoC = (TextView) mView.findViewById(R.id.tvCalentamientoC);
-//                final TextView tvFase1C          = (TextView) mView.findViewById(R.id.tvFase1C);
-//                final TextView tvFase2C         = (TextView) mView.findViewById(R.id.tvFase2C);
-//                final TextView tvFaseFundC      = (TextView) mView.findViewById(R.id.tvFaseFundC);
-//                final TextView tvCalmaC         = (TextView) mView.findViewById(R.id.tvCalmaC);
-//                final Button btnListo         = (Button) mView.findViewById(R.id.btnListo);
-//
-//                mBuilder.setView(mView);
-//                final AlertDialog dialog = mBuilder.create();
-//                dialog.show();
-//
-//                myRef = FirebaseDatabase.getInstance().getReference("Entrenamientos").child("Ciclismo");
-//
-//                myRef.child(idC).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        Entrenamiento entrenamientoNatacion = dataSnapshot.getValue(Entrenamiento.class);
-//
-//                        tvCalentamientoC.setText(entrenamientoNatacion.getCalentamiento());
-//                        tvFase1C.setText(entrenamientoNatacion.getFasePrinc1());
-//                        tvFase2C.setText(entrenamientoNatacion.getFasePrinc2());
-//                        tvFaseFundC.setText(entrenamientoNatacion.getFaseFund());
-//                        tvCalmaC.setText(entrenamientoNatacion.getVueltaCalma());
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-//
-//                btnListo.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
 
             }
         });
