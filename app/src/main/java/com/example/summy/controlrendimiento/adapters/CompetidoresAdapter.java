@@ -2,33 +2,22 @@ package com.example.summy.controlrendimiento.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.test.suitebuilder.TestMethod;
 import android.text.Html;
 import android.util.DisplayMetrics;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
-import com.example.summy.controlrendimiento.model.CompNacional;
-import com.example.summy.controlrendimiento.model.Entrenamiento;
-import com.example.summy.controlrendimiento.model.EntrenamientoRut;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
-import com.example.summy.controlrendimiento.views.ControlCompetidoresActivity;
-import com.example.summy.controlrendimiento.views.DiariaActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,9 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 import java.util.List;
-
-import static com.example.summy.controlrendimiento.R.id.etAer;
-import static com.example.summy.controlrendimiento.R.id.tvNombreComp;
 
 
 @RequiresApi(api = Build.VERSION_CODES.N)

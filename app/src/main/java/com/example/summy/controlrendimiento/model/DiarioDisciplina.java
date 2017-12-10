@@ -9,11 +9,13 @@ public class DiarioDisciplina {
     String tiempoTrabajo;
     String fcMax;
     String volGral;
+    String fecha;
 
-    public DiarioDisciplina(String tiempoTrabajo, String fcMax, String volGral) {
+    public DiarioDisciplina(String tiempoTrabajo, String fcMax, String volGral, String fecha) {
         this.tiempoTrabajo = tiempoTrabajo;
         this.fcMax = fcMax;
         this.volGral = volGral;
+        this.fecha = fecha;
     }
 
     public String getTiempoTrabajo() {
@@ -26,5 +28,9 @@ public class DiarioDisciplina {
 
     public String getVolGral() {
         return volGral;
+    }
+
+    public String getFecha() {
+        return fecha;
     }
 }

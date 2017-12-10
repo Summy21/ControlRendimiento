@@ -58,11 +58,10 @@
 
         <activity
             android:name=".views.NatacionAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity"
-            tools:targetApi="jelly_bean">
+            android:parentActivityName=".views.RegistroAdminActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.DiariaActivity" />
+                android:value=".views.RegistroAdminActivity" />
         </activity>
         <activity
             android:name=".views.ListCompetenciasUserActivity"
@@ -71,8 +70,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
-        <activity android:name=".views.CiclismoAdminActivity" />
-        <activity android:name=".views.CarreraAdminActivity" />
+        <activity android:name=".views.CiclismoAdminActivity"
+            android:parentActivityName=".views.RegistroAdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.RegistroAdminActivity" />
+            </activity>
+        <activity android:name=".views.CarreraAdminActivity"
+            android:parentActivityName=".views.RegistroAdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.RegistroAdminActivity" />
+            </activity>
         <activity android:name=".views.ControlCompetidoresActivity"></activity>
     </application>
 

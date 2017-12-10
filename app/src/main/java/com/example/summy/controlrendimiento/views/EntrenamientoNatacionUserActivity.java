@@ -156,7 +156,7 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         String volumen = String.valueOf(vol);
         if(!TextUtils.isEmpty(aer)){
 
-            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen);
+            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen, idM);
             myRef.child(idUser).setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }

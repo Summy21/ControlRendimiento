@@ -17,6 +17,7 @@ public class EntrenamientoRut {
     String pala;
     String volumenT;
     String volumen;
+    String microciclo;
 
     public EntrenamientoRut() {
     }
@@ -31,7 +32,8 @@ public class EntrenamientoRut {
                             String cala,
                             String pala,
                             String volumenT,
-                            String volumen) {
+                            String volumen,
+                            String microciclo) {
         this.aer = aer;
         this.ael = ael;
         this.aem = aem;
@@ -43,6 +45,7 @@ public class EntrenamientoRut {
         this.pala = pala;
         this.volumenT = volumenT;
         this.volumen = volumen;
+        this.microciclo = microciclo;
     }
 
     public String getAer() {
@@ -87,5 +90,9 @@ public class EntrenamientoRut {
 
     public String getVolumenT() {
         return volumenT;
+    }
+
+    public String getMicrociclo() {
+        return microciclo;
     }
 }

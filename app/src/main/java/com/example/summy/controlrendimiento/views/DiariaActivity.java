@@ -349,7 +349,7 @@ public class DiariaActivity extends AppCompatActivity{
         final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
         volumeGeneral("Natacion");
 
-        String idFecha = fechaActual();
+        final String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
         myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Natacion").child(idFecha).child(idUser);
         mBuilder.setView(mView);
@@ -384,7 +384,7 @@ public class DiariaActivity extends AppCompatActivity{
                 String volGral = etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax, volGral);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax, volGral, idFecha);
                     myRef.setValue(diarioD);
 
                 }else{
@@ -411,7 +411,7 @@ public class DiariaActivity extends AppCompatActivity{
         final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
         volumeGeneral("Ciclismo");
 
-        String idFecha = fechaActual();
+        final String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
         myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Ciclismo").child(idFecha).child(idUser);
         mBuilder.setView(mView);
@@ -446,7 +446,7 @@ public class DiariaActivity extends AppCompatActivity{
                 String volGral = etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral,idFecha);
                     myRef.setValue(diarioD);
 
                 }else{
@@ -472,7 +472,7 @@ public class DiariaActivity extends AppCompatActivity{
         final EditText etVolGral = (EditText) mView.findViewById(R.id.etVolGral);
         volumeGeneral("Carrera");
 
-        String idFecha = fechaActual();
+        final String idFecha = fechaActual();
         String idUser = mAuth.getCurrentUser().getUid();
         myRef = FirebaseDatabase.getInstance().getReference("TiemposFrecuencias").child("Carrera").child(idFecha).child(idUser);
         mBuilder.setView(mView);
@@ -507,7 +507,7 @@ public class DiariaActivity extends AppCompatActivity{
                 String volGral= etVolGral.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(tiempoTrabajo)){
-                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral);
+                    DiarioDisciplina diarioD = new DiarioDisciplina(tiempoTrabajo,fcMax,volGral, idFecha);
                     myRef.setValue(diarioD);
 
                 }else{
