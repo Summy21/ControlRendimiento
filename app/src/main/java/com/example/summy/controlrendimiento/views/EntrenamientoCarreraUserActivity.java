@@ -1,5 +1,7 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
@@ -56,6 +59,7 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
     TextView tvCala;
     TextView tvPala;
     Calendar calendar = Calendar.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +73,6 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
         final String idM = String.valueOf(nroMicrociclo());
-        mostrarGestionCarrera(idM);
-        mostrarEntrenamientoCarrera(idM);
 
         tvAer = (TextView) findViewById(R.id.tvAer);
         tvAel = (TextView) findViewById(R.id.tvAel);
@@ -92,11 +94,38 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         etCala = (EditText) findViewById(R.id.etCala);
         etPala = (EditText) findViewById(R.id.etPala);
 
+        buscaMicroCiclo(idM);
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 adicionarEntrenamientoCarrera(idM);
+                startActivity(new Intent(getApplicationContext(),DiariaActivity.class));
                 finish();
+            }
+        });
+    }
+
+    public void buscaMicroCiclo(final String idM) {
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Carrera");
+        Query query = myRef
+                .orderByKey()
+                .equalTo(idM)
+                .limitToFirst(1);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                }
+                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                    if (singleSnapshot.exists()) {
+                        mostrarGestionCarrera(idM);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
     }
@@ -117,6 +146,7 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
                 tvCala.setText(gestionRutinas.getCala());
                 tvPala.setText(gestionRutinas.getPala());
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -125,8 +155,9 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
     }
 
     private void adicionarEntrenamientoCarrera(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera").child(idM);
         String idUser = mAuth.getCurrentUser().getUid();
+        String idFecha = fechaActual();
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera").child(idM).child(idUser).child(idFecha);
 
         String aer = etAer.getText().toString().trim();
         String ael = etAel.getText().toString().trim();
@@ -148,18 +179,19 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         int Cala = Integer.parseInt(cala);
         int Pala = Integer.parseInt(pala);
 
-        double volT = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala);
-        double vol = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala)/10;
+        double volT = (Aer + Ael + Aem + Aei + Pae + Cla + Pla + Cala + Pala);
+        double vol = (Aer + Ael + Aem + Aei + Pae + Cla + Pla + Cala + Pala) / 10;
 
         String volumenT = String.valueOf(volT);
         String volumen = String.valueOf(vol);
-        if(!TextUtils.isEmpty(aer)){
+        if (!TextUtils.isEmpty(aer)) {
 
-            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen, idM);
-            myRef.child(idUser).setValue(entrenamientoRut);
+            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael, aem, aei, pae, cla, pla, cala, pala, volumenT, volumen, idM);
+            myRef.setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
     }
+
     private void mostrarEntrenamientoCarrera(String idM) {
         String idUser = mAuth.getCurrentUser().getUid();
         myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Carrera").child(idM);
@@ -177,24 +209,38 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
                 etCala.setText(gestionRutinas.getCala());
                 etPala.setText(gestionRutinas.getPala());
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
-    public int nroMicrociclo(){
+
+    public int nroMicrociclo() {
         Date date = new Date();
         calendar.setTime(date);
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
-    public void showToolbar(String tittle, boolean upButton){
+
+    public void showToolbar(String tittle, boolean upButton) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(tittle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
+
     private void mostrarMessage(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
+
+    public String fechaActual() {
+        Calendar f = Calendar.getInstance();
+        Date fechacompleta = f.getTime();
+        //Log.w(TAG, String.valueOf(fechacompleta));
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formatoFecha = df.format(f.getTime());
+        //Log.w(TAG, formatoFecha);
+        return formatoFecha;
     }
 }
