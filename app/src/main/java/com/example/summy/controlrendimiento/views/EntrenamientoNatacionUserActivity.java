@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
@@ -58,6 +60,7 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
     TextView tvPala;
     Calendar calendar = Calendar.getInstance();
 
+    private static final String TAG = "entrenamiento natacion";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +72,6 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
         final String idM = String.valueOf(nroMicrociclo());
-        mostrarGestionNatacion(idM);
-        mostrarEntrenamientoNatacion(idM);
 
         tvAer = (TextView) findViewById(R.id.tvAer);
         tvAel = (TextView) findViewById(R.id.tvAel);
@@ -92,14 +93,41 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         etCala = (EditText) findViewById(R.id.etCala);
         etPala = (EditText) findViewById(R.id.etPala);
 
+        buscaMicroCiclo(idM);
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 adicionarEntrenamientoNatacion(idM);
-                finish();
             }
         });
+    }
 
+    public void buscaMicroCiclo(final String idM){
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Natacion");
+        Query query = myRef
+                .orderByKey()
+                .equalTo(idM)
+                .limitToFirst(1);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()){
+                    Log.w(TAG, "no encontrado");
+                }
+                for (DataSnapshot singleSnapshot: dataSnapshot.getChildren())
+                {
+                    if(singleSnapshot.exists()){
+                        Log.w(TAG, "encontrado");
+                        mostrarGestionNatacion(idM);
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     private void mostrarGestionNatacion(String idM) {
