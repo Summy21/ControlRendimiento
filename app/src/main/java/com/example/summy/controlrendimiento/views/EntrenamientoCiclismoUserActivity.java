@@ -1,5 +1,7 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
@@ -69,8 +72,6 @@ public class EntrenamientoCiclismoUserActivity extends AppCompatActivity {
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
         final String idM = String.valueOf(nroMicrociclo());
-        mostrarGestionCiclismo(idM);
-        mostrarEntrenamientoCiclismo(idM);
 
         tvAer = (TextView) findViewById(R.id.tvAer);
         tvAel = (TextView) findViewById(R.id.tvAel);
@@ -92,11 +93,38 @@ public class EntrenamientoCiclismoUserActivity extends AppCompatActivity {
         etCala = (EditText) findViewById(R.id.etCala);
         etPala = (EditText) findViewById(R.id.etPala);
 
+        buscaMicroCiclo(idM);
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 adicionarEntrenamientoCiclismo(idM);
+                startActivity(new Intent(getApplicationContext(),DiariaActivity.class));
                 finish();
+            }
+        });
+    }
+
+    public void buscaMicroCiclo(final String idM){
+        myRef = FirebaseDatabase.getInstance().getReference("RutinasEjercicio").child("Ciclismo");
+        Query query = myRef
+                .orderByKey()
+                .equalTo(idM)
+                .limitToFirst(1);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()){
+                }
+                for (DataSnapshot singleSnapshot: dataSnapshot.getChildren())
+                {
+                    if(singleSnapshot.exists()){
+                        mostrarGestionCiclismo(idM);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
     }
@@ -125,8 +153,9 @@ public class EntrenamientoCiclismoUserActivity extends AppCompatActivity {
     }
 
     private void adicionarEntrenamientoCiclismo(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Ciclismo").child(idM);
         String idUser = mAuth.getCurrentUser().getUid();
+        String idFecha = fechaActual();
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Ciclismo").child(idM).child(idUser).child(idFecha);
 
         String aer = etAer.getText().toString().trim();
         String ael = etAel.getText().toString().trim();
@@ -156,7 +185,7 @@ public class EntrenamientoCiclismoUserActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(aer)){
 
             EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen, idM);
-            myRef.child(idUser).setValue(entrenamientoRut);
+            myRef.setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
     }
@@ -196,5 +225,14 @@ public class EntrenamientoCiclismoUserActivity extends AppCompatActivity {
     }
     private void mostrarMessage(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
+    public String fechaActual(){
+        Calendar f = Calendar.getInstance();
+        Date fechacompleta = f.getTime();
+        //Log.w(TAG, String.valueOf(fechacompleta));
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formatoFecha= df.format(f.getTime());
+        //Log.w(TAG, formatoFecha);
+        return  formatoFecha;
     }
 }

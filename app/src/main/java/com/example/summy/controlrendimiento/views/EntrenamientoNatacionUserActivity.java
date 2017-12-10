@@ -1,5 +1,7 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -99,6 +101,8 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 adicionarEntrenamientoNatacion(idM);
+                startActivity(new Intent(getApplicationContext(),DiariaActivity.class));
+                finish();
             }
         });
     }
@@ -154,8 +158,9 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
     }
 
     private void adicionarEntrenamientoNatacion(String idM) {
-        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
         String idUser = mAuth.getCurrentUser().getUid();
+        String idFecha = fechaActual();
+        myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser).child(idFecha);
 
         String aer = etAer.getText().toString().trim();
         String ael = etAel.getText().toString().trim();
@@ -185,7 +190,7 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
         if(!TextUtils.isEmpty(aer)){
 
             EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen, idM);
-            myRef.child(idUser).setValue(entrenamientoRut);
+            myRef.setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
     }
@@ -225,5 +230,14 @@ public class EntrenamientoNatacionUserActivity extends AppCompatActivity{
     }
     private void mostrarMessage(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
+    }
+    public String fechaActual(){
+        Calendar f = Calendar.getInstance();
+        Date fechacompleta = f.getTime();
+        Log.w(TAG, String.valueOf(fechacompleta));
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formatoFecha= df.format(f.getTime());
+        Log.w(TAG, formatoFecha);
+        return  formatoFecha;
     }
 }
