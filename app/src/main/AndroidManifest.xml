@@ -24,21 +24,24 @@
         <activity android:name=".views.RegistroAdminActivity" />
         <activity
             android:name=".views.EntrenamientoNatacionUserActivity"
-            android:parentActivityName=".views.DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
         <activity
             android:name=".views.EntrenamientoCiclismoUserActivity"
-            android:parentActivityName=".views.DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
         <activity
             android:name=".views.EntrenamientoCarreraUserActivity"
-            android:parentActivityName=".views.DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
@@ -47,7 +50,8 @@
         <!-- aqui habilitamos el boton volver de activity editar registro atleta -->
         <activity
             android:name=".views.EditarRegistroAtleta"
-            android:parentActivityName=".views.DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity"
+            tools:targetApi="jelly_bean">
 
             <!-- Este meta-data nos permite saber cual sera la actividad padre de esta actividad -->
             <meta-data
@@ -58,31 +62,41 @@
 
         <activity
             android:name=".views.NatacionAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
+            android:parentActivityName=".views.RegistroAdminActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
         </activity>
         <activity
             android:name=".views.ListCompetenciasUserActivity"
-            android:parentActivityName=".views.DiariaActivity">
+            android:parentActivityName=".views.DiariaActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.DiariaActivity" />
         </activity>
         <activity android:name=".views.CiclismoAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
+            android:parentActivityName=".views.RegistroAdminActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
             </activity>
         <activity android:name=".views.CarreraAdminActivity"
-            android:parentActivityName=".views.RegistroAdminActivity">
+            android:parentActivityName=".views.RegistroAdminActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.RegistroAdminActivity" />
             </activity>
-        <activity android:name=".views.ControlCompetidoresActivity"></activity>
+        <activity android:name=".views.ControlCompetidoresActivity"
+            android:parentActivityName=".views.RegistroAdminActivity"
+            tools:targetApi="jelly_bean">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.RegistroAdminActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +39,7 @@ public class ControlCompetidoresActivity extends AppCompatActivity {
     CompetidoresAdapter competidoresAdapter;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

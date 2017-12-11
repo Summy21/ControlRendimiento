@@ -81,46 +81,14 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
 
-                   //     tvNombreComp.set
-                        dialog.setTitle(Html.fromHtml("<font color='#388E3C'>"+ atle.getNombres()+" "+ atle.getPaterno()+" "+atle.getMaterno()+ "</font> <font color='#388E3C'>"));
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-//                final Dialog dialog = new Dialog(context);
-//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                dialog.setContentView(R.layout.activity_control_competidor);
-//                dialog.show();
             }
         });
-
-//        holder.layoutCompetidor.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-//                alertDialog.setTitle(Html.fromHtml("<font color='#388E3C'>"+ atle.getNombres()+" "+ atle.getPaterno()+" "+atle.getMaterno()+ "</font> <font color='#388E3C'>"));
-//
-//                final String idM = String.valueOf(nroMicrociclo());
-//                myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
-//            //    String idUser = mAuth.getCurrentUser().getUid();
-//                myRef.child(id).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
-//                        alertDialog.setMessage("VOLUMEN: "+ gestionRutinas.getVolumen());
-//
-//                    }
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-//                AlertDialog dialog = alertDialog.create();
-//                dialog.show();
-//            }
-//        });
     }
     public int nroMicrociclo(){
         Date date = new Date();

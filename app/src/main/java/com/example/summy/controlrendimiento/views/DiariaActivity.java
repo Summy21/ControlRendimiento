@@ -355,6 +355,7 @@ public class DiariaActivity extends AppCompatActivity{
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
+
         btnIniciarN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -524,7 +525,7 @@ public class DiariaActivity extends AppCompatActivity{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
                 double volm = Double.parseDouble(gestionRutinas.getVolumen());
-                DecimalFormat df = new DecimalFormat("#.0");
+                DecimalFormat df = new DecimalFormat("#.000");
                 String vol = df.format(volm);
                 tvVolumenT.setText(vol);
             }

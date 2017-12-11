@@ -1,5 +1,6 @@
 package com.example.summy.controlrendimiento.views;
 
+import android.icu.text.DecimalFormat;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -136,22 +137,24 @@ public class NatacionAdminActivity extends AppCompatActivity {
         String cala = etCala.getText().toString().trim();
         String pala = etPala.getText().toString().trim();
 
-        int Aer = Integer.parseInt(aer);
-        int Ael = Integer.parseInt(ael);
-        int Aem = Integer.parseInt(aem);
-        int Aei = Integer.parseInt(aei);
-        int Pae = Integer.parseInt(pae);
-        int Cla = Integer.parseInt(cla);
-        int Pla = Integer.parseInt(pla);
-        int Cala = Integer.parseInt(cala);
-        int Pala = Integer.parseInt(pala);
-        double sesion = Integer.parseInt(nroSesiones);
+        double Aer = Double.parseDouble(aer);
+        double Ael = Double.parseDouble(ael);
+        double Aem = Double.parseDouble(aem);
+        double Aei = Double.parseDouble(aei);
+        double Pae = Double.parseDouble(pae);
+        double Cla = Double.parseDouble(cla);
+        double Pla = Double.parseDouble(pla);
+        double Cala = Double.parseDouble(cala);
+        double Pala = Double.parseDouble(pala);
+        double sesion = Double.parseDouble(nroSesiones);
 
         double volT = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala);
         double vol = (Aer+Ael+Aem+Aei+Pae+Cla+Pla+Cala+Pala)/sesion;
 
-        String volumenT = String.valueOf(volT);
+        DecimalFormat df = new DecimalFormat("#.000");
+        String volumenT = df.format((volT));
         String volumen = String.valueOf(vol);
+
         if(!TextUtils.isEmpty(microciclo)){
 
             GestionRutinas gestionRutinas = new GestionRutinas(microciclo, mesociclo, etapa, periodo, nroSesiones, aer, ael,aem,aei,pae,cla,pla,cala,pala, volumenT, volumen);

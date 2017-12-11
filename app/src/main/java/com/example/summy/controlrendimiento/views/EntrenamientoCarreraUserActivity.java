@@ -169,24 +169,27 @@ public class EntrenamientoCarreraUserActivity extends AppCompatActivity {
         String cala = etCala.getText().toString().trim();
         String pala = etPala.getText().toString().trim();
 
-        int Aer = Integer.parseInt(aer);
-        int Ael = Integer.parseInt(ael);
-        int Aem = Integer.parseInt(aem);
-        int Aei = Integer.parseInt(aei);
-        int Pae = Integer.parseInt(pae);
-        int Cla = Integer.parseInt(cla);
-        int Pla = Integer.parseInt(pla);
-        int Cala = Integer.parseInt(cala);
-        int Pala = Integer.parseInt(pala);
+        double Aer = Double.parseDouble(aer);
+        double Ael = Double.parseDouble(ael);
+        double Aem = Double.parseDouble(aem);
+        double Aei = Double.parseDouble(aei);
+        double Pae = Double.parseDouble(pae);
+        double Cla = Double.parseDouble(cla);
+        double Pla = Double.parseDouble(pla);
+        double Cala = Double.parseDouble(cala);
+        double Pala = Double.parseDouble(pala);
 
         double volT = (Aer + Ael + Aem + Aei + Pae + Cla + Pla + Cala + Pala);
         double vol = (Aer + Ael + Aem + Aei + Pae + Cla + Pla + Cala + Pala) / 10;
 
+        double carg = (Aer*1+Ael*2+Aem*3+Aei*6+Pae*10+Cla*14+Pla*12+Cala*8+Pala*6)/10;
+
         String volumenT = String.valueOf(volT);
         String volumen = String.valueOf(vol);
+        String carga = String.valueOf(carg);
         if (!TextUtils.isEmpty(aer)) {
 
-            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael, aem, aei, pae, cla, pla, cala, pala, volumenT, volumen, idM);
+            EntrenamientoRut entrenamientoRut = new EntrenamientoRut(aer, ael, aem, aei, pae, cla, pla, cala, pala, volumenT, volumen,carga, idM);
             myRef.setValue(entrenamientoRut);
             mostrarMessage("Adicionado");
         }
