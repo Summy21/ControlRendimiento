@@ -113,7 +113,7 @@ public class DiariaActivity extends AppCompatActivity{
         listCompUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegistroAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(),ListCompetenciasUserActivity.class));
             }
         });
 
