@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
 import com.example.summy.controlrendimiento.model.GestionRutinas;
+import com.google.android.gms.internal.tv;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,17 +77,8 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                 final String idM = String.valueOf(nroMicrociclo());
                 myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
                 final String id = atle.getIdUSer();
-                myRef.child(id).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        GestionRutinas gestionRutinas = dataSnapshot.getValue(GestionRutinas.class);
-
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
+                tvVolumenValor.setText("hola eneida");
             }
         });
     }
