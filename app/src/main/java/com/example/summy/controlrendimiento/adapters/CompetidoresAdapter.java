@@ -83,14 +83,29 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                 final String idM = String.valueOf(nroMicrociclo());
                 myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
 
+//                final String id = atle.getIdUSer();
+//                TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
+//                tvVolumenValor.setText("hola eneida");
+                TextView tvNombreComp = (TextView) dialog.findViewById(R.id.tvNombreComp);
+                TextView tvPaternoComp = (TextView) dialog.findViewById(R.id.tvPaternoComp);
+
                 /////
 
 
                 final String idUser = atle.getIdUSer();
+<<<<<<< HEAD
 
                 totalMC = 0;
                 myRefProm1 = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
                 myRefProm1.addListenerForSingleValueEvent(new ValueEventListener() {
+=======
+                myRefProm = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
+                //***
+                tvNombreComp.setText(atle.getNombres());
+                tvPaternoComp.setText(atle.getPaterno());
+                //***
+                myRefProm.addListenerForSingleValueEvent(new ValueEventListener() {
+>>>>>>> origin/master
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int contador = 0;
@@ -171,8 +186,6 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
 
 
                 ///////////////////////////
-
-
 
             }
         });
