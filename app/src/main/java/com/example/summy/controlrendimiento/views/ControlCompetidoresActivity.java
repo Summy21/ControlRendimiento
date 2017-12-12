@@ -25,9 +25,6 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ControlCompetidoresActivity extends AppCompatActivity {
 
-
-
-
     private View rootView;
     Toolbar toolbar;
     private DatabaseReference myRef;

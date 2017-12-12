@@ -2,6 +2,7 @@ package com.example.summy.controlrendimiento.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.icu.text.DecimalFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -32,7 +33,9 @@ import java.util.List;
 public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapter.CompetenciasViewHolder> {
     private DatabaseReference myRef;
     //
-    private DatabaseReference myRefProm;
+    private DatabaseReference myRefProm1;
+    private DatabaseReference myRefProm2;
+    private DatabaseReference myRefProm3;
     double totalMC;
     //
     private FirebaseAuth mAuth;
@@ -82,12 +85,12 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
 
                 /////
 
-                totalMC = 0;
-                //String idUser = "yoN3GcvfRTS8k27ACHq8G5w1Box2";
-                final String idUser = atle.getIdUSer();
-                myRefProm = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
 
-                myRefProm.addListenerForSingleValueEvent(new ValueEventListener() {
+                final String idUser = atle.getIdUSer();
+
+                totalMC = 0;
+                myRefProm1 = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
+                myRefProm1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int contador = 0;
@@ -98,8 +101,66 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                         }
                         totalMC = totalMC / contador;
                       //  Toast.makeText(CompetidoresAdapter.this, "Promedio: " + totalMC, Toast.LENGTH_LONG).show();
+
                         TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
-                        tvVolumenValor.setText(totalMC+"");
+
+                        DecimalFormat df = new DecimalFormat("#.00");
+                        String volumenT1 = df.format((totalMC));
+
+                        tvVolumenValor.setText(volumenT1+"");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
+                totalMC = 0;
+                myRefProm2 = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
+                myRefProm2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int contador = 0;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            EntrenamientoRut entrenamientoRut = ds.getValue(EntrenamientoRut.class);
+                            totalMC = totalMC + Double.parseDouble(entrenamientoRut.getCarga());
+                            contador++;
+                        }
+                        totalMC = totalMC / contador;
+                        //  Toast.makeText(CompetidoresAdapter.this, "Promedio: " + totalMC, Toast.LENGTH_LONG).show();
+                        TextView tvCargaValor = (TextView) dialog.findViewById(R.id.tvCarga);
+
+                        DecimalFormat df = new DecimalFormat("#.00");
+                        String volumenT1 = df.format((totalMC));
+
+
+                        tvCargaValor.setText(volumenT1+"");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
+                totalMC = 0;
+                myRefProm3 = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
+                myRefProm3.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int contador = 0;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            EntrenamientoRut entrenamientoRut = ds.getValue(EntrenamientoRut.class);
+                            totalMC = totalMC + Double.parseDouble(entrenamientoRut.getPae());
+                            contador++;
+                        }
+                        totalMC = totalMC / contador;
+                        //  Toast.makeText(CompetidoresAdapter.this, "Promedio: " + totalMC, Toast.LENGTH_LONG).show();
+                        TextView tvFrecValor = (TextView) dialog.findViewById(R.id.tvFreCar);
+
+                        DecimalFormat df = new DecimalFormat("#.0");
+                        String volumenT1 = df.format((totalMC));
+
+                        tvFrecValor.setText(volumenT1+"");
                     }
 
                     @Override
@@ -108,7 +169,8 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                 });
 
 
-                ///////
+
+                ///////////////////////////
 
 
 
@@ -147,5 +209,6 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
         }
 
     }
+
 
 }
