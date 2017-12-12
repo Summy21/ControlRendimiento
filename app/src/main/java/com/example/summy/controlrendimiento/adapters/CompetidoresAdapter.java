@@ -6,7 +6,6 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +16,7 @@ import android.widget.TextView;
 
 import com.example.summy.controlrendimiento.R;
 import com.example.summy.controlrendimiento.model.Atleta;
-import com.example.summy.controlrendimiento.model.GestionRutinas;
-import com.google.android.gms.internal.tv;
+import com.example.summy.controlrendimiento.model.EntrenamientoRut;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,11 +31,16 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapter.CompetenciasViewHolder> {
     private DatabaseReference myRef;
+    //
+    private DatabaseReference myRefProm;
+    double totalMC;
+    //
     private FirebaseAuth mAuth;
     Calendar calendar = Calendar.getInstance();
-    
+
     private final Context context;
     private List<Atleta> atletas;
+
 
     public CompetidoresAdapter(List<Atleta> atletas, Context context) {
         this.atletas = atletas;
@@ -71,22 +74,54 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
                 final Dialog dialog = new Dialog(context);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.activity_control_competidor);
-                dialog.getWindow().setLayout(DeviceTotalWidth ,DeviceTotalHeight);
+                dialog.getWindow().setLayout(DeviceTotalWidth, DeviceTotalHeight);
                 dialog.show();
 
                 final String idM = String.valueOf(nroMicrociclo());
                 myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
-                //final String id = atle.getIdUSer();
-                TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
-                tvVolumenValor.setText("hola eneida");
+
+                /////
+
+                totalMC = 0;
+                //String idUser = "yoN3GcvfRTS8k27ACHq8G5w1Box2";
+                final String idUser = atle.getIdUSer();
+                myRefProm = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM).child(idUser);
+
+                myRefProm.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int contador = 0;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            EntrenamientoRut entrenamientoRut = ds.getValue(EntrenamientoRut.class);
+                            totalMC = totalMC + Double.parseDouble(entrenamientoRut.getVolumen());
+                            contador++;
+                        }
+                        totalMC = totalMC / contador;
+                      //  Toast.makeText(CompetidoresAdapter.this, "Promedio: " + totalMC, Toast.LENGTH_LONG).show();
+                        TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
+                        tvVolumenValor.setText(totalMC+"");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
+
+                ///////
+
+
+
             }
         });
     }
-    public int nroMicrociclo(){
+
+    public int nroMicrociclo() {
         Date date = new Date();
         calendar.setTime(date);
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
+
     @Override
     public int getItemCount() {
         return atletas.size();
@@ -103,9 +138,9 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
         public CompetenciasViewHolder(View itemView) {
             super(itemView);
 
-            tvNombre  = (TextView) itemView.findViewById(R.id.tvNombre);
-            tvPaterno  = (TextView) itemView.findViewById(R.id.tvPaterno);
-            tvMaterno  = (TextView) itemView.findViewById(R.id.tvMaterno);
+            tvNombre = (TextView) itemView.findViewById(R.id.tvNombre);
+            tvPaterno = (TextView) itemView.findViewById(R.id.tvPaterno);
+            tvMaterno = (TextView) itemView.findViewById(R.id.tvMaterno);
             layoutCompetidor = (LinearLayout) itemView.findViewById(R.id.layoutCompetidor);
 
             tvNombreComp = (TextView) itemView.findViewById(R.id.tvNombreComp);
