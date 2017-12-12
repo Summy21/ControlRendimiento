@@ -76,7 +76,7 @@ public class CompetidoresAdapter extends RecyclerView.Adapter<CompetidoresAdapte
 
                 final String idM = String.valueOf(nroMicrociclo());
                 myRef = FirebaseDatabase.getInstance().getReference("EntrenamientoRut").child("Natacion").child(idM);
-                //final String id = atle.getIdUSer();
+                final String id = atle.getIdUSer();
                 TextView tvVolumenValor = (TextView) dialog.findViewById(R.id.tvVolumenValor);
                 tvVolumenValor.setText("hola eneida");
             }
